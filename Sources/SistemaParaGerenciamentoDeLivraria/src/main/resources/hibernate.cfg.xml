@@ -16,9 +16,9 @@
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">false</property>
 
-    <mapping class="br.com.unip.model.entity.Author"/>
-    <mapping class="br.com.unip.model.entity.Book"/>
-    <mapping class="br.com.unip.model.entity.BookAuthor"/>
-    <mapping class="br.com.unip.model.entity.Publisher"/>
+    <mapping class="br.com.unip.library.model.entity.Author"/>
+    <mapping class="br.com.unip.library.model.entity.Book"/>
+    <mapping class="br.com.unip.library.model.entity.BookAuthor"/>
+    <mapping class="br.com.unip.library.model.entity.Publisher"/>
   </session-factory>
 </hibernate-configuration>
