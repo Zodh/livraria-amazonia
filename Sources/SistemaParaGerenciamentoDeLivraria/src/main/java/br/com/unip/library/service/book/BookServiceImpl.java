@@ -23,7 +23,7 @@ public class BookServiceImpl implements BookService {
     if (Boolean.TRUE.equals(isValidNewBook(book))) {
       try {
         bookDAO.create(book);
-        log.info("Book successfully saved!");
+        showInfo("Success", "Book successfully saved!");
       } catch (Exception exception) {
         throw LibraryException
             .builder()
@@ -118,8 +118,6 @@ public class BookServiceImpl implements BookService {
   }
 
   private Boolean isValidNewBook(Book book) {
-    var validBook = new BookBO(book.getTitle(), book.getIsbn(), book.getPublisherId(),
-        book.getPrice()).build();
-    return validBook != null;
+    return new BookBO(book).toBook() != null;
   }
 }

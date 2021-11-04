@@ -11,28 +11,25 @@ import lombok.Getter;
 @Getter
 public class BookBO {
 
+  private final String title;
+  private final String isbn;
+  private final Integer publisherId;
+  private final Double price;
+
   BookDAO bookDAO = DAOFactory.getFactory().getBookDAO();
   PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
 
-  private final String title;
-
-  private final String isbn;
-
-  private final Integer publisherId;
-
-  private final Double price;
-
-  public BookBO(String title, String isbn, Integer publisherId, Double price) {
-    this.title = title;
-    this.isbn = isbn;
-    this.publisherId = publisherId;
-    this.price = price;
+  public BookBO(Book book) {
+    this.title = book.getTitle();
+    this.isbn = book.getIsbn();
+    this.publisherId = book.getPublisherId();
+    this.price = book.getPrice();
     checkIfTitleIsValid();
     checkIfIsbnIsValid();
     checkIfPublisherIsValid();
   }
 
-  public Book build() {
+  public Book toBook() {
     return Book
         .builder()
         .title(title)

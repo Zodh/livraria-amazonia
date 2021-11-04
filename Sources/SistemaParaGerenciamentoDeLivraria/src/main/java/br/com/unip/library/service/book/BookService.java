@@ -14,7 +14,4 @@ public interface BookService {
   void update(String existingBookIsbn, String title, Integer publisherId, Double price);
 
   void delete(String isbn);
-
-
-
 }
