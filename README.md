@@ -16,9 +16,8 @@ Projeto desenvolvido com as seguintes ferramentas e frameworks:
 
 ## Desenvolvedores
 
-Felipe Santos
-
-Beatriz Rockenbach
+- [Felipe Santos](mailto:felipe.carvalho.bs.contato@gmail.com)
+- [Beatriz Rockenbach](mailto:beatriz.ormedo@hotmail.com)
 
 ## KanBan 
 
