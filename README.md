@@ -16,12 +16,7 @@ Projeto desenvolvido com as seguintes ferramentas e frameworks:
 
 ## Desenvolvedores
 
-### Back-end
 Felipe Santos
-
----
-
-### Front-end
 Beatriz Rockenbach
 
 ## KanBan 
