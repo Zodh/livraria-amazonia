@@ -17,6 +17,7 @@ Projeto desenvolvido com as seguintes ferramentas e frameworks:
 ## Desenvolvedores
 
 Felipe Santos
+
 Beatriz Rockenbach
 
 ## KanBan 
