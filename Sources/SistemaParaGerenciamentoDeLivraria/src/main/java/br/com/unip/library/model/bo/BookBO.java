@@ -41,8 +41,8 @@ public class BookBO {
 
   private void checkIfTitleIsValid() {
     var message = "";
-    if (this.title.isBlank()) {
-      message = "Title is null or empty; ";
+    if (this.title == null || this.title.isBlank()) {
+      message = "Book title is null, empty or just whitespaces!";
     }
     if (!message.equals("")) {
       throw LibraryException
@@ -56,8 +56,8 @@ public class BookBO {
   private void checkIfIsbnIsValid() {
     var message = "";
     Book book;
-    if (this.isbn.isBlank()) {
-      message = "ISBN is null or empty; ";
+    if (this.isbn == null || this.isbn.isBlank()) {
+      message = "ISBN is null, empty or just whitespaces!";
     } else {
       book = bookDAO.findById(this.isbn);
       if (book != null) {
