@@ -1,12 +1,7 @@
 package br.com.unip.library.exception;
 
 import javax.swing.JOptionPane;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
 
-@Getter
-@Builder(access = AccessLevel.PUBLIC)
 public class LibraryException extends RuntimeException {
 
   private final String message;

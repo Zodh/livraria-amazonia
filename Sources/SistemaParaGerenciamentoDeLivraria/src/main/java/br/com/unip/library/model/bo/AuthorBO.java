@@ -19,7 +19,7 @@ public class AuthorBO {
     checkIfFNameIsValid();
   }
 
-  public Author toAuthor(){
+  public Author toAuthor() {
     return Author
         .builder()
         .name(name)
@@ -33,11 +33,7 @@ public class AuthorBO {
       message = "Author name is null, empty or just whitespaces!";
     }
     if (!message.equals("")) {
-      throw LibraryException
-          .builder()
-          .action(ExceptionErrorEnum.CREATE_BOOK)
-          .message(message)
-          .build();
+      throw new LibraryException(message, ExceptionErrorEnum.CREATE_AUTHOR_BO);
     }
   }
 
@@ -47,11 +43,7 @@ public class AuthorBO {
       message = "Author name is null, empty or just whitespaces!";
     }
     if (!message.equals("")) {
-      throw LibraryException
-          .builder()
-          .action(ExceptionErrorEnum.CREATE_BOOK)
-          .message(message)
-          .build();
+      throw new LibraryException(message, ExceptionErrorEnum.CREATE_AUTHOR_BO);
     }
   }
 }

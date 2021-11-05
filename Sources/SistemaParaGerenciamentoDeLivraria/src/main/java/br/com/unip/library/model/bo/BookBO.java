@@ -45,11 +45,7 @@ public class BookBO {
       message = "Book title is null, empty or just whitespaces!";
     }
     if (!message.equals("")) {
-      throw LibraryException
-          .builder()
-          .action(ExceptionErrorEnum.CREATE_BOOK)
-          .message(message)
-          .build();
+      throw new LibraryException(message, ExceptionErrorEnum.CREATE_BOOK_BO);
     }
   }
 
@@ -59,17 +55,13 @@ public class BookBO {
     if (this.isbn == null || this.isbn.isBlank()) {
       message = "ISBN is null, empty or just whitespaces!";
     } else {
-      book = bookDAO.findById(this.isbn);
+      book = bookDAO.findByIsbn(this.isbn);
       if (book != null) {
         message = "A book with this ISBN already exists!";
       }
     }
     if (!message.equals("")) {
-      throw LibraryException
-          .builder()
-          .action(ExceptionErrorEnum.CREATE_BOOK)
-          .message(message)
-          .build();
+      throw new LibraryException(message, ExceptionErrorEnum.CREATE_BOOK_BO);
     }
   }
 
@@ -80,11 +72,7 @@ public class BookBO {
       message = "A publisher with this ID does not exists!";
     }
     if (!message.equals("")) {
-      throw LibraryException
-          .builder()
-          .action(ExceptionErrorEnum.CREATE_BOOK)
-          .message(message)
-          .build();
+      throw new LibraryException(message, ExceptionErrorEnum.CREATE_BOOK_BO);
     }
   }
 }

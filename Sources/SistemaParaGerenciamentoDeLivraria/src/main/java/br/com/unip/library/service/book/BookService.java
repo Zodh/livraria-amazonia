@@ -9,7 +9,7 @@ public interface BookService {
 
   List<Book> listAll();
 
-  Book findById(String isbn);
+  Book findByIsbn(String isbn);
 
   void update(String existingBookIsbn, String title, Integer publisherId, Double price);
 
