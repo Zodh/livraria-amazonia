@@ -11,7 +11,7 @@ public interface AuthorService {
 
   Author findById(Integer id);
 
-  void update(String name, String fname);
+  void update(Integer id, String name, String fname);
 
   void delete(Integer id);
 }

@@ -11,7 +11,7 @@ public class BookDAO extends BaseDAO<Book, String> implements GenericDAO<Book, S
     super(Book.class);
   }
 
-  public Book findById(String isbn){
+  public Book findByIsbn(String isbn) {
     beginTransaction();
     var session = HibernateUtil.getSession();
     var book = session.get(Book.class, isbn);

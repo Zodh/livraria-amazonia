@@ -12,7 +12,7 @@ public class PublisherDAO extends BaseDAO<Publisher, Integer> implements
     super(Publisher.class);
   }
 
-  public Publisher findById(Integer id){
+  public Publisher findById(Integer id) {
     beginTransaction();
     var session = HibernateUtil.getSession();
     var publisher = session.get(Publisher.class, id);
