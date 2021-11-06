@@ -12,7 +12,7 @@ public interface PublisherService {
 
   Publisher findById(Integer id);
 
-  void update(Publisher publisherDTO);
+  void update(Integer id, String name, String url);
 
-  void delete(Integer publisherId);
+  void delete(Integer id);
 }
