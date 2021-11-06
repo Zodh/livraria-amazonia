@@ -16,7 +16,7 @@ public abstract class DAOFactory {
     try {
       return (DAOFactory) FACTORY_CLASS.getDeclaredConstructor().newInstance();
     } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-      throw new LibraryException("Error trying to create DAO.", ExceptionErrorEnum.ERROR_CREATING_DAO);
+      throw new LibraryException("Error trying to create DAO.", ExceptionErrorEnum.CREATE_DAO);
     }
   }
 
