@@ -39,8 +39,8 @@ public class AuthorBO {
 
   private void checkIfFNameIsValid() {
     var message = "";
-    if (this.name == null || this.fname.isBlank()) {
-      message = "Author name is null, empty or just whitespaces!";
+    if (this.fname == null || this.fname.isBlank()) {
+      message = "Author FName is null, empty or just whitespaces!";
     }
     if (!message.equals("")) {
       throw new LibraryException(message, ExceptionErrorEnum.CREATE_AUTHOR_BO);
