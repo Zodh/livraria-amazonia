@@ -23,7 +23,9 @@ public enum ExceptionErrorEnum {
   UPDATE_PUBLISHER("Service Update Publisher"),
   DELETE_PUBLISHER("Service Delete Publisher"),
 
-  ERROR_CREATING_DAO("DAO Factory Constructor");
+  CREATE_DAO("DAO Factory Constructor"),
+  MASK_INFO("Mask Information");
+
 
   public final String actionLabel;
 
