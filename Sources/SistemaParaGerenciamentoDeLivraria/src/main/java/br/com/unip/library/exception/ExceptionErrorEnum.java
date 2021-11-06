@@ -14,7 +14,16 @@ public enum ExceptionErrorEnum {
   LIST_AUTHORS("Service List All Authors"),
   FIND_AUTHOR_BY_ID("Service Find an Author by ID"),
   UPDATE_AUTHOR("Service Update Author"),
-  DELETE_AUTHOR("Service Delete Author");
+  DELETE_AUTHOR("Service Delete Author"),
+
+  CREATE_PUBLISHER("Service Create Publisher"),
+  CREATE_PUBLISHER_BO("Create Publisher Business Object"),
+  LIST_PUBLISHERS("Service List All Publishers"),
+  FIND_PUBLISHERS_BY_ID("Service Find a Publisher by ID"),
+  UPDATE_PUBLISHER("Service Update Publisher"),
+  DELETE_PUBLISHER("Service Delete Publisher"),
+
+  ERROR_CREATING_DAO("DAO Factory Constructor");
 
   public final String actionLabel;
 
