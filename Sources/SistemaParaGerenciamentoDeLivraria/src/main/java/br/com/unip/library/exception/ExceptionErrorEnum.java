@@ -19,7 +19,7 @@ public enum ExceptionErrorEnum {
   CREATE_PUBLISHER("Service Create Publisher"),
   CREATE_PUBLISHER_BO("Create Publisher Business Object"),
   LIST_PUBLISHERS("Service List All Publishers"),
-  FIND_PUBLISHERS_BY_ID("Service Find a Publisher by ID"),
+  FIND_PUBLISHER_BY_ID("Service Find a Publisher by ID"),
   UPDATE_PUBLISHER("Service Update Publisher"),
   DELETE_PUBLISHER("Service Delete Publisher"),
 

@@ -50,7 +50,7 @@ public class PublisherServiceImpl implements PublisherService {
     } catch (Exception exception) {
       throw new LibraryException(
           "Error trying to find a Publisher by ID. " + exception.getMessage(),
-          ExceptionErrorEnum.FIND_PUBLISHERS_BY_ID);
+          ExceptionErrorEnum.FIND_PUBLISHER_BY_ID);
     }
   }
 
