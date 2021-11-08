@@ -15,8 +15,8 @@ import lombok.extern.java.Log;
 @Log
 public class BookServiceImpl implements BookService {
 
-  BookDAO bookDAO = DAOFactory.getFactory().getBookDAO();
-  PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
+  private BookDAO bookDAO = DAOFactory.getFactory().getBookDAO();
+  private PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
 
   @Override
   public void create(Book book) {
