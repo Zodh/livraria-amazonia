@@ -17,10 +17,10 @@ public class BookAuthorBO {
 
   private AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
 
-  public BookAuthorBO(BookAuthor bookAuthor, Integer seqNo) {
+  public BookAuthorBO(BookAuthor bookAuthor) {
     this.isbn = bookAuthor.getIsbn();
     this.authorId = bookAuthor.getAuthorId();
-    this.seqNo = seqNo;
+    this.seqNo = bookAuthor.getSeqNo();
     checkIfAuthorIdIsValid();
     checkIfIsbnIsValid();
   }
