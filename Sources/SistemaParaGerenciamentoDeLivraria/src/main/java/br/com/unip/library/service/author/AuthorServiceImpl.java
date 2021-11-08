@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AuthorServiceImpl implements AuthorService {
 
-  AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
+  private AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
 
   @Override
   public void create(Author author) {
