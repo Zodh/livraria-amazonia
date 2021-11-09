@@ -2,6 +2,7 @@ package br.com.unip.library.util;
 
 import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class LibraryUtils {
@@ -37,5 +38,13 @@ public class LibraryUtils {
       throw new LibraryException("Error Trying to Mask an Information",
           ExceptionErrorEnum.MASK_INFO);
     }
+  }
+
+  public static Boolean isValidAuthorsInput(String authors) {
+    var pattern = Pattern.compile("^[0-9]?(?:,\\d+?)*$");
+    if (Boolean.FALSE.equals(pattern.matcher(authors).matches())) {
+      throw new LibraryException("Input only numbers and comma", ExceptionErrorEnum.INVALID_INPUT);
+    }
+    return true;
   }
 }

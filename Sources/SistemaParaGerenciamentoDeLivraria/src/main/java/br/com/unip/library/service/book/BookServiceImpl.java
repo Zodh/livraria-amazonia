@@ -21,11 +21,11 @@ public class BookServiceImpl implements BookService {
   private final BookAuthorServiceImpl bookAuthorService = new BookAuthorServiceImpl();
 
   @Override
-  public void create(Book book, Integer authorId) {
+  public void create(Book book, List<Integer> authors) {
     if (Boolean.TRUE.equals(isValidNewBook(book))) {
       try {
         bookDAO.create(book);
-        bookAuthorService.createBookAuthorByIsbn(book.getIsbn(), authorId);
+        authors.forEach(author -> bookAuthorService.createBookAuthorByIsbn(book.getIsbn(), author));
         showInfo("Success", "Book successfully saved!");
       } catch (Exception exception) {
         throw new LibraryException("Error trying to save a new Book. " + exception.getMessage(),

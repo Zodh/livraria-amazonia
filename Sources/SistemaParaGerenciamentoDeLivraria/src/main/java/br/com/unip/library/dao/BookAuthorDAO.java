@@ -28,7 +28,7 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
     var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
     var criteriaQuery = criteriaBuilder.createQuery(BookAuthor.class);
     var root = criteriaQuery.from(BookAuthor.class);
-    criteriaQuery.select(root).where(root.get("author_id").in(id));
+    criteriaQuery.select(root).where(root.get("authorId").in(id));
     var query = HibernateUtil.getSession().createQuery(criteriaQuery);
     var result = query.getResultList();
     result.forEach(this::delete);

@@ -42,7 +42,8 @@ public class BookAuthorServiceImpl implements BookAuthorService {
       bookAuthorDAO.deleteByAuthorId(id);
       return true;
     } catch (Exception exception) {
-      throw new LibraryException("Error trying to delete a Book Author by Author.",
+      throw new LibraryException(
+          "Error trying to delete a Book Author by AuthorId. " + exception.getMessage(),
           ExceptionErrorEnum.DELETE_BOOK_AUTHOR_BY_AUTHOR_ID);
     }
   }

@@ -29,7 +29,8 @@ public enum ExceptionErrorEnum {
   DELETE_BOOK_AUTHOR_BY_AUTHOR_ID("Service Delete Book Author by Author ID"),
 
   CREATE_DAO("DAO Factory Constructor"),
-  MASK_INFO("Mask Information");
+  MASK_INFO("Mask Information"),
+  INVALID_INPUT("REGEX - Validating Input - Only Numbers and Commas");
 
   public final String actionLabel;
 
