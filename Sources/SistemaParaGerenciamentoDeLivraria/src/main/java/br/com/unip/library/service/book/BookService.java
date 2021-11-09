@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface BookService {
 
-  void create(Book book);
+  void create(Book book, Integer authorId);
 
   List<Book> listAll();
 
