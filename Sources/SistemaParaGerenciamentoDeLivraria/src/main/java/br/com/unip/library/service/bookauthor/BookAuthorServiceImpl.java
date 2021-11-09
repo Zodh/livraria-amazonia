@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class BookAuthorServiceImpl implements BookAuthorService {
 
-  private BookAuthorDAO bookAuthorDAO = DAOFactory.getFactory().getBookAuthorDAO();
+  private final BookAuthorDAO bookAuthorDAO = DAOFactory.getFactory().getBookAuthorDAO();
 
   @Override
   public Boolean createBookAuthorByIsbn(String isbn, Integer authorId) {
@@ -19,24 +19,38 @@ public class BookAuthorServiceImpl implements BookAuthorService {
       bookAuthorDAO.create(bookAuthor);
       return true;
     } catch (Exception exception) {
-      throw new LibraryException("Error trying to create a Book Author.",
+      throw new LibraryException("Error trying to create a Book Author. " + exception.getMessage(),
           ExceptionErrorEnum.CREATE_BOOK_AUTHOR);
     }
   }
 
   @Override
-  public void deleteBookAuthorByIsbn(String isbn) {
-
+  public Boolean deleteBookAuthorByIsbn(String isbn) {
+    try {
+      bookAuthorDAO.deleteByIsbn(isbn);
+      return true;
+    } catch (Exception exception) {
+      throw new LibraryException(
+          "Error trying to delete a Book Author by Book. " + exception.getMessage(),
+          ExceptionErrorEnum.DELETE_BOOK_AUTHOR_BY_ISBN);
+    }
   }
 
   @Override
-  public void deleteBookAuthorsByAuthorId(Integer id) {
-
+  public Boolean deleteBookAuthorsByAuthorId(Integer id) {
+    try {
+      bookAuthorDAO.deleteByAuthorId(id);
+      return true;
+    } catch (Exception exception) {
+      throw new LibraryException("Error trying to delete a Book Author by Author.",
+          ExceptionErrorEnum.DELETE_BOOK_AUTHOR_BY_AUTHOR_ID);
+    }
   }
 
   private BookAuthor buildValidBookAuthor(String isbn, Integer authorId) {
-    var bookAuthor = BookAuthor.builder().authorId(authorId).isbn(isbn).seqNo(generateSeqNo()).build();
-    if (isValidBookAuthor(bookAuthor)) {
+    var bookAuthor = BookAuthor.builder().authorId(authorId).isbn(isbn).seqNo(generateSeqNo())
+        .build();
+    if (Boolean.TRUE.equals(isValidBookAuthor(bookAuthor))) {
       return bookAuthor;
     }
     throw new LibraryException("Error Trying to build a Book Author.",
