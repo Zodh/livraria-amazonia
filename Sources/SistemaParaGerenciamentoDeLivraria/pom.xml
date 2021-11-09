@@ -8,6 +8,11 @@
   <artifactId>SistemaParaGerenciamentoDeLivraria</artifactId>
   <version>1.0.0</version>
 
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.hibernate</groupId>
@@ -15,13 +20,21 @@
       <version>5.4.32.Final</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.apache.maven/maven-artifact -->
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <version>3.6.3</version>
+    </dependency>
+
+
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.22</version>
-      <scope>provided</scope>
+      <version>1.18.12</version>
     </dependency>
+
 
     <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
     <dependency>
@@ -50,12 +63,6 @@
     </dependency>
     <!-- Thanks for using https://jar-download.com -->
 
-
   </dependencies>
-
-  <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-  </properties>
 
 </project>
