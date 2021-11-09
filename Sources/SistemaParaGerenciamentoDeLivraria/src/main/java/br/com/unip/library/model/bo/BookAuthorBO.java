@@ -27,7 +27,6 @@ public class BookAuthorBO {
 
   private void checkIfIsbnIsValid() {
     var message = "";
-    Book book;
     if (this.isbn == null || this.isbn.isBlank()) {
       message = "ISBN is null, empty or just whitespaces!";
     }
