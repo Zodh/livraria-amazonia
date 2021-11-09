@@ -30,7 +30,8 @@ public enum ExceptionErrorEnum {
 
   CREATE_DAO("DAO Factory Constructor"),
   MASK_INFO("Mask Information"),
-  INVALID_INPUT("REGEX - Validating Input - Only Numbers and Commas");
+  INVALID_INPUT_NBCM("REGEX - Validating Input - Only Numbers and Commas"),
+  INVALID_INPUT_NB("REGEX - Validating Input - Only Numbers");
 
   public final String actionLabel;
 
