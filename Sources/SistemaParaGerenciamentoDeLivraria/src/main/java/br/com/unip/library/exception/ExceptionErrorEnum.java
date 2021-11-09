@@ -27,7 +27,6 @@ public enum ExceptionErrorEnum {
   CREATE_BOOK_AUTHOR_BO("Create Book Author Business Object"),
   DELETE_BOOK_AUTHOR_BY_ISBN("Service Delete Book Author by ISBN"),
   DELETE_BOOK_AUTHOR_BY_AUTHOR_ID("Service Delete Book Author by Author ID"),
-  FIND_BOOK_AUTHOR_BY_ISBN("Service Find a Book Author by ISBN"),
 
   CREATE_DAO("DAO Factory Constructor"),
   MASK_INFO("Mask Information");
