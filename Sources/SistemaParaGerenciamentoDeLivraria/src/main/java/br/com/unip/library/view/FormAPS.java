@@ -6,6 +6,7 @@
 package br.com.unip.library.view;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicButtonUI;
@@ -18,18 +19,17 @@ public class FormAPS extends javax.swing.JFrame {
 
     
     CardLayout cardLayout;
+    CardLayout cardLayoutBooks;
+    CardLayout cardLayoutAuthors;
+    CardLayout cardLayoutPublishers;
     
     public FormAPS() {
         initComponents();
-        Component [] components = this.getContentPane().getComponents();
-        for(Component component : components){
-            if(component instanceof JButton){
-                ((JButton) component).setUI(new BasicButtonUI());
-                ((JButton) component).setFocusPainted(false);
-            }
-        }
         
         cardLayout = (CardLayout)(pnl_Cards.getLayout());
+        cardLayoutBooks = (CardLayout)(pnlCardsBooks.getLayout());
+        cardLayoutAuthors = (CardLayout)(pnlCardsAuthors.getLayout());
+        cardLayoutPublishers = (CardLayout)(pnlCardsPublishers.getLayout());
     }
 
     /**
@@ -41,24 +41,74 @@ public class FormAPS extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         pnl_Menu = new javax.swing.JPanel();
         btn_Books = new javax.swing.JButton();
         btn_Authors = new javax.swing.JButton();
         btn_Publishers = new javax.swing.JButton();
-        label_Title = new javax.swing.JLabel();
+        lblAmazonia = new javax.swing.JLabel();
         label_Exit = new javax.swing.JLabel();
+        Test = new javax.swing.JLabel();
         pnl_Cards = new javax.swing.JPanel();
+        pnlStartPage = new javax.swing.JPanel();
         pnl_Authors = new javax.swing.JPanel();
+        pnlMenuAuthors = new javax.swing.JPanel();
+        lblAuthors = new javax.swing.JLabel();
+        lblCreateAuthors = new javax.swing.JLabel();
+        lblListAuthors = new javax.swing.JLabel();
+        lblUpdateAuthors = new javax.swing.JLabel();
+        lblDeleteAuthors = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        pnlCardsAuthors = new javax.swing.JPanel();
+        pnlCreateAuthors = new javax.swing.JPanel();
+        pnlListAuthors = new javax.swing.JPanel();
+        pnlUpdateAuthors = new javax.swing.JPanel();
+        pnlDeleteAuthors = new javax.swing.JPanel();
         pnl_Publishers = new javax.swing.JPanel();
+        pnlMenuPublishers = new javax.swing.JPanel();
+        lblPublishers = new javax.swing.JLabel();
+        lblCreatePublishers = new javax.swing.JLabel();
+        lblListPublishers = new javax.swing.JLabel();
+        lblUpdatePublishers = new javax.swing.JLabel();
+        lblDeletePublishers = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        pnlCardsPublishers = new javax.swing.JPanel();
+        pnlCreatePublishers = new javax.swing.JPanel();
+        pnlListPublishers = new javax.swing.JPanel();
+        pnlUpdatePublishers = new javax.swing.JPanel();
+        pnlDeletePublishers = new javax.swing.JPanel();
         pnl_Books = new javax.swing.JPanel();
+        pnlMenuBooks = new javax.swing.JPanel();
+        lblBooks = new javax.swing.JLabel();
+        lblCreateBooks = new javax.swing.JLabel();
+        lblListBooks = new javax.swing.JLabel();
+        lblUpdateBooks = new javax.swing.JLabel();
+        lblDeleteBooks = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        pnlCardsBooks = new javax.swing.JPanel();
+        pnlCreateBooks = new javax.swing.JPanel();
+        pnlListBooks = new javax.swing.JPanel();
+        pnlUpdateBooks = new javax.swing.JPanel();
+        pnlDeleteBooks = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(243, 243, 243));
 
         pnl_Menu.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -95,19 +145,36 @@ public class FormAPS extends javax.swing.JFrame {
             }
         });
 
-        label_Title.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        label_Title.setForeground(new java.awt.Color(230, 230, 230));
-        label_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_Title.setText("Amazônia");
+        lblAmazonia.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblAmazonia.setForeground(new java.awt.Color(230, 230, 230));
+        lblAmazonia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAmazonia.setText("Amazônia Bookstore");
+        lblAmazonia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAmazoniaMouseClicked(evt);
+            }
+        });
 
         label_Exit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         label_Exit.setForeground(new java.awt.Color(255, 255, 255));
         label_Exit.setText("X");
+        label_Exit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         label_Exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                label_ExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                label_ExitMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 label_ExitMousePressed(evt);
             }
         });
+
+        Test.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Test.setForeground(new java.awt.Color(230, 230, 230));
+        Test.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Test.setText("Test");
 
         javax.swing.GroupLayout pnl_MenuLayout = new javax.swing.GroupLayout(pnl_Menu);
         pnl_Menu.setLayout(pnl_MenuLayout);
@@ -115,8 +182,10 @@ public class FormAPS extends javax.swing.JFrame {
             pnl_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_MenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(label_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAmazonia, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Test, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_Books, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Authors, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,53 +208,511 @@ public class FormAPS extends javax.swing.JFrame {
                             .addComponent(btn_Publishers, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_Authors, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_Books, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAmazonia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Test, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21))))
         );
 
+        pnl_Cards.setBackground(new java.awt.Color(243, 243, 243));
         pnl_Cards.setLayout(new java.awt.CardLayout());
 
-        pnl_Authors.setBackground(new java.awt.Color(0, 102, 153));
+        pnlStartPage.setBackground(new java.awt.Color(243, 243, 243));
+
+        javax.swing.GroupLayout pnlStartPageLayout = new javax.swing.GroupLayout(pnlStartPage);
+        pnlStartPage.setLayout(pnlStartPageLayout);
+        pnlStartPageLayout.setHorizontalGroup(
+            pnlStartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1125, Short.MAX_VALUE)
+        );
+        pnlStartPageLayout.setVerticalGroup(
+            pnlStartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnl_Cards.add(pnlStartPage, "pnlStartPage");
+
+        pnl_Authors.setBackground(new java.awt.Color(243, 243, 243));
+
+        pnlMenuAuthors.setPreferredSize(new java.awt.Dimension(173, 327));
+
+        lblAuthors.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblAuthors.setForeground(new java.awt.Color(51, 51, 51));
+        lblAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAuthors.setText("Authors");
+
+        lblCreateAuthors.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblCreateAuthors.setForeground(new java.awt.Color(51, 51, 51));
+        lblCreateAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCreateAuthors.setText("Create");
+        lblCreateAuthors.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCreateAuthorsMouseClicked(evt);
+            }
+        });
+
+        lblListAuthors.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblListAuthors.setForeground(new java.awt.Color(51, 51, 51));
+        lblListAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblListAuthors.setText("List");
+        lblListAuthors.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblListAuthorsMouseClicked(evt);
+            }
+        });
+
+        lblUpdateAuthors.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblUpdateAuthors.setForeground(new java.awt.Color(51, 51, 51));
+        lblUpdateAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUpdateAuthors.setText("Update");
+        lblUpdateAuthors.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUpdateAuthorsMouseClicked(evt);
+            }
+        });
+
+        lblDeleteAuthors.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblDeleteAuthors.setForeground(new java.awt.Color(51, 51, 51));
+        lblDeleteAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDeleteAuthors.setText("Delete");
+        lblDeleteAuthors.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDeleteAuthorsMouseClicked(evt);
+            }
+        });
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlMenuAuthorsLayout = new javax.swing.GroupLayout(pnlMenuAuthors);
+        pnlMenuAuthors.setLayout(pnlMenuAuthorsLayout);
+        pnlMenuAuthorsLayout.setHorizontalGroup(
+            pnlMenuAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator3)
+            .addComponent(lblCreateAuthors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblListAuthors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblUpdateAuthors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDeleteAuthors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblAuthors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+        );
+        pnlMenuAuthorsLayout.setVerticalGroup(
+            pnlMenuAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuAuthorsLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(lblCreateAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblListAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUpdateAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDeleteAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlCardsAuthors.setLayout(new java.awt.CardLayout());
+
+        pnlCreateAuthors.setBackground(new java.awt.Color(0, 204, 153));
+
+        javax.swing.GroupLayout pnlCreateAuthorsLayout = new javax.swing.GroupLayout(pnlCreateAuthors);
+        pnlCreateAuthors.setLayout(pnlCreateAuthorsLayout);
+        pnlCreateAuthorsLayout.setHorizontalGroup(
+            pnlCreateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlCreateAuthorsLayout.setVerticalGroup(
+            pnlCreateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsAuthors.add(pnlCreateAuthors, "pnlCreateAuthors");
+
+        pnlListAuthors.setBackground(new java.awt.Color(204, 255, 204));
+
+        javax.swing.GroupLayout pnlListAuthorsLayout = new javax.swing.GroupLayout(pnlListAuthors);
+        pnlListAuthors.setLayout(pnlListAuthorsLayout);
+        pnlListAuthorsLayout.setHorizontalGroup(
+            pnlListAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlListAuthorsLayout.setVerticalGroup(
+            pnlListAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsAuthors.add(pnlListAuthors, "pnlListAuthors");
+
+        pnlUpdateAuthors.setBackground(new java.awt.Color(255, 204, 204));
+
+        javax.swing.GroupLayout pnlUpdateAuthorsLayout = new javax.swing.GroupLayout(pnlUpdateAuthors);
+        pnlUpdateAuthors.setLayout(pnlUpdateAuthorsLayout);
+        pnlUpdateAuthorsLayout.setHorizontalGroup(
+            pnlUpdateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlUpdateAuthorsLayout.setVerticalGroup(
+            pnlUpdateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsAuthors.add(pnlUpdateAuthors, "pnlUpdateAuthors");
+
+        pnlDeleteAuthors.setBackground(new java.awt.Color(153, 153, 255));
+
+        javax.swing.GroupLayout pnlDeleteAuthorsLayout = new javax.swing.GroupLayout(pnlDeleteAuthors);
+        pnlDeleteAuthors.setLayout(pnlDeleteAuthorsLayout);
+        pnlDeleteAuthorsLayout.setHorizontalGroup(
+            pnlDeleteAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlDeleteAuthorsLayout.setVerticalGroup(
+            pnlDeleteAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsAuthors.add(pnlDeleteAuthors, "pnlDeleteAuthors");
 
         javax.swing.GroupLayout pnl_AuthorsLayout = new javax.swing.GroupLayout(pnl_Authors);
         pnl_Authors.setLayout(pnl_AuthorsLayout);
         pnl_AuthorsLayout.setHorizontalGroup(
             pnl_AuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 972, Short.MAX_VALUE)
+            .addGroup(pnl_AuthorsLayout.createSequentialGroup()
+                .addComponent(pnlMenuAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlCardsAuthors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_AuthorsLayout.setVerticalGroup(
             pnl_AuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addComponent(pnlMenuAuthors, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+            .addComponent(pnlCardsAuthors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnl_Cards.add(pnl_Authors, "pnl_Authors");
 
-        pnl_Publishers.setBackground(new java.awt.Color(204, 204, 255));
+        pnl_Publishers.setBackground(new java.awt.Color(243, 243, 243));
+
+        pnlMenuPublishers.setPreferredSize(new java.awt.Dimension(173, 327));
+
+        lblPublishers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblPublishers.setForeground(new java.awt.Color(51, 51, 51));
+        lblPublishers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPublishers.setText("Publishers");
+
+        lblCreatePublishers.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblCreatePublishers.setForeground(new java.awt.Color(51, 51, 51));
+        lblCreatePublishers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCreatePublishers.setText("Create");
+        lblCreatePublishers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCreatePublishersMouseClicked(evt);
+            }
+        });
+
+        lblListPublishers.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblListPublishers.setForeground(new java.awt.Color(51, 51, 51));
+        lblListPublishers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblListPublishers.setText("List");
+        lblListPublishers.setMaximumSize(new java.awt.Dimension(55, 20));
+        lblListPublishers.setMinimumSize(new java.awt.Dimension(55, 20));
+        lblListPublishers.setPreferredSize(new java.awt.Dimension(55, 20));
+        lblListPublishers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblListPublishersMouseClicked(evt);
+            }
+        });
+
+        lblUpdatePublishers.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblUpdatePublishers.setForeground(new java.awt.Color(51, 51, 51));
+        lblUpdatePublishers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUpdatePublishers.setText("Update");
+        lblUpdatePublishers.setMaximumSize(new java.awt.Dimension(55, 20));
+        lblUpdatePublishers.setMinimumSize(new java.awt.Dimension(55, 20));
+        lblUpdatePublishers.setPreferredSize(new java.awt.Dimension(55, 20));
+        lblUpdatePublishers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUpdatePublishersMouseClicked(evt);
+            }
+        });
+
+        lblDeletePublishers.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblDeletePublishers.setForeground(new java.awt.Color(51, 51, 51));
+        lblDeletePublishers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDeletePublishers.setText("Delete");
+        lblDeletePublishers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDeletePublishersMouseClicked(evt);
+            }
+        });
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlMenuPublishersLayout = new javax.swing.GroupLayout(pnlMenuPublishers);
+        pnlMenuPublishers.setLayout(pnlMenuPublishersLayout);
+        pnlMenuPublishersLayout.setHorizontalGroup(
+            pnlMenuPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblCreatePublishers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblListPublishers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblUpdatePublishers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDeletePublishers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblPublishers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+            .addComponent(jSeparator2)
+        );
+        pnlMenuPublishersLayout.setVerticalGroup(
+            pnlMenuPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuPublishersLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblPublishers, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(lblCreatePublishers, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblListPublishers, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUpdatePublishers, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDeletePublishers, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlCardsPublishers.setLayout(new java.awt.CardLayout());
+
+        pnlCreatePublishers.setBackground(new java.awt.Color(204, 255, 255));
+
+        javax.swing.GroupLayout pnlCreatePublishersLayout = new javax.swing.GroupLayout(pnlCreatePublishers);
+        pnlCreatePublishers.setLayout(pnlCreatePublishersLayout);
+        pnlCreatePublishersLayout.setHorizontalGroup(
+            pnlCreatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlCreatePublishersLayout.setVerticalGroup(
+            pnlCreatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsPublishers.add(pnlCreatePublishers, "pnlCreatePublishers");
+
+        pnlListPublishers.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout pnlListPublishersLayout = new javax.swing.GroupLayout(pnlListPublishers);
+        pnlListPublishers.setLayout(pnlListPublishersLayout);
+        pnlListPublishersLayout.setHorizontalGroup(
+            pnlListPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlListPublishersLayout.setVerticalGroup(
+            pnlListPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsPublishers.add(pnlListPublishers, "pnlListPublishers");
+
+        pnlUpdatePublishers.setBackground(new java.awt.Color(204, 255, 204));
+
+        javax.swing.GroupLayout pnlUpdatePublishersLayout = new javax.swing.GroupLayout(pnlUpdatePublishers);
+        pnlUpdatePublishers.setLayout(pnlUpdatePublishersLayout);
+        pnlUpdatePublishersLayout.setHorizontalGroup(
+            pnlUpdatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlUpdatePublishersLayout.setVerticalGroup(
+            pnlUpdatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsPublishers.add(pnlUpdatePublishers, "pnlUpdatePublishers");
+
+        pnlDeletePublishers.setBackground(new java.awt.Color(255, 153, 153));
+
+        javax.swing.GroupLayout pnlDeletePublishersLayout = new javax.swing.GroupLayout(pnlDeletePublishers);
+        pnlDeletePublishers.setLayout(pnlDeletePublishersLayout);
+        pnlDeletePublishersLayout.setHorizontalGroup(
+            pnlDeletePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlDeletePublishersLayout.setVerticalGroup(
+            pnlDeletePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsPublishers.add(pnlDeletePublishers, "pnlDeletePublishers");
 
         javax.swing.GroupLayout pnl_PublishersLayout = new javax.swing.GroupLayout(pnl_Publishers);
         pnl_Publishers.setLayout(pnl_PublishersLayout);
         pnl_PublishersLayout.setHorizontalGroup(
             pnl_PublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 972, Short.MAX_VALUE)
+            .addGroup(pnl_PublishersLayout.createSequentialGroup()
+                .addComponent(pnlMenuPublishers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlCardsPublishers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_PublishersLayout.setVerticalGroup(
             pnl_PublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addComponent(pnlMenuPublishers, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+            .addComponent(pnlCardsPublishers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnl_Cards.add(pnl_Publishers, "pnl_Publishers");
 
-        pnl_Books.setBackground(new java.awt.Color(255, 204, 204));
+        pnl_Books.setBackground(new java.awt.Color(243, 243, 243));
+
+        lblBooks.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblBooks.setForeground(new java.awt.Color(51, 51, 51));
+        lblBooks.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBooks.setText("Books");
+
+        lblCreateBooks.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblCreateBooks.setForeground(new java.awt.Color(51, 51, 51));
+        lblCreateBooks.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCreateBooks.setText("Create");
+        lblCreateBooks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCreateBooksMouseClicked(evt);
+            }
+        });
+
+        lblListBooks.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblListBooks.setForeground(new java.awt.Color(51, 51, 51));
+        lblListBooks.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblListBooks.setText("List");
+        lblListBooks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblListBooksMouseClicked(evt);
+            }
+        });
+
+        lblUpdateBooks.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblUpdateBooks.setForeground(new java.awt.Color(51, 51, 51));
+        lblUpdateBooks.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUpdateBooks.setText("Update");
+        lblUpdateBooks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUpdateBooksMouseClicked(evt);
+            }
+        });
+
+        lblDeleteBooks.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblDeleteBooks.setForeground(new java.awt.Color(51, 51, 51));
+        lblDeleteBooks.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDeleteBooks.setText("Delete");
+        lblDeleteBooks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDeleteBooksMouseClicked(evt);
+            }
+        });
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlMenuBooksLayout = new javax.swing.GroupLayout(pnlMenuBooks);
+        pnlMenuBooks.setLayout(pnlMenuBooksLayout);
+        pnlMenuBooksLayout.setHorizontalGroup(
+            pnlMenuBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuBooksLayout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 5, Short.MAX_VALUE))
+            .addComponent(lblCreateBooks, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblListBooks, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblUpdateBooks, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDeleteBooks, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblBooks, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlMenuBooksLayout.setVerticalGroup(
+            pnlMenuBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuBooksLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(lblCreateBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblListBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUpdateBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDeleteBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlCardsBooks.setLayout(new java.awt.CardLayout());
+
+        pnlCreateBooks.setBackground(new java.awt.Color(204, 255, 204));
+
+        javax.swing.GroupLayout pnlCreateBooksLayout = new javax.swing.GroupLayout(pnlCreateBooks);
+        pnlCreateBooks.setLayout(pnlCreateBooksLayout);
+        pnlCreateBooksLayout.setHorizontalGroup(
+            pnlCreateBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlCreateBooksLayout.setVerticalGroup(
+            pnlCreateBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsBooks.add(pnlCreateBooks, "pnlCreateBooks");
+
+        pnlListBooks.setBackground(new java.awt.Color(255, 255, 204));
+
+        javax.swing.GroupLayout pnlListBooksLayout = new javax.swing.GroupLayout(pnlListBooks);
+        pnlListBooks.setLayout(pnlListBooksLayout);
+        pnlListBooksLayout.setHorizontalGroup(
+            pnlListBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlListBooksLayout.setVerticalGroup(
+            pnlListBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsBooks.add(pnlListBooks, "pnlListBooks");
+
+        pnlUpdateBooks.setBackground(new java.awt.Color(255, 204, 204));
+
+        javax.swing.GroupLayout pnlUpdateBooksLayout = new javax.swing.GroupLayout(pnlUpdateBooks);
+        pnlUpdateBooks.setLayout(pnlUpdateBooksLayout);
+        pnlUpdateBooksLayout.setHorizontalGroup(
+            pnlUpdateBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlUpdateBooksLayout.setVerticalGroup(
+            pnlUpdateBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsBooks.add(pnlUpdateBooks, "pnlUpdateBooks");
+
+        pnlDeleteBooks.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout pnlDeleteBooksLayout = new javax.swing.GroupLayout(pnlDeleteBooks);
+        pnlDeleteBooks.setLayout(pnlDeleteBooksLayout);
+        pnlDeleteBooksLayout.setHorizontalGroup(
+            pnlDeleteBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 946, Short.MAX_VALUE)
+        );
+        pnlDeleteBooksLayout.setVerticalGroup(
+            pnlDeleteBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        pnlCardsBooks.add(pnlDeleteBooks, "pnlDeleteBooks");
 
         javax.swing.GroupLayout pnl_BooksLayout = new javax.swing.GroupLayout(pnl_Books);
         pnl_Books.setLayout(pnl_BooksLayout);
         pnl_BooksLayout.setHorizontalGroup(
             pnl_BooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 972, Short.MAX_VALUE)
+            .addGroup(pnl_BooksLayout.createSequentialGroup()
+                .addComponent(pnlMenuBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlCardsBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_BooksLayout.setVerticalGroup(
             pnl_BooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addComponent(pnlMenuBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlCardsBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnl_Cards.add(pnl_Books, "pnl_Books");
@@ -236,6 +763,66 @@ public class FormAPS extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_label_ExitMousePressed
 
+    private void label_ExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_ExitMouseEntered
+        this.label_Exit.setForeground(Color.red);
+    }//GEN-LAST:event_label_ExitMouseEntered
+
+    private void label_ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_ExitMouseExited
+        this.label_Exit.setForeground(Color.white);
+    }//GEN-LAST:event_label_ExitMouseExited
+
+    private void lblAmazoniaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAmazoniaMouseClicked
+        cardLayout.show(pnl_Cards, "pnlStartPage");
+    }//GEN-LAST:event_lblAmazoniaMouseClicked
+
+    private void lblCreateBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateBooksMouseClicked
+        cardLayoutBooks.show(pnlCardsBooks, "pnlCreateBooks");
+    }//GEN-LAST:event_lblCreateBooksMouseClicked
+
+    private void lblListBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListBooksMouseClicked
+        cardLayoutBooks.show(pnlCardsBooks, "pnlListBooks");
+    }//GEN-LAST:event_lblListBooksMouseClicked
+
+    private void lblUpdateBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpdateBooksMouseClicked
+        cardLayoutBooks.show(pnlCardsBooks, "pnlUpdateBooks");
+    }//GEN-LAST:event_lblUpdateBooksMouseClicked
+
+    private void lblDeleteBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeleteBooksMouseClicked
+        cardLayoutBooks.show(pnlCardsBooks, "pnlDeleteBooks");
+    }//GEN-LAST:event_lblDeleteBooksMouseClicked
+
+    private void lblCreatePublishersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreatePublishersMouseClicked
+        cardLayoutPublishers.show(pnlCardsPublishers, "pnlCreatePublishers");
+    }//GEN-LAST:event_lblCreatePublishersMouseClicked
+
+    private void lblListPublishersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListPublishersMouseClicked
+        cardLayoutPublishers.show(pnlCardsPublishers, "pnlListPublishers");
+    }//GEN-LAST:event_lblListPublishersMouseClicked
+
+    private void lblUpdatePublishersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpdatePublishersMouseClicked
+        cardLayoutPublishers.show(pnlCardsPublishers, "pnlUpdatePublishers");
+    }//GEN-LAST:event_lblUpdatePublishersMouseClicked
+
+    private void lblDeletePublishersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeletePublishersMouseClicked
+        cardLayoutPublishers.show(pnlCardsPublishers, "pnlDeletePublishers");
+    }//GEN-LAST:event_lblDeletePublishersMouseClicked
+
+    private void lblCreateAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateAuthorsMouseClicked
+        cardLayoutAuthors.show(pnlCardsAuthors, "pnlCreateAuthors");
+    }//GEN-LAST:event_lblCreateAuthorsMouseClicked
+
+    private void lblListAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListAuthorsMouseClicked
+        cardLayoutAuthors.show(pnlCardsAuthors, "pnlListAuthors");
+    }//GEN-LAST:event_lblListAuthorsMouseClicked
+
+    private void lblUpdateAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpdateAuthorsMouseClicked
+        cardLayoutAuthors.show(pnlCardsAuthors, "pnlUpdateAuthors");
+    }//GEN-LAST:event_lblUpdateAuthorsMouseClicked
+
+    private void lblDeleteAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeleteAuthorsMouseClicked
+        cardLayoutAuthors.show(pnlCardsAuthors, "pnlDeleteAuthors");
+    }//GEN-LAST:event_lblDeleteAuthorsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -273,12 +860,51 @@ public class FormAPS extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Test;
     private javax.swing.JButton btn_Authors;
     private javax.swing.JButton btn_Books;
     private javax.swing.JButton btn_Publishers;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel label_Exit;
-    private javax.swing.JLabel label_Title;
+    private javax.swing.JLabel lblAmazonia;
+    private javax.swing.JLabel lblAuthors;
+    private javax.swing.JLabel lblBooks;
+    private javax.swing.JLabel lblCreateAuthors;
+    private javax.swing.JLabel lblCreateBooks;
+    private javax.swing.JLabel lblCreatePublishers;
+    private javax.swing.JLabel lblDeleteAuthors;
+    private javax.swing.JLabel lblDeleteBooks;
+    private javax.swing.JLabel lblDeletePublishers;
+    private javax.swing.JLabel lblListAuthors;
+    private javax.swing.JLabel lblListBooks;
+    private javax.swing.JLabel lblListPublishers;
+    private javax.swing.JLabel lblPublishers;
+    private javax.swing.JLabel lblUpdateAuthors;
+    private javax.swing.JLabel lblUpdateBooks;
+    private javax.swing.JLabel lblUpdatePublishers;
+    private javax.swing.JPanel pnlCardsAuthors;
+    private javax.swing.JPanel pnlCardsBooks;
+    private javax.swing.JPanel pnlCardsPublishers;
+    private javax.swing.JPanel pnlCreateAuthors;
+    private javax.swing.JPanel pnlCreateBooks;
+    private javax.swing.JPanel pnlCreatePublishers;
+    private javax.swing.JPanel pnlDeleteAuthors;
+    private javax.swing.JPanel pnlDeleteBooks;
+    private javax.swing.JPanel pnlDeletePublishers;
+    private javax.swing.JPanel pnlListAuthors;
+    private javax.swing.JPanel pnlListBooks;
+    private javax.swing.JPanel pnlListPublishers;
+    private javax.swing.JPanel pnlMenuAuthors;
+    private javax.swing.JPanel pnlMenuBooks;
+    private javax.swing.JPanel pnlMenuPublishers;
+    private javax.swing.JPanel pnlStartPage;
+    private javax.swing.JPanel pnlUpdateAuthors;
+    private javax.swing.JPanel pnlUpdateBooks;
+    private javax.swing.JPanel pnlUpdatePublishers;
     private javax.swing.JPanel pnl_Authors;
     private javax.swing.JPanel pnl_Books;
     private javax.swing.JPanel pnl_Cards;
