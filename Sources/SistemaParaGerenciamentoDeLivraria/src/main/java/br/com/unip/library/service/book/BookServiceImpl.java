@@ -9,20 +9,23 @@ import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.bo.BookBO;
 import br.com.unip.library.model.entity.Book;
+import br.com.unip.library.service.bookauthor.BookAuthorServiceImpl;
 import java.util.List;
 import lombok.extern.java.Log;
 
 @Log
 public class BookServiceImpl implements BookService {
 
-  BookDAO bookDAO = DAOFactory.getFactory().getBookDAO();
-  PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
+  private final BookDAO bookDAO = DAOFactory.getFactory().getBookDAO();
+  private final PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
+  private final BookAuthorServiceImpl bookAuthorService = new BookAuthorServiceImpl();
 
   @Override
-  public void create(Book book) {
+  public void create(Book book, Integer authorId) {
     if (Boolean.TRUE.equals(isValidNewBook(book))) {
       try {
         bookDAO.create(book);
+        bookAuthorService.createBookAuthorByIsbn(book.getIsbn(), authorId);
         showInfo("Success", "Book successfully saved!");
       } catch (Exception exception) {
         throw new LibraryException("Error trying to save a new Book. " + exception.getMessage(),
@@ -90,6 +93,7 @@ public class BookServiceImpl implements BookService {
   public void delete(String isbn) {
     var book = findByIsbn(isbn);
     try {
+      bookAuthorService.deleteBookAuthorByIsbn(isbn);
       bookDAO.delete(book);
       showInfo("Success", "Book with ISBN " + isbn + " has been deleted!");
     } catch (Exception exception) {

@@ -23,9 +23,13 @@ public enum ExceptionErrorEnum {
   UPDATE_PUBLISHER("Service Update Publisher"),
   DELETE_PUBLISHER("Service Delete Publisher"),
 
+  CREATE_BOOK_AUTHOR("Service Create Book Author"),
+  CREATE_BOOK_AUTHOR_BO("Create Book Author Business Object"),
+  DELETE_BOOK_AUTHOR_BY_ISBN("Service Delete Book Author by ISBN"),
+  DELETE_BOOK_AUTHOR_BY_AUTHOR_ID("Service Delete Book Author by Author ID"),
+
   CREATE_DAO("DAO Factory Constructor"),
   MASK_INFO("Mask Information");
-
 
   public final String actionLabel;
 

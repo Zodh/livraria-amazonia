@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PublisherServiceImpl implements PublisherService {
 
-  PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
+  private final PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
 
   @Override
   public void create(String name, String url) {
