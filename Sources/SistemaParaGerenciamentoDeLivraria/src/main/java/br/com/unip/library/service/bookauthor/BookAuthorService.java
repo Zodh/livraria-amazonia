@@ -4,9 +4,9 @@ public interface BookAuthorService {
 
   Boolean createBookAuthorByIsbn(String isbn, Integer authorId);
 
-  void deleteBookAuthorByIsbn(String isbn);
+  Boolean deleteBookAuthorByIsbn(String isbn);
 
-  void deleteBookAuthorsByAuthorId(Integer id);
+  Boolean deleteBookAuthorsByAuthorId(Integer id);
 
   Integer generateSeqNo();
 
