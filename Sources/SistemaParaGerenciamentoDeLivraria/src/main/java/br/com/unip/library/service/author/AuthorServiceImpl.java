@@ -8,11 +8,13 @@ import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.bo.AuthorBO;
 import br.com.unip.library.model.entity.Author;
+import br.com.unip.library.service.bookauthor.BookAuthorServiceImpl;
 import java.util.List;
 
 public class AuthorServiceImpl implements AuthorService {
 
-  private AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
+  private final AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
+  private final BookAuthorServiceImpl bookAuthorService = new BookAuthorServiceImpl();
 
   @Override
   public void create(Author author) {
@@ -81,6 +83,7 @@ public class AuthorServiceImpl implements AuthorService {
   public void delete(Integer id) {
     var author = findById(id);
     try {
+      bookAuthorService.deleteBookAuthorsByAuthorId(id);
       authorDAO.delete(author);
       showInfo("Success", "Author with ID " + id + " has been deleted!");
     } catch (Exception exception) {
