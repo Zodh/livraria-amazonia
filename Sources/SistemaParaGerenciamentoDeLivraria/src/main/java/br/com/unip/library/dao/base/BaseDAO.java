@@ -51,7 +51,7 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
   }
 
   @Override
-  public void update(T entity){
+  public void update(T entity) {
     beginTransaction();
     HibernateUtil.getSession().update(entity);
     endTransaction();

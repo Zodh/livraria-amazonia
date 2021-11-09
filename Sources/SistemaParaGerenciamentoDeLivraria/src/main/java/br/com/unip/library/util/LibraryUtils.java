@@ -40,9 +40,9 @@ public class LibraryUtils {
     }
   }
 
-  public static Boolean isValidAuthorsInput(String authors){
+  public static Boolean isValidAuthorsInput(String authors) {
     var pattern = Pattern.compile("^[0-9]?(?:,\\d+?)*$");
-    if(Boolean.FALSE.equals(pattern.matcher(authors).matches())){
+    if (Boolean.FALSE.equals(pattern.matcher(authors).matches())) {
       throw new LibraryException("Input only numbers and comma", ExceptionErrorEnum.INVALID_INPUT);
     }
     return true;

@@ -4,7 +4,6 @@ import br.com.unip.library.dao.AuthorDAO;
 import br.com.unip.library.dao.base.DAOFactory;
 import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
-import br.com.unip.library.model.entity.Book;
 import br.com.unip.library.model.entity.BookAuthor;
 
 public class BookAuthorBO {
@@ -15,7 +14,7 @@ public class BookAuthorBO {
 
   private final Integer seqNo;
 
-  private AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
+  private final AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
 
   public BookAuthorBO(BookAuthor bookAuthor) {
     this.isbn = bookAuthor.getIsbn();
@@ -35,13 +34,13 @@ public class BookAuthorBO {
     }
   }
 
-  private void checkIfAuthorIdIsValid(){
+  private void checkIfAuthorIdIsValid() {
     var author = authorDAO.findById(authorId);
     var message = "";
-    if (author == null){
+    if (author == null) {
       message = "An Author with this ID does not exists!";
     }
-    if (!message.equals("")){
+    if (!message.equals("")) {
       throw new LibraryException(message, ExceptionErrorEnum.CREATE_BOOK_AUTHOR_BO);
     }
   }
