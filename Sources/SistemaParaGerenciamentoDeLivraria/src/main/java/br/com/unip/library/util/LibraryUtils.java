@@ -40,15 +40,6 @@ public class LibraryUtils {
     }
   }
 
-  public static Boolean isValidAuthorsInput(String authors) {
-    var pattern = Pattern.compile("^[0-9]?(?:,\\d+?)*$");
-    if (Boolean.FALSE.equals(pattern.matcher(authors).matches())) {
-      throw new LibraryException("Input only numbers and comma",
-          ExceptionErrorEnum.INVALID_INPUT_NBCM);
-    }
-    return true;
-  }
-
   public static Boolean isOnlyNumbers(String numbers) {
     var pattern = Pattern.compile("^[0-9]*$");
     if (Boolean.FALSE.equals(pattern.matcher(numbers).matches())) {
