@@ -5,13 +5,12 @@
  */
 package br.com.unip.library.view;
 
-import static br.com.unip.library.view.integration.BookIntegrator.buildBook;
+import static br.com.unip.library.view.integration.BookIntegrator.saveBook;
 import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
 import static br.com.unip.library.view.integration.Integrator.fromStringToDouble;
 import static br.com.unip.library.view.integration.Integrator.fromStringToInteger;
 import static br.com.unip.library.view.integration.Integrator.getJTextString;
 
-import br.com.unip.library.controller.BookControllerImpl;
 import java.awt.CardLayout;
 import java.awt.Color;
 
@@ -1375,7 +1374,6 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JTextField txtPublishersBooks;
     private javax.swing.JTextField txttPriceBooks;
     // End of variables declaration//GEN-END:variables
-    private BookControllerImpl bookController = new BookControllerImpl();
     
     private void createBook(){
         var title = getJTextString(textTitleBooks);
@@ -1389,8 +1387,7 @@ public class FormAPS extends javax.swing.JFrame {
         var publisherValue = fromStringToInteger(publisher);
         var priceValue = fromStringToDouble(price);
 
-        var book = buildBook(title, isbn, publisherValue, priceValue);
-        bookController.create(book, authorsList);
+        saveBook(title, isbn, publisherValue, priceValue, authorsList);
         clearBookFields();
     }
 
