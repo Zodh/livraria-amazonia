@@ -132,7 +132,7 @@ public class FormAPS extends javax.swing.JFrame {
         lblAmazonia.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblAmazonia.setForeground(new java.awt.Color(230, 230, 230));
         lblAmazonia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAmazonia.setText("Amaz�nia Bookstore");
+        lblAmazonia.setText("Amazonia Bookstore");
         lblAmazonia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAmazoniaMouseClicked(evt);
