@@ -44,6 +44,9 @@ public class BookBO {
     if (this.title == null || this.title.isBlank()) {
       message = "Book title is null, empty or just whitespaces!";
     }
+    if (this.title.length() > 60){
+      message = "Book title cannot be greater than 60!";
+    }
     if (!message.equals("")) {
       throw new LibraryException(message, ExceptionErrorEnum.CREATE_BOOK_BO);
     }
@@ -59,6 +62,9 @@ public class BookBO {
       if (book != null) {
         message = "A book with this ISBN already exists!";
       }
+    }
+    if (isbn.length() != 13){
+      message = "Invalid ISBN length!";
     }
     if (!message.equals("")) {
       throw new LibraryException(message, ExceptionErrorEnum.CREATE_BOOK_BO);

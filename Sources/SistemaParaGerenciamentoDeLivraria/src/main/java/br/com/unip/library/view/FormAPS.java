@@ -5,11 +5,15 @@
  */
 package br.com.unip.library.view;
 
+import static br.com.unip.library.view.integration.BookIntegrator.buildBook;
+import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
+import static br.com.unip.library.view.integration.Integrator.fromStringToDouble;
+import static br.com.unip.library.view.integration.Integrator.fromStringToInteger;
+import static br.com.unip.library.view.integration.Integrator.getJTextString;
+
+import br.com.unip.library.controller.BookControllerImpl;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
-import javax.swing.JButton;
-import javax.swing.plaf.basic.BasicButtonUI;
 
 /**
  *
@@ -128,7 +132,7 @@ public class FormAPS extends javax.swing.JFrame {
         lblAmazonia.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblAmazonia.setForeground(new java.awt.Color(230, 230, 230));
         lblAmazonia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAmazonia.setText("Amazônia Bookstore");
+        lblAmazonia.setText("Amazonia Bookstore");
         lblAmazonia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAmazoniaMouseClicked(evt);
@@ -750,6 +754,11 @@ public class FormAPS extends javax.swing.JFrame {
         btnSave.setText("Save");
         btnSave.setBorder(null);
         btnSave.setFocusable(false);
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCreateBooksLayout = new javax.swing.GroupLayout(pnlCreateBooks);
         pnlCreateBooks.setLayout(pnlCreateBooksLayout);
@@ -1041,6 +1050,10 @@ public class FormAPS extends javax.swing.JFrame {
         cardLayout.show(pnl_Cards, "pnl_Publishers");
     }//GEN-LAST:event_btnPublishersMouseClicked
 
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        createBook();
+    }//GEN-LAST:event_btnSaveMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1141,5 +1154,32 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JTextField txtISBNBooks;
     private javax.swing.JTextField txtPublishersBooks;
     private javax.swing.JTextField txttPriceBooks;
+
+    private BookControllerImpl bookController = new BookControllerImpl();
     // End of variables declaration//GEN-END:variables
+
+    private void createBook(){
+        var title = getJTextString(textTitleBooks);
+        var isbn = getJTextString(txtISBNBooks);
+        var authors = getJTextString(txtAuthorsBooks);
+        var publisher = getJTextString(txtPublishersBooks);
+        var price = getJTextString(txttPriceBooks);
+
+        var authorsList = fromAuthorsStringToList(authors);
+
+        var publisherValue = fromStringToInteger(publisher);
+        var priceValue = fromStringToDouble(price);
+
+        var book = buildBook(title, isbn, publisherValue, priceValue);
+        bookController.create(book, authorsList);
+        clearBookFields();
+    }
+
+    private void clearBookFields(){
+        textTitleBooks.setText("");
+        txtISBNBooks.setText("");
+        txtAuthorsBooks.setText("");
+        txtPublishersBooks.setText("");
+        txttPriceBooks.setText("");
+    }
 }
