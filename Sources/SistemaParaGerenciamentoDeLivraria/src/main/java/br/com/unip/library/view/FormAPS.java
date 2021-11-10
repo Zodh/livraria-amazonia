@@ -65,12 +65,12 @@ public class FormAPS extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         pnlCardsAuthors = new javax.swing.JPanel();
         pnlCreateAuthors = new javax.swing.JPanel();
-        lblNewBooks1 = new javax.swing.JLabel();
-        textTitleBooks1 = new javax.swing.JTextField();
-        lblTitle1 = new javax.swing.JLabel();
-        lblTitle2 = new javax.swing.JLabel();
-        textTitleBooks2 = new javax.swing.JTextField();
-        btnSave1 = new javax.swing.JButton();
+        lblNewAuthor = new javax.swing.JLabel();
+        txtNameAuthor = new javax.swing.JTextField();
+        lblNameAuthor = new javax.swing.JLabel();
+        lblFantasyName = new javax.swing.JLabel();
+        txtFantasyNameAuthor = new javax.swing.JTextField();
+        btnSaveAuthor = new javax.swing.JButton();
         pnlListAuthors = new javax.swing.JPanel();
         pnlUpdateAuthors = new javax.swing.JPanel();
         pnlDeleteAuthors = new javax.swing.JPanel();
@@ -384,31 +384,31 @@ public class FormAPS extends javax.swing.JFrame {
 
         pnlCreateAuthors.setBackground(new java.awt.Color(246, 246, 246));
 
-        lblNewBooks1.setBackground(new java.awt.Color(255, 255, 255));
-        lblNewBooks1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblNewBooks1.setForeground(new java.awt.Color(51, 51, 51));
-        lblNewBooks1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNewBooks1.setText("New Book");
+        lblNewAuthor.setBackground(new java.awt.Color(255, 255, 255));
+        lblNewAuthor.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNewAuthor.setForeground(new java.awt.Color(51, 51, 51));
+        lblNewAuthor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNewAuthor.setText("New Author");
 
-        textTitleBooks1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNameAuthor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        lblTitle1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTitle1.setText("Name:");
+        lblNameAuthor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNameAuthor.setText("Name:");
 
-        lblTitle2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTitle2.setText("Fantasy Name:");
+        lblFantasyName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblFantasyName.setText("Fantasy Name:");
 
-        textTitleBooks2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtFantasyNameAuthor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        btnSave1.setBackground(new java.awt.Color(66, 157, 251));
-        btnSave1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSave1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSave1.setText("Save");
-        btnSave1.setBorder(null);
-        btnSave1.setFocusable(false);
-        btnSave1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSaveAuthor.setBackground(new java.awt.Color(66, 157, 251));
+        btnSaveAuthor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSaveAuthor.setForeground(new java.awt.Color(255, 255, 255));
+        btnSaveAuthor.setText("Save");
+        btnSaveAuthor.setBorder(null);
+        btnSaveAuthor.setFocusable(false);
+        btnSaveAuthor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSave1MouseClicked(evt);
+                btnSaveAuthorMouseClicked(evt);
             }
         });
 
@@ -419,32 +419,32 @@ public class FormAPS extends javax.swing.JFrame {
             .addGroup(pnlCreateAuthorsLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(pnlCreateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle2)
-                    .addComponent(textTitleBooks2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNewBooks1)
-                    .addComponent(lblTitle1)
-                    .addComponent(textTitleBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFantasyName)
+                    .addComponent(txtFantasyNameAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNewAuthor)
+                    .addComponent(lblNameAuthor)
+                    .addComponent(txtNameAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 503, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCreateAuthorsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addComponent(btnSaveAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         pnlCreateAuthorsLayout.setVerticalGroup(
             pnlCreateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCreateAuthorsLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(lblNewBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNewAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(lblTitle1)
+                .addComponent(lblNameAuthor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textTitleBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNameAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(lblTitle2)
+                .addComponent(lblFantasyName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textTitleBooks2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFantasyNameAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
-                .addComponent(btnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSaveAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
 
@@ -1264,9 +1264,9 @@ public class FormAPS extends javax.swing.JFrame {
         this.lblDeletePublishers.setBackground(new Color(75,75,75));
     }//GEN-LAST:event_lblDeletePublishersMouseExited
 
-    private void btnSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSave1MouseClicked
+    private void btnSaveAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveAuthorMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSave1MouseClicked
+    }//GEN-LAST:event_btnSaveAuthorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1309,7 +1309,7 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JLabel btnBooks;
     private javax.swing.JLabel btnPublishers;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSave1;
+    private javax.swing.JButton btnSaveAuthor;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1328,18 +1328,18 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JLabel lblDeleteAuthors;
     private javax.swing.JLabel lblDeleteBooks;
     private javax.swing.JLabel lblDeletePublishers;
+    private javax.swing.JLabel lblFantasyName;
     private javax.swing.JLabel lblISBNBooks;
     private javax.swing.JLabel lblListAuthors;
     private javax.swing.JLabel lblListBooks;
     private javax.swing.JLabel lblListPublishers;
+    private javax.swing.JLabel lblNameAuthor;
+    private javax.swing.JLabel lblNewAuthor;
     private javax.swing.JLabel lblNewBooks;
-    private javax.swing.JLabel lblNewBooks1;
     private javax.swing.JLabel lblPriceBooks;
     private javax.swing.JLabel lblPublishers;
     private javax.swing.JLabel lblPublishersBooks;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblTitle1;
-    private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblUpdateAuthors;
     private javax.swing.JLabel lblUpdateBooks;
     private javax.swing.JLabel lblUpdatePublishers;
@@ -1368,10 +1368,10 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_Menu;
     private javax.swing.JPanel pnl_Publishers;
     private javax.swing.JTextField textTitleBooks;
-    private javax.swing.JTextField textTitleBooks1;
-    private javax.swing.JTextField textTitleBooks2;
     private javax.swing.JTextField txtAuthorsBooks;
+    private javax.swing.JTextField txtFantasyNameAuthor;
     private javax.swing.JTextField txtISBNBooks;
+    private javax.swing.JTextField txtNameAuthor;
     private javax.swing.JTextField txtPublishersBooks;
     private javax.swing.JTextField txttPriceBooks;
     // End of variables declaration//GEN-END:variables

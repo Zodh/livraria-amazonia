@@ -451,18 +451,18 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="textTitleBooks2" min="-2" pref="316" max="-2" attributes="0"/>
-                                      <Component id="lblNewBooks1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="textTitleBooks1" min="-2" pref="316" max="-2" attributes="0"/>
+                                      <Component id="lblFantasyName" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFantasyNameAuthor" min="-2" pref="316" max="-2" attributes="0"/>
+                                      <Component id="lblNewAuthor" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblNameAuthor" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNameAuthor" min="-2" pref="316" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="503" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnSave1" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="btnSaveAuthor" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -470,24 +470,24 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="lblNewBooks1" min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Component id="lblNewAuthor" min="-2" pref="39" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNameAuthor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="textTitleBooks1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNameAuthor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFantasyName" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="textTitleBooks2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFantasyNameAuthor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="300" max="32767" attributes="0"/>
-                                  <Component id="btnSave1" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="btnSaveAuthor" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="lblNewBooks1">
+                        <Component class="javax.swing.JLabel" name="lblNewAuthor">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -499,17 +499,17 @@
                               <Color blue="33" green="33" red="33" type="rgb"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="New Book"/>
+                            <Property name="text" type="java.lang.String" value="New Author"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="textTitleBooks1">
+                        <Component class="javax.swing.JTextField" name="txtNameAuthor">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="14" style="0"/>
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblTitle1">
+                        <Component class="javax.swing.JLabel" name="lblNameAuthor">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="14" style="1"/>
@@ -517,7 +517,7 @@
                             <Property name="text" type="java.lang.String" value="Name:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblTitle2">
+                        <Component class="javax.swing.JLabel" name="lblFantasyName">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="14" style="1"/>
@@ -525,14 +525,14 @@
                             <Property name="text" type="java.lang.String" value="Fantasy Name:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="textTitleBooks2">
+                        <Component class="javax.swing.JTextField" name="txtFantasyNameAuthor">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="14" style="0"/>
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnSave1">
+                        <Component class="javax.swing.JButton" name="btnSaveAuthor">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="fb" green="9d" red="42" type="rgb"/>
@@ -550,7 +550,7 @@
                             <Property name="focusable" type="boolean" value="false"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSave1MouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSaveAuthorMouseClicked"/>
                           </Events>
                         </Component>
                       </SubComponents>
