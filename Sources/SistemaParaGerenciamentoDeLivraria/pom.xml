@@ -35,6 +35,14 @@
       <version>1.18.12</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.netbeans.external/AbsoluteLayout -->
+    <dependency>
+      <groupId>org.netbeans.external</groupId>
+      <artifactId>AbsoluteLayout</artifactId>
+      <version>RELEASE125</version>
+    </dependency>
+
+
 
     <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
     <dependency>
