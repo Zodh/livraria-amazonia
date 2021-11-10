@@ -5,11 +5,11 @@
  */
 package br.com.unip.library.view;
 
+import br.com.unip.library.controller.BookControllerImpl;
+import br.com.unip.library.model.entity.Book;
+import br.com.unip.library.view.integration.Integrator;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
-import javax.swing.JButton;
-import javax.swing.plaf.basic.BasicButtonUI;
 
 /**
  *
@@ -128,7 +128,7 @@ public class FormAPS extends javax.swing.JFrame {
         lblAmazonia.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblAmazonia.setForeground(new java.awt.Color(230, 230, 230));
         lblAmazonia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAmazonia.setText("Amazônia Bookstore");
+        lblAmazonia.setText("Amaz�nia Bookstore");
         lblAmazonia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAmazoniaMouseClicked(evt);
@@ -750,6 +750,11 @@ public class FormAPS extends javax.swing.JFrame {
         btnSave.setText("Save");
         btnSave.setBorder(null);
         btnSave.setFocusable(false);
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCreateBooksLayout = new javax.swing.GroupLayout(pnlCreateBooks);
         pnlCreateBooks.setLayout(pnlCreateBooksLayout);
@@ -1041,6 +1046,10 @@ public class FormAPS extends javax.swing.JFrame {
         cardLayout.show(pnl_Cards, "pnl_Publishers");
     }//GEN-LAST:event_btnPublishersMouseClicked
 
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        createBook();
+    }//GEN-LAST:event_btnSaveMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1141,5 +1150,32 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JTextField txtISBNBooks;
     private javax.swing.JTextField txtPublishersBooks;
     private javax.swing.JTextField txttPriceBooks;
+    private BookControllerImpl bookController = new BookControllerImpl();
     // End of variables declaration//GEN-END:variables
+
+    private void createBook(){
+        var title = Integrator.getJTextString(textTitleBooks);
+        var isbn = Integrator.getJTextString(txtISBNBooks);
+        var authors = Integrator.getJTextString(txtAuthorsBooks);
+        var publisher = Integrator.getJTextString(txtPublishersBooks);
+        var price = Integrator.getJTextString(txttPriceBooks);
+
+        var authorsList = Integrator.fromAuthorsStringToList(authors);
+
+        var publisherValue = Integrator.fromStringToInteger(publisher);
+        var priceValue = Integrator.fromStringToDouble(price);
+
+        var book = buildBook(title, isbn, publisherValue, priceValue);
+        bookController.create(book, authorsList);
+    }
+
+    private Book buildBook(String title, String isbn, Integer publisher, Double price){
+        return Book
+            .builder()
+            .title(title)
+            .isbn(isbn)
+            .publisherId(publisher)
+            .price(price)
+            .build();
+    }
 }
