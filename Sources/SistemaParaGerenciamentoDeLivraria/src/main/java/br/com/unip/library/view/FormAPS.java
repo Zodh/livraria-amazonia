@@ -5,9 +5,13 @@
  */
 package br.com.unip.library.view;
 
+import static br.com.unip.library.view.integration.BookIntegrator.buildBook;
+import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
+import static br.com.unip.library.view.integration.Integrator.fromStringToDouble;
+import static br.com.unip.library.view.integration.Integrator.fromStringToInteger;
+import static br.com.unip.library.view.integration.Integrator.getJTextString;
+
 import br.com.unip.library.controller.BookControllerImpl;
-import br.com.unip.library.model.entity.Book;
-import br.com.unip.library.view.integration.Integrator;
 import java.awt.CardLayout;
 import java.awt.Color;
 
@@ -1150,32 +1154,32 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JTextField txtISBNBooks;
     private javax.swing.JTextField txtPublishersBooks;
     private javax.swing.JTextField txttPriceBooks;
+
     private BookControllerImpl bookController = new BookControllerImpl();
     // End of variables declaration//GEN-END:variables
 
     private void createBook(){
-        var title = Integrator.getJTextString(textTitleBooks);
-        var isbn = Integrator.getJTextString(txtISBNBooks);
-        var authors = Integrator.getJTextString(txtAuthorsBooks);
-        var publisher = Integrator.getJTextString(txtPublishersBooks);
-        var price = Integrator.getJTextString(txttPriceBooks);
+        var title = getJTextString(textTitleBooks);
+        var isbn = getJTextString(txtISBNBooks);
+        var authors = getJTextString(txtAuthorsBooks);
+        var publisher = getJTextString(txtPublishersBooks);
+        var price = getJTextString(txttPriceBooks);
 
-        var authorsList = Integrator.fromAuthorsStringToList(authors);
+        var authorsList = fromAuthorsStringToList(authors);
 
-        var publisherValue = Integrator.fromStringToInteger(publisher);
-        var priceValue = Integrator.fromStringToDouble(price);
+        var publisherValue = fromStringToInteger(publisher);
+        var priceValue = fromStringToDouble(price);
 
         var book = buildBook(title, isbn, publisherValue, priceValue);
         bookController.create(book, authorsList);
+        clearBookFields();
     }
 
-    private Book buildBook(String title, String isbn, Integer publisher, Double price){
-        return Book
-            .builder()
-            .title(title)
-            .isbn(isbn)
-            .publisherId(publisher)
-            .price(price)
-            .build();
+    private void clearBookFields(){
+        textTitleBooks.setText("");
+        txtISBNBooks.setText("");
+        txtAuthorsBooks.setText("");
+        txtPublishersBooks.setText("");
+        txttPriceBooks.setText("");
     }
 }
