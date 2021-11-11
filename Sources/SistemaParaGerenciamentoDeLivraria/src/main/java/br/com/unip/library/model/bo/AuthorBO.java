@@ -32,6 +32,9 @@ public class AuthorBO {
     if (this.name == null || this.name.isBlank()) {
       message = "Author name is null, empty or just whitespaces!";
     }
+    if (this.name.length() > 25){
+      message = "The name cannot contain more than 25 characters!";
+    }
     if (!message.equals("")) {
       throw new LibraryException(message, ExceptionErrorEnum.CREATE_AUTHOR_BO);
     }
@@ -41,6 +44,9 @@ public class AuthorBO {
     var message = "";
     if (this.fname == null || this.fname.isBlank()) {
       message = "Author FName is null, empty or just whitespaces!";
+    }
+    if (this.fname.length() > 25){
+      message = "The Fantasy Name cannot contain more than 25 characters!";
     }
     if (!message.equals("")) {
       throw new LibraryException(message, ExceptionErrorEnum.CREATE_AUTHOR_BO);
