@@ -3,10 +3,13 @@
   "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.c3p0.min_size">1</property>
-    <property name="hibernate.c3p0.max_size">20</property>
-    <property name="hibernate.c3p0.acquire_increment">5</property>
-    <property name="hibernate.c3p0.timeout">5000</property>
+    <property name="hibernate.c3p0.timeout">1800</property>
+    <property name="hibernate.c3p0.idle_test_period">1800</property>
+    <property name="hibernate.c3p0.initialPoolSize">5</property>
+    <property name="hibernate.c3p0.maxIdleTime">30</property>
+    <property name="hibernate.c3p0.maxPoolSize">600</property>
+    <property name="hibernate.c3p0.minPoolSize">5</property>
+    <property name="hibernate.c3p0.maxStatements">200</property>
 
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
@@ -14,7 +17,7 @@
     <property name="hibernate.connection.password">admin</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
     <property name="hbm2ddl.auto">update</property>
-    <property name="show_sql">false</property>
+    <property name="hibernate.show_sql">false</property>
 
     <mapping class="br.com.unip.library.model.entity.Author"/>
     <mapping class="br.com.unip.library.model.entity.Book"/>
