@@ -26,7 +26,9 @@ public class BookServiceImpl implements BookService {
       try {
         bookDAO.create(book);
         authors.forEach(author -> bookAuthorService.createBookAuthorByIsbn(book.getIsbn(), author));
-        showInfo("Success", "Book successfully saved!");
+        showInfo("Success", String
+            .format("Book successfully saved!%nISBN: %s%nTitle: %s%nPrice: %f", book.getIsbn(),
+                book.getTitle(), book.getPrice()));
       } catch (Exception exception) {
         throw new LibraryException("Error trying to save a new Book. " + exception.getMessage(),
             ExceptionErrorEnum.CREATE_BOOK);
