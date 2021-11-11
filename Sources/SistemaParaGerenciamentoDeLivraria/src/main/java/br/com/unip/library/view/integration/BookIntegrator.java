@@ -6,6 +6,7 @@ import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.entity.Book;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class BookIntegrator {
 
@@ -35,6 +36,20 @@ public class BookIntegrator {
         .price(price)
         .build();
     bookController.create(book, authors);
+  }
+
+  public static DefaultTableModel fromBookListToTableModel(){
+    var bookList = bookController.listAll();
+    String[] column = {"ISBN", "Title", "Publisher", "Price"};
+    var tableModel = new DefaultTableModel(column, 0);
+
+
+    bookList.forEach(item -> {
+      Object[] row = {item.getIsbn(), item.getTitle(), item.getPublisherId(), item.getPrice()};
+      tableModel.addRow(row);
+        });
+    tableModel.fireTableDataChanged();
+    return tableModel;
   }
 
 }

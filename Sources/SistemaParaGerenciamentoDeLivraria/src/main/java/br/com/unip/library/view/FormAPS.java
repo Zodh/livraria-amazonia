@@ -6,6 +6,7 @@
 package br.com.unip.library.view;
 
 import static br.com.unip.library.view.integration.AuthorIntegrator.saveAuthor;
+import static br.com.unip.library.view.integration.BookIntegrator.fromBookListToTableModel;
 import static br.com.unip.library.view.integration.BookIntegrator.saveBook;
 import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
 import static br.com.unip.library.view.integration.Integrator.fromStringToDouble;
@@ -1134,6 +1135,7 @@ public class FormAPS extends javax.swing.JFrame {
 
     private void lblListBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListBooksMouseClicked
         cardLayoutBooks.show(pnlCardsBooks, "pnlListBooks");
+        listBooks();
     }//GEN-LAST:event_lblListBooksMouseClicked
 
     private void lblUpdateBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpdateBooksMouseClicked
@@ -1445,6 +1447,11 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JTextField txtPublishersBooks;
     private javax.swing.JTextField txttPriceBooks;
     // End of variables declaration//GEN-END:variables
+
+    private void listBooks(){
+        jTable1.setModel(fromBookListToTableModel());
+        jTable1.repaint();
+    }
     
     private void createBook(){
         var title = getJTextString(textTitleBooks);
