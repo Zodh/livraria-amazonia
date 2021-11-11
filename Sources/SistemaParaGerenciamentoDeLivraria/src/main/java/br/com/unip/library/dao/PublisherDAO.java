@@ -16,6 +16,7 @@ public class PublisherDAO extends BaseDAO<Publisher, Integer> implements
     beginTransaction();
     var session = HibernateUtil.getSession();
     var publisher = session.get(Publisher.class, id);
+    commitTransaction();
     endTransaction();
     return publisher;
   }

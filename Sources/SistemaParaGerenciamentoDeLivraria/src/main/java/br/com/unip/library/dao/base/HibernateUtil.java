@@ -6,18 +6,16 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-  private static final SessionFactory sessionFactory = new Configuration().configure()
+  private static SessionFactory sessionFactory = new Configuration().configure()
       .buildSessionFactory();
 
   private static final ThreadLocal<Session> threadLocal = new ThreadLocal<Session>();
 
   public static Session getSession() {
-    var session = threadLocal.get();
-    if (session == null) {
-      session = sessionFactory.openSession();
-      threadLocal.set(session);
-    }
-    return session;
+      if (threadLocal.get() == null){
+        threadLocal.set(sessionFactory.openSession());
+      }
+      return threadLocal.get();
   }
 
   public static void beginTransaction() {
@@ -33,6 +31,7 @@ public class HibernateUtil {
   }
 
   public static void closeSession() {
-    threadLocal.remove();
+    getSession().close();
+    threadLocal.set(null);
   }
 }

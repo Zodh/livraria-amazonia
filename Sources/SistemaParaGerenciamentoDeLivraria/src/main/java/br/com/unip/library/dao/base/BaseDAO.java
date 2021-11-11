@@ -14,16 +14,6 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
   }
 
   @Override
-  public void beginTransaction() {
-    HibernateUtil.beginTransaction();
-  }
-
-  @Override
-  public void commitTransaction() {
-    HibernateUtil.commitTransaction();
-  }
-
-  @Override
   public void delete(T entity) {
     beginTransaction();
     HibernateUtil.getSession().delete(entity);
@@ -59,6 +49,14 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
 
   protected void saveTransaction(T entity) {
     HibernateUtil.getSession().saveOrUpdate(entity);
+  }
+
+  public void beginTransaction() {
+    HibernateUtil.beginTransaction();
+  }
+
+  public void commitTransaction() {
+    HibernateUtil.commitTransaction();
   }
 
   protected void endTransaction() {

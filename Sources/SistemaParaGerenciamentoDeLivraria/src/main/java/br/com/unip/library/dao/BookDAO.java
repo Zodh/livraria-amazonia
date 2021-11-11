@@ -15,6 +15,7 @@ public class BookDAO extends BaseDAO<Book, String> implements GenericDAO<Book, S
     beginTransaction();
     var session = HibernateUtil.getSession();
     var book = session.get(Book.class, isbn);
+    commitTransaction();
     endTransaction();
     return book;
   }
