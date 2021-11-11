@@ -1,6 +1,6 @@
 package br.com.unip.library.view.integration;
 
-import br.com.unip.library.controller.BookControllerImpl;
+import br.com.unip.library.controller.impl.BookControllerImpl;
 import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.entity.Book;

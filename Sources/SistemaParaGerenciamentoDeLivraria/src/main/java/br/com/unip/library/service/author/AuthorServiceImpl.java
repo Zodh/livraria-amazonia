@@ -21,7 +21,11 @@ public class AuthorServiceImpl implements AuthorService {
     try {
       if (Boolean.TRUE.equals(isValidAuthor(author))) {
         authorDAO.create(author);
-        showInfo("Success", "Author successfully saved!");
+        showInfo("Success", String
+            .format("Author successfully saved! "
+                    + "%nName: %s "
+                    + "%nFantasy Name: %s ", author.getName(),
+                author.getFname()));
       }
     } catch (Exception exception) {
       throw new LibraryException("Error trying to save a new Author. " + exception.getMessage(),

@@ -5,6 +5,7 @@
  */
 package br.com.unip.library.view;
 
+import static br.com.unip.library.view.integration.AuthorIntegrator.saveAuthor;
 import static br.com.unip.library.view.integration.BookIntegrator.saveBook;
 import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
 import static br.com.unip.library.view.integration.Integrator.fromStringToDouble;
@@ -1264,7 +1265,7 @@ public class FormAPS extends javax.swing.JFrame {
     }//GEN-LAST:event_lblDeletePublishersMouseExited
 
     private void btnSaveAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveAuthorMouseClicked
-        // TODO add your handling code here:
+        createAuthor();
     }//GEN-LAST:event_btnSaveAuthorMouseClicked
 
     /**
@@ -1389,6 +1390,19 @@ public class FormAPS extends javax.swing.JFrame {
 
         saveBook(title, isbn, publisherValue, priceValue, authorsList);
         clearBookFields();
+    }
+
+    private void createAuthor(){
+        var name = getJTextString(txtNameAuthor);
+        var fname = getJTextString(txtFantasyNameAuthor);
+
+        saveAuthor(name, fname);
+        clearAuthorFields();
+    }
+
+    private void clearAuthorFields(){
+        txtNameAuthor.setText("");
+        txtFantasyNameAuthor.setText("");
     }
 
     private void clearBookFields(){

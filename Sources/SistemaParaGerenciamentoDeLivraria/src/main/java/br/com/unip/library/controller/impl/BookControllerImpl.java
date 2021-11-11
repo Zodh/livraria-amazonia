@@ -1,5 +1,6 @@
-package br.com.unip.library.controller;
+package br.com.unip.library.controller.impl;
 
+import br.com.unip.library.controller.BookController;
 import br.com.unip.library.model.entity.Book;
 import br.com.unip.library.service.book.BookServiceImpl;
 import java.util.List;
