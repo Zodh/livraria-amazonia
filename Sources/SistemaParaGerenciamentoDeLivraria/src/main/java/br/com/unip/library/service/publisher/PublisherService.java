@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PublisherService {
 
-  void create(String name, String url);
+  void create(Publisher publisher);
 
   List<Publisher> listAll();
 

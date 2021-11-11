@@ -15,8 +15,7 @@ public class PublisherServiceImpl implements PublisherService {
   private final PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
 
   @Override
-  public void create(String name, String url) {
-    var publisher = Publisher.builder().name(name).url(url).build();
+  public void create(Publisher publisher) {
     if (Boolean.TRUE.equals(isValidNewPublisher(publisher))) {
       try {
         publisherDAO.create(publisher);

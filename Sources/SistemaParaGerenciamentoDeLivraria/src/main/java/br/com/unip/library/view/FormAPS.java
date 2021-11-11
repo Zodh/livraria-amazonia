@@ -11,6 +11,7 @@ import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStr
 import static br.com.unip.library.view.integration.Integrator.fromStringToDouble;
 import static br.com.unip.library.view.integration.Integrator.fromStringToInteger;
 import static br.com.unip.library.view.integration.Integrator.getJTextString;
+import static br.com.unip.library.view.integration.PublisherIntegrator.savePublisher;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -1328,7 +1329,7 @@ public class FormAPS extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveAuthorMouseClicked
 
     private void btnSaveAuthor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveAuthor1MouseClicked
-        // TODO add your handling code here:
+        createPublisher();
     }//GEN-LAST:event_btnSaveAuthor1MouseClicked
 
     /**
@@ -1467,6 +1468,19 @@ public class FormAPS extends javax.swing.JFrame {
 
         saveAuthor(name, fname);
         clearAuthorFields();
+    }
+
+    private void createPublisher(){
+        var name = getJTextString(txtNamePublisher);
+        var url = getJTextString(txtNURLPublisher);
+
+        savePublisher(name, url);
+        clearPublisherFields();
+    }
+
+    private void clearPublisherFields(){
+        txtNamePublisher.setText("");
+        txtNURLPublisher.setText("");
     }
 
     private void clearAuthorFields(){

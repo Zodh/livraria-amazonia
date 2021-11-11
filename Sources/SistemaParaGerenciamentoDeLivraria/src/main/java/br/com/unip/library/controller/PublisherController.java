@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PublisherController {
 
-  void create(String name, String url);
+  void create(Publisher publisher);
 
   List<Publisher> listAll();
 
