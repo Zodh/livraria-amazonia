@@ -20,7 +20,9 @@ public class PublisherServiceImpl implements PublisherService {
     if (Boolean.TRUE.equals(isValidNewPublisher(publisher))) {
       try {
         publisherDAO.create(publisher);
-        showInfo("Success", "Publisher successfully saved!");
+        showInfo("Success", String
+            .format("Publisher successfully saved!%nPublisher name: %s%nPublisher URL: %s",
+                publisher.getName(), publisher.getUrl()));
       } catch (Exception exception) {
         throw new LibraryException(
             "Error trying to save a new Publisher. " + exception.getMessage(),
