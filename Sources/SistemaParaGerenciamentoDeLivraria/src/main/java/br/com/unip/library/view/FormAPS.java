@@ -84,6 +84,12 @@ public class FormAPS extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         pnlCardsPublishers = new javax.swing.JPanel();
         pnlCreatePublishers = new javax.swing.JPanel();
+        txtNamePublisher = new javax.swing.JTextField();
+        lblNamePublisher = new javax.swing.JLabel();
+        lblNewAuthor1 = new javax.swing.JLabel();
+        txtNURLPublisher = new javax.swing.JTextField();
+        lblURLPublisher = new javax.swing.JLabel();
+        btnSaveAuthor1 = new javax.swing.JButton();
         pnlListPublishers = new javax.swing.JPanel();
         pnlUpdatePublishers = new javax.swing.JPanel();
         pnlDeletePublishers = new javax.swing.JPanel();
@@ -637,15 +643,68 @@ public class FormAPS extends javax.swing.JFrame {
 
         pnlCreatePublishers.setBackground(new java.awt.Color(246, 246, 246));
 
+        txtNamePublisher.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        lblNamePublisher.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNamePublisher.setText("Name:");
+
+        lblNewAuthor1.setBackground(new java.awt.Color(255, 255, 255));
+        lblNewAuthor1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNewAuthor1.setForeground(new java.awt.Color(51, 51, 51));
+        lblNewAuthor1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNewAuthor1.setText("New Publisher");
+
+        txtNURLPublisher.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        lblURLPublisher.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblURLPublisher.setText("URL:");
+
+        btnSaveAuthor1.setBackground(new java.awt.Color(66, 157, 251));
+        btnSaveAuthor1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSaveAuthor1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSaveAuthor1.setText("Save");
+        btnSaveAuthor1.setBorder(null);
+        btnSaveAuthor1.setFocusable(false);
+        btnSaveAuthor1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveAuthor1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlCreatePublishersLayout = new javax.swing.GroupLayout(pnlCreatePublishers);
         pnlCreatePublishers.setLayout(pnlCreatePublishersLayout);
         pnlCreatePublishersLayout.setHorizontalGroup(
             pnlCreatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 853, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCreatePublishersLayout.createSequentialGroup()
+                .addContainerGap(717, Short.MAX_VALUE)
+                .addComponent(btnSaveAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+            .addGroup(pnlCreatePublishersLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(pnlCreatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblURLPublisher)
+                    .addComponent(txtNURLPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNamePublisher)
+                    .addComponent(txtNamePublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNewAuthor1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCreatePublishersLayout.setVerticalGroup(
             pnlCreatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
+            .addGroup(pnlCreatePublishersLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblNewAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(lblNamePublisher)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNamePublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(lblURLPublisher)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNURLPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addComponent(btnSaveAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         pnlCardsPublishers.add(pnlCreatePublishers, "pnlCreatePublishers");
@@ -1268,6 +1327,10 @@ public class FormAPS extends javax.swing.JFrame {
         createAuthor();
     }//GEN-LAST:event_btnSaveAuthorMouseClicked
 
+    private void btnSaveAuthor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveAuthor1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveAuthor1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1310,6 +1373,7 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JLabel btnPublishers;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSaveAuthor;
+    private javax.swing.JButton btnSaveAuthor1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1334,12 +1398,15 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JLabel lblListBooks;
     private javax.swing.JLabel lblListPublishers;
     private javax.swing.JLabel lblNameAuthor;
+    private javax.swing.JLabel lblNamePublisher;
     private javax.swing.JLabel lblNewAuthor;
+    private javax.swing.JLabel lblNewAuthor1;
     private javax.swing.JLabel lblNewBooks;
     private javax.swing.JLabel lblPriceBooks;
     private javax.swing.JLabel lblPublishers;
     private javax.swing.JLabel lblPublishersBooks;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblURLPublisher;
     private javax.swing.JLabel lblUpdateAuthors;
     private javax.swing.JLabel lblUpdateBooks;
     private javax.swing.JLabel lblUpdatePublishers;
@@ -1371,7 +1438,9 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JTextField txtAuthorsBooks;
     private javax.swing.JTextField txtFantasyNameAuthor;
     private javax.swing.JTextField txtISBNBooks;
+    private javax.swing.JTextField txtNURLPublisher;
     private javax.swing.JTextField txtNameAuthor;
+    private javax.swing.JTextField txtNamePublisher;
     private javax.swing.JTextField txtPublishersBooks;
     private javax.swing.JTextField txttPriceBooks;
     // End of variables declaration//GEN-END:variables
