@@ -20,34 +20,27 @@ public class BookIntegrator {
         list.add(Integer.parseInt(value));
       }
     } catch (Exception exception) {
-      throw new LibraryException(
-          "Invalid Author(s) input. " + exception.getMessage(),
+      throw new LibraryException("Invalid Author(s) input. " + exception.getMessage(),
           ExceptionErrorEnum.INVALID_INPUT_NBCM);
     }
     return list;
   }
 
-  public static void saveBook(String title, String isbn, Integer publisher, Double price, List<Integer> authors){
-    var book = Book
-        .builder()
-        .title(title)
-        .isbn(isbn)
-        .publisherId(publisher)
-        .price(price)
-        .build();
+  public static void saveBook(String title, String isbn, Integer publisher, Double price,
+      List<Integer> authors) {
+    var book = Book.builder().title(title).isbn(isbn).publisherId(publisher).price(price).build();
     bookController.create(book, authors);
   }
 
-  public static DefaultTableModel fromBookListToTableModel(){
+  public static DefaultTableModel fromBookListToTableModel() {
     var bookList = bookController.listAll();
     String[] column = {"ISBN", "Title", "Publisher", "Price"};
     var tableModel = new DefaultTableModel(column, 0);
 
-
     bookList.forEach(item -> {
       Object[] row = {item.getIsbn(), item.getTitle(), item.getPublisherId(), item.getPrice()};
       tableModel.addRow(row);
-        });
+    });
     tableModel.fireTableDataChanged();
     return tableModel;
   }
