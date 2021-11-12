@@ -13,27 +13,40 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
     super(BookAuthor.class);
   }
 
-  public void deleteByIsbn(String isbn) {
-    var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
-    var criteriaQuery = criteriaBuilder.createQuery(BookAuthor.class);
-    var root = criteriaQuery.from(BookAuthor.class);
-    criteriaQuery.select(root).where(root.get("isbn").in(isbn));
-    var query = HibernateUtil.getSession().createQuery(criteriaQuery);
-    var result = query.getResultList();
-    result.forEach(this::delete);
-    commitTransaction();
-    endTransaction();
+  public void deleteByIsbn(String isbn) throws Exception {
+    try {
+      var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
+      var criteriaQuery = criteriaBuilder.createQuery(BookAuthor.class);
+      var root = criteriaQuery.from(BookAuthor.class);
+      criteriaQuery.select(root).where(root.get("isbn").in(isbn));
+      var query = HibernateUtil.getSession().createQuery(criteriaQuery);
+      var result = query.getResultList();
+      result.forEach(this::delete);
+      commitTransaction();
+    } catch (Exception exception) {
+      rollbackTransaction();
+      throw new Exception("Error trying to delete related Authors data.");
+    } finally {
+      endTransaction();
+    }
   }
 
-  public void deleteByAuthorId(Integer id) {
-    var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
-    var criteriaQuery = criteriaBuilder.createQuery(BookAuthor.class);
-    var root = criteriaQuery.from(BookAuthor.class);
-    criteriaQuery.select(root).where(root.get("authorId").in(id));
-    var query = HibernateUtil.getSession().createQuery(criteriaQuery);
-    var result = query.getResultList();
-    result.forEach(this::delete);
-    commitTransaction();
-    endTransaction();
+  public void deleteByAuthorId(Integer id) throws Exception {
+    try {
+      var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
+      var criteriaQuery = criteriaBuilder.createQuery(BookAuthor.class);
+      var root = criteriaQuery.from(BookAuthor.class);
+      criteriaQuery.select(root).where(root.get("authorId").in(id));
+      var query = HibernateUtil.getSession().createQuery(criteriaQuery);
+      var result = query.getResultList();
+      result.forEach(this::delete);
+      commitTransaction();
+    } catch (Exception exception) {
+      rollbackTransaction();
+      throw new Exception("Error trying to delete related Books data.");
+    } finally {
+      endTransaction();
+    }
+
   }
 }

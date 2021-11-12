@@ -16,7 +16,7 @@ public class BookAuthorBO {
 
   private final AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
 
-  public BookAuthorBO(BookAuthor bookAuthor) {
+  public BookAuthorBO(BookAuthor bookAuthor) throws Exception {
     this.isbn = bookAuthor.getIsbn();
     this.authorId = bookAuthor.getAuthorId();
     this.seqNo = bookAuthor.getSeqNo();
@@ -34,7 +34,7 @@ public class BookAuthorBO {
     }
   }
 
-  private void checkIfAuthorIdIsValid() {
+  private void checkIfAuthorIdIsValid() throws Exception {
     var author = authorDAO.findById(authorId);
     var message = "";
     if (author == null) {
