@@ -5,6 +5,7 @@
  */
 package br.com.unip.library.view;
 
+import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorsListToTableModel;
 import static br.com.unip.library.view.integration.AuthorIntegrator.saveAuthor;
 import static br.com.unip.library.view.integration.BookIntegrator.fromBookListToTableModel;
 import static br.com.unip.library.view.integration.BookIntegrator.saveBook;
@@ -12,6 +13,7 @@ import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStr
 import static br.com.unip.library.view.integration.Integrator.fromStringToDouble;
 import static br.com.unip.library.view.integration.Integrator.fromStringToInteger;
 import static br.com.unip.library.view.integration.Integrator.getJTextString;
+import static br.com.unip.library.view.integration.PublisherIntegrator.fromPublishersListToTableModel;
 import static br.com.unip.library.view.integration.PublisherIntegrator.savePublisher;
 
 import java.awt.CardLayout;
@@ -1556,6 +1558,7 @@ public class FormAPS extends javax.swing.JFrame {
 
     private void lblListPublishersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListPublishersMouseClicked
         cardLayoutPublishers.show(pnlCardsPublishers, "pnlListPublishers");
+        listPublishers();
     }//GEN-LAST:event_lblListPublishersMouseClicked
 
     private void lblUpdatePublishersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpdatePublishersMouseClicked
@@ -1572,6 +1575,7 @@ public class FormAPS extends javax.swing.JFrame {
 
     private void lblListAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListAuthorsMouseClicked
         cardLayoutAuthors.show(pnlCardsAuthors, "pnlListAuthors");
+        listAuthors();
     }//GEN-LAST:event_lblListAuthorsMouseClicked
 
     private void lblUpdateAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpdateAuthorsMouseClicked
@@ -1924,6 +1928,16 @@ public class FormAPS extends javax.swing.JFrame {
     private void listBooks(){
         jTable1.setModel(fromBookListToTableModel());
         jTable1.repaint();
+    }
+
+    private void listAuthors(){
+        tblListAuthors.setModel(fromAuthorsListToTableModel());
+        tblListAuthors.repaint();
+    }
+
+    private void listPublishers(){
+        tblListPublishers.setModel(fromPublishersListToTableModel());
+        tblListPublishers.repaint();
     }
     
     private void createBook(){
