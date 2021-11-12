@@ -22,17 +22,17 @@ public class BookServiceImpl implements BookService {
 
   @Override
   public void create(Book book, List<Integer> authors) {
-    if (Boolean.TRUE.equals(isValidNewBook(book))) {
-      try {
+    try {
+      if (Boolean.TRUE.equals(isValidNewBook(book))) {
         bookDAO.create(book);
         authors.forEach(author -> bookAuthorService.createBookAuthorByIsbn(book.getIsbn(), author));
         showInfo("Success", String
             .format("Book successfully saved!%nISBN: %s%nTitle: %s%nPrice: %.2f", book.getIsbn(),
                 book.getTitle(), book.getPrice()));
-      } catch (Exception exception) {
-        throw new LibraryException("Error trying to save a new Book. " + exception.getMessage(),
-            ExceptionErrorEnum.CREATE_BOOK);
       }
+    } catch (Exception exception) {
+      throw new LibraryException("Error trying to save a new Book. " + exception.getMessage(),
+          ExceptionErrorEnum.CREATE_BOOK);
     }
   }
 
@@ -104,7 +104,7 @@ public class BookServiceImpl implements BookService {
     }
   }
 
-  private Boolean isValidNewBook(Book book) {
+  private Boolean isValidNewBook(Book book) throws Exception {
     return new BookBO(book).toBook() != null;
   }
 }

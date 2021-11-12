@@ -19,7 +19,7 @@ public class BookBO {
   BookDAO bookDAO = DAOFactory.getFactory().getBookDAO();
   PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
 
-  public BookBO(Book book) {
+  public BookBO(Book book) throws Exception {
     this.title = book.getTitle();
     this.isbn = book.getIsbn();
     this.publisherId = book.getPublisherId();
@@ -52,7 +52,7 @@ public class BookBO {
     }
   }
 
-  private void checkIfIsbnIsValid() {
+  private void checkIfIsbnIsValid() throws Exception {
     var message = "";
     Book book;
     if (this.isbn == null || this.isbn.isBlank()) {
@@ -71,7 +71,7 @@ public class BookBO {
     }
   }
 
-  private void checkIfPublisherIsValid() {
+  private void checkIfPublisherIsValid() throws Exception {
     var message = "";
     var publisher = publisherDAO.findById(this.publisherId);
     if (publisher == null) {
