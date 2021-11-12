@@ -9,9 +9,14 @@ import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.bo.AuthorBO;
 import br.com.unip.library.model.entity.Author;
 import br.com.unip.library.service.bookauthor.BookAuthorServiceImpl;
+import br.com.unip.library.view.TestMethods;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AuthorServiceImpl implements AuthorService {
+
+  private static final Logger log = LoggerFactory.getLogger(TestMethods.class);
 
   private final AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
   private final BookAuthorServiceImpl bookAuthorService = new BookAuthorServiceImpl();
@@ -97,6 +102,7 @@ public class AuthorServiceImpl implements AuthorService {
   }
 
   private Boolean isValidAuthor(Author author) {
+    log.info("Checking if the data informed to register an author is valid.");
     return new AuthorBO(author).toAuthor() != null;
   }
 }
