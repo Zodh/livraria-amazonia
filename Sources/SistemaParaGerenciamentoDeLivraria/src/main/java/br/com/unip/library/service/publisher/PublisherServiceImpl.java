@@ -8,9 +8,14 @@ import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.bo.PublisherBO;
 import br.com.unip.library.model.entity.Publisher;
+import br.com.unip.library.view.integration.PublisherIntegrator;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PublisherServiceImpl implements PublisherService {
+
+  private static final Logger log = LoggerFactory.getLogger(PublisherServiceImpl.class);
 
   private final PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
 
@@ -95,6 +100,7 @@ public class PublisherServiceImpl implements PublisherService {
   }
 
   private Boolean isValidNewPublisher(Publisher publisher) {
+    log.info("Checking if the data informed to register a publisher is valid.");
     return new PublisherBO(publisher).toPublisher() != null;
   }
 }
