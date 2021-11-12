@@ -2,6 +2,7 @@ package br.com.unip.library.view.integration;
 
 import br.com.unip.library.controller.impl.PublisherControllerImpl;
 import br.com.unip.library.model.entity.Publisher;
+import javax.swing.table.DefaultTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +21,21 @@ public class PublisherIntegrator {
         .build();
     publisherController.create(publisher);
     log.info("Finishing the flow to register a Publisher.");
+  }
+
+  public static DefaultTableModel fromPublishersListToTableModel() {
+    log.info("Starting the flow to list all Publishers.");
+    var publisherList = publisherController.listAll();
+    String[] column = {"ID", "Name", "URL"};
+    var tableModel = new DefaultTableModel(column, 0);
+
+    publisherList.forEach(publisher -> {
+      Object[] row = {publisher.getPublisherId(), publisher.getName(),publisher.getUrl()};
+      tableModel.addRow(row);
+    });
+    tableModel.fireTableDataChanged();
+    log.info("Finishing the flow to list all Publishers.");
+    return tableModel;
   }
 
 }

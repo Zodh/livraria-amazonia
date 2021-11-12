@@ -46,7 +46,7 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
     CriteriaQuery<T> criteriaQuery = HibernateUtil.getSession().getCriteriaBuilder()
         .createQuery(persistentClass);
     criteriaQuery.from(persistentClass);
-    log.info("Listing all entities in the database");
+    log.info(String.format("Listing all entities (%s) in the database", this.getClass()));
     var list = HibernateUtil.getSession().createQuery(criteriaQuery).getResultList();
     log.info("Closing connection to database");
     endTransaction();
