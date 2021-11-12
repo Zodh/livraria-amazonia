@@ -11,13 +11,19 @@ public class BookDAO extends BaseDAO<Book, String> implements GenericDAO<Book, S
     super(Book.class);
   }
 
-  public Book findByIsbn(String isbn) {
-    beginTransaction();
-    var session = HibernateUtil.getSession();
-    var book = session.get(Book.class, isbn);
-    commitTransaction();
-    endTransaction();
-    return book;
+  public Book findByIsbn(String isbn) throws Exception {
+    try {
+      beginTransaction();
+      var session = HibernateUtil.getSession();
+      var book = session.get(Book.class, isbn);
+      commitTransaction();
+      return book;
+    } catch (Exception exception) {
+      rollbackTransaction();
+      throw new Exception("Error trying to find a Book by ISBN.");
+    } finally {
+      endTransaction();
+    }
   }
 
 }

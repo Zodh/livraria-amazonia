@@ -55,6 +55,10 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
     HibernateUtil.beginTransaction();
   }
 
+  public void rollbackTransaction() {
+    HibernateUtil.rollBackTransaction();
+  }
+
   public void commitTransaction() {
     HibernateUtil.commitTransaction();
   }

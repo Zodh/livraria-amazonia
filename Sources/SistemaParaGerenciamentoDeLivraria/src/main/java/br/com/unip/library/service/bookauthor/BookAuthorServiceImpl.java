@@ -48,17 +48,20 @@ public class BookAuthorServiceImpl implements BookAuthorService {
     }
   }
 
-  private BookAuthor buildValidBookAuthor(String isbn, Integer authorId) {
+  private BookAuthor buildValidBookAuthor(String isbn, Integer authorId) throws Exception {
     var bookAuthor = BookAuthor.builder().authorId(authorId).isbn(isbn).seqNo(generateSeqNo())
         .build();
-    if (Boolean.TRUE.equals(isValidBookAuthor(bookAuthor))) {
-      return bookAuthor;
+    try {
+      if (Boolean.TRUE.equals(isValidBookAuthor(bookAuthor))) {
+        return bookAuthor;
+      }
+      return null;
+    } catch (Exception exception) {
+      throw new Exception("Error Trying to build a Book Author.");
     }
-    throw new LibraryException("Error Trying to build a Book Author.",
-        ExceptionErrorEnum.CREATE_BOOK_AUTHOR);
   }
 
-  private Boolean isValidBookAuthor(BookAuthor bookAuthor) {
+  private Boolean isValidBookAuthor(BookAuthor bookAuthor) throws Exception {
     return new BookAuthorBO(bookAuthor).toBookAuthor() != null;
   }
 
