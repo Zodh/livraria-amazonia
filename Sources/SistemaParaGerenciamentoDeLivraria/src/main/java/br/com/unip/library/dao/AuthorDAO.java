@@ -16,6 +16,7 @@ public class AuthorDAO extends BaseDAO<Author, Integer> implements
     beginTransaction();
     var session = HibernateUtil.getSession();
     var author = session.get(Author.class, id);
+    commitTransaction();
     endTransaction();
     return author;
   }

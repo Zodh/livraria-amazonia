@@ -21,6 +21,7 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
     var query = HibernateUtil.getSession().createQuery(criteriaQuery);
     var result = query.getResultList();
     result.forEach(this::delete);
+    commitTransaction();
     endTransaction();
   }
 
@@ -32,6 +33,7 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
     var query = HibernateUtil.getSession().createQuery(criteriaQuery);
     var result = query.getResultList();
     result.forEach(this::delete);
+    commitTransaction();
     endTransaction();
   }
 }

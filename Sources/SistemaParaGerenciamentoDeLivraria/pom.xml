@@ -71,6 +71,12 @@
     </dependency>
     <!-- Thanks for using https://jar-download.com -->
 
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>1.2.6</version>
+    </dependency>
+
   </dependencies>
 
 </project>
