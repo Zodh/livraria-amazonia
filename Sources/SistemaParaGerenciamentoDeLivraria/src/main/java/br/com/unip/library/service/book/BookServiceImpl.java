@@ -11,10 +11,12 @@ import br.com.unip.library.model.bo.BookBO;
 import br.com.unip.library.model.entity.Book;
 import br.com.unip.library.service.bookauthor.BookAuthorServiceImpl;
 import java.util.List;
-import lombok.extern.java.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Log
 public class BookServiceImpl implements BookService {
+
+  private static final Logger log = LoggerFactory.getLogger(BookServiceImpl.class);
 
   private final BookDAO bookDAO = DAOFactory.getFactory().getBookDAO();
   private final PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
@@ -105,6 +107,7 @@ public class BookServiceImpl implements BookService {
   }
 
   private Boolean isValidNewBook(Book book) throws Exception {
+    log.info("Checking if the data informed to register a book is valid.");
     return new BookBO(book).toBook() != null;
   }
 }

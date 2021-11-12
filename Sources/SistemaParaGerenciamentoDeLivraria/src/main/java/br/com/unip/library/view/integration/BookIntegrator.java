@@ -4,11 +4,16 @@ import br.com.unip.library.controller.impl.BookControllerImpl;
 import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.entity.Book;
+import br.com.unip.library.util.LibraryUtils;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BookIntegrator {
+
+  private static final Logger log = LoggerFactory.getLogger(BookIntegrator.class);
 
   private static BookControllerImpl bookController = new BookControllerImpl();
 
@@ -28,8 +33,11 @@ public class BookIntegrator {
 
   public static void saveBook(String title, String isbn, Integer publisher, Double price,
       List<Integer> authors) {
+    log.info("Starting the flow to register a Book.");
+    LibraryUtils.isOnlyNumbers(isbn);
     var book = Book.builder().title(title).isbn(isbn).publisherId(publisher).price(price).build();
     bookController.create(book, authors);
+    log.info("Finishing the flow to register a Book.");
   }
 
   public static DefaultTableModel fromBookListToTableModel() {
