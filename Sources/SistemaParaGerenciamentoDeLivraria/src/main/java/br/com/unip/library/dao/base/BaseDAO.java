@@ -1,6 +1,5 @@
 package br.com.unip.library.dao.base;
 
-import br.com.unip.library.view.TestMethods;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.criteria.CriteriaQuery;
