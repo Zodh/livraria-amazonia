@@ -41,6 +41,7 @@ public class BookIntegrator {
   }
 
   public static DefaultTableModel fromBookListToTableModel() {
+    log.info("Starting the flow to list all Books.");
     var bookList = bookController.listAll();
     String[] column = {"ISBN", "Title", "Publisher", "Price"};
     var tableModel = new DefaultTableModel(column, 0);
@@ -50,6 +51,7 @@ public class BookIntegrator {
       tableModel.addRow(row);
     });
     tableModel.fireTableDataChanged();
+    log.info("Finishing the flow to list all Books.");
     return tableModel;
   }
 
