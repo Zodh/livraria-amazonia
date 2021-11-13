@@ -12,18 +12,11 @@ public class AuthorDAO extends BaseDAO<Author, Integer> implements
     super(Author.class);
   }
 
-  public Author findById(Integer id) throws Exception {
-    try {
-      beginTransaction();
-      var session = HibernateUtil.getSession();
-      var author = session.get(Author.class, id);
-      commitTransaction();
-      return author;
-    } catch (Exception exception) {
-      rollbackTransaction();
-      throw new Exception("Error trying to find an Author by id.");
-    } finally {
-      endTransaction();
-    }
+  public Author findById(Integer id) {
+    beginTransaction();
+    var session = HibernateUtil.getSession();
+    var author = session.get(Author.class, id);
+    endTransaction();
+    return author;
   }
 }
