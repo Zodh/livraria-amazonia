@@ -24,6 +24,7 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
       beginTransaction();
       log.info("Deleting entity in the database");
       HibernateUtil.getSession().delete(entity);
+      commitTransaction();
     } catch (Exception exception) {
       rollbackTransaction();
       throw new Exception("Error trying to delete an object.");
