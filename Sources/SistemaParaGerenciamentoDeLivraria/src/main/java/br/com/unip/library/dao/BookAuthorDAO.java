@@ -15,6 +15,7 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
 
   public void deleteByIsbn(String isbn) throws Exception {
     try {
+      beginTransaction();
       var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
       var criteriaQuery = criteriaBuilder.createQuery(BookAuthor.class);
       var root = criteriaQuery.from(BookAuthor.class);
@@ -24,13 +25,18 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
       for (var bookAuthor : result) {
         delete(bookAuthor);
       }
+      commitTransaction();
     } catch (Exception exception) {
+      rollbackTransaction();
       throw new Exception("Error trying to delete related Authors data.");
+    } finally {
+      endTransaction();
     }
   }
 
   public void deleteByAuthorId(Integer id) throws Exception {
     try {
+      beginTransaction();
       var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
       var criteriaQuery = criteriaBuilder.createQuery(BookAuthor.class);
       var root = criteriaQuery.from(BookAuthor.class);
@@ -40,8 +46,12 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
       for (var bookAuthor : result) {
         delete(bookAuthor);
       }
+      commitTransaction();
     } catch (Exception exception) {
+      rollbackTransaction();
       throw new Exception("Error trying to delete related Books data.");
+    } finally {
+      endTransaction();
     }
   }
 }
