@@ -7,14 +7,18 @@ package br.com.unip.library.view;
 
 import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorsListToTableModel;
 import static br.com.unip.library.view.integration.AuthorIntegrator.saveAuthor;
+import static br.com.unip.library.view.integration.AuthorIntegrator.updateAuthorFields;
 import static br.com.unip.library.view.integration.BookIntegrator.fromBookListToTableModel;
 import static br.com.unip.library.view.integration.BookIntegrator.saveBook;
 import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
+import static br.com.unip.library.view.integration.BookIntegrator.updateBookFields;
 import static br.com.unip.library.view.integration.Integrator.fromStringToDouble;
 import static br.com.unip.library.view.integration.Integrator.fromStringToInteger;
 import static br.com.unip.library.view.integration.Integrator.getJTextString;
+import static br.com.unip.library.view.integration.Integrator.getOptionalJTextString;
 import static br.com.unip.library.view.integration.PublisherIntegrator.fromPublishersListToTableModel;
 import static br.com.unip.library.view.integration.PublisherIntegrator.savePublisher;
+import static br.com.unip.library.view.integration.PublisherIntegrator.updatePublisherFields;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -34,8 +38,8 @@ public class FormAPS extends javax.swing.JFrame {
     int xy;
     
     public FormAPS() {
+
         initComponents();
-        
         cardLayout = (CardLayout)(pnl_Cards.getLayout());
         cardLayoutBooks = (CardLayout)(pnlCardsBooks.getLayout());
         cardLayoutAuthors = (CardLayout)(pnlCardsAuthors.getLayout());
@@ -2005,15 +2009,15 @@ public class FormAPS extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeletePublisherMouseClicked
 
     private void btnUpdAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdAuthorMouseClicked
-        // TODO add your handling code here:
+        updateAuthor();
     }//GEN-LAST:event_btnUpdAuthorMouseClicked
 
     private void btnUpdPublisherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdPublisherMouseClicked
-        // TODO add your handling code here:
+        updatePublisher();
     }//GEN-LAST:event_btnUpdPublisherMouseClicked
 
     private void btnUpdBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdBookMouseClicked
-        // TODO add your handling code here:
+        updateBook();
     }//GEN-LAST:event_btnUpdBookMouseClicked
 
     /**
@@ -2190,6 +2194,56 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JTextField txttPriceBooks;
     // End of variables declaration//GEN-END:variables
 
+    private void createBook(){
+        var title = getJTextString(textTitleBooks);
+        var isbn = getJTextString(txtISBNBooks);
+        var authors = getJTextString(txtAuthorsBooks);
+        var publisher = getJTextString(txtPublishersBooks);
+        var price = getJTextString(txttPriceBooks);
+
+        var authorsList = fromAuthorsStringToList(authors);
+
+        var publisherValue = fromStringToInteger(publisher);
+        var priceValue = fromStringToDouble(price);
+
+        saveBook(title, isbn, publisherValue, priceValue, authorsList);
+        clearCreateBookFields();
+    }
+
+    private void createAuthor(){
+        var name = getJTextString(txtNameAuthor);
+        var fname = getJTextString(txtFantasyNameAuthor);
+
+        saveAuthor(name, fname);
+        clearCreateAuthorFields();
+    }
+
+    private void createPublisher(){
+        var name = getJTextString(txtNamePublisher);
+        var url = getJTextString(txtNURLPublisher);
+
+        savePublisher(name, url);
+        clearCreatePublisherFields();
+    }
+
+    private void clearCreatePublisherFields(){
+        txtNamePublisher.setText("");
+        txtNURLPublisher.setText("");
+    }
+
+    private void clearCreateAuthorFields(){
+        txtNameAuthor.setText("");
+        txtFantasyNameAuthor.setText("");
+    }
+
+    private void clearCreateBookFields(){
+        textTitleBooks.setText("");
+        txtISBNBooks.setText("");
+        txtAuthorsBooks.setText("");
+        txtPublishersBooks.setText("");
+        txttPriceBooks.setText("");
+    }
+
     private void listBooks(){
         jTable1.setModel(fromBookListToTableModel());
         jTable1.repaint();
@@ -2204,54 +2258,58 @@ public class FormAPS extends javax.swing.JFrame {
         tblListPublishers.setModel(fromPublishersListToTableModel());
         tblListPublishers.repaint();
     }
-    
-    private void createBook(){
-        var title = getJTextString(textTitleBooks);
-        var isbn = getJTextString(txtISBNBooks);
-        var authors = getJTextString(txtAuthorsBooks);
-        var publisher = getJTextString(txtPublishersBooks);
-        var price = getJTextString(txttPriceBooks);
 
-        var authorsList = fromAuthorsStringToList(authors);
+    private void updateBook(){
+        var isbn = getJTextString(txtUpdISBNBook);
+        var title = getOptionalJTextString(txtUpdTitleBook);
+        var strPublisher = getOptionalJTextString(txtUpdPublisherBook);
+        var strPrice = getOptionalJTextString(txtUpdPriceBook);
 
-        var publisherValue = fromStringToInteger(publisher);
-        var priceValue = fromStringToDouble(price);
+        var publisher = fromStringToInteger(strPublisher);
+        var price = fromStringToDouble(strPrice);
 
-        saveBook(title, isbn, publisherValue, priceValue, authorsList);
-        clearBookFields();
+        updateBookFields(isbn, title, publisher, price);
+        clearUpdateBookFields();
     }
 
-    private void createAuthor(){
-        var name = getJTextString(txtNameAuthor);
-        var fname = getJTextString(txtFantasyNameAuthor);
-
-        saveAuthor(name, fname);
-        clearAuthorFields();
+    private void clearUpdateBookFields(){
+        txtUpdISBNBook.setText("");
+        txtUpdTitleBook.setText("");
+        txtUpdPublisherBook.setText("");
+        txtUpdPriceBook.setText("");
     }
 
-    private void createPublisher(){
-        var name = getJTextString(txtNamePublisher);
-        var url = getJTextString(txtNURLPublisher);
+    private void updateAuthor(){
+        var strId = getJTextString(txtUpdIDAuthor);
+        var name = getOptionalJTextString(txtUpdNameAuthor);
+        var fname = getOptionalJTextString(txtUpdPseudonymAuthor);
 
-        savePublisher(name, url);
-        clearPublisherFields();
+        var id = fromStringToInteger(strId);
+
+        updateAuthorFields(id, name, fname);
+        clearUpdateAuthorFields();
     }
 
-    private void clearPublisherFields(){
-        txtNamePublisher.setText("");
-        txtNURLPublisher.setText("");
+    private void clearUpdateAuthorFields(){
+        txtUpdIDAuthor.setText("");
+        txtUpdNameAuthor.setText("");
+        txtUpdPseudonymAuthor.setText("");
     }
 
-    private void clearAuthorFields(){
-        txtNameAuthor.setText("");
-        txtFantasyNameAuthor.setText("");
+    private void updatePublisher(){
+        var strId = getJTextString(txtUpdIDPublisher);
+        var name = getOptionalJTextString(txtUpdNamePublisher);
+        var url = getOptionalJTextString(txtUpdURLPublisher);
+
+        var id = fromStringToInteger(strId);
+
+        updatePublisherFields(id, name, url);
+        clearUpdatePublisherFields();
     }
 
-    private void clearBookFields(){
-        textTitleBooks.setText("");
-        txtISBNBooks.setText("");
-        txtAuthorsBooks.setText("");
-        txtPublishersBooks.setText("");
-        txttPriceBooks.setText("");
+    private void clearUpdatePublisherFields(){
+        txtUpdIDPublisher.setText("");
+        txtUpdNamePublisher.setText("");
+        txtUpdURLPublisher.setText("");
     }
 }
