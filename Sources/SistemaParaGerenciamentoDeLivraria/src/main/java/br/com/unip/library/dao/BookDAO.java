@@ -35,8 +35,7 @@ public class BookDAO extends BaseDAO<Book, String> implements GenericDAO<Book, S
     } catch (Exception exception) {
       rollbackTransaction();
       throw new Exception("Error trying to delete a Book." + exception.getMessage());
-    }
-    finally {
+    } finally {
       log.info("Closing connection to database");
       endTransaction();
     }

@@ -30,8 +30,7 @@ public class PublisherDAO extends BaseDAO<Publisher, Integer> implements
     } catch (Exception exception) {
       rollbackTransaction();
       throw new Exception("Error trying to delete a Publisher." + exception.getMessage());
-    }
-    finally {
+    } finally {
       log.info("Closing connection to database");
       endTransaction();
     }

@@ -17,7 +17,7 @@ public class BookIntegrator {
 
   private static final BookControllerImpl bookController = new BookControllerImpl();
 
-  public static void deleteBookByIsbn(String isbn){
+  public static void deleteBookByIsbn(String isbn) {
     log.info(String.format("Starting the flow to delete a Book. ISBN Last 4: %s",
         LibraryUtils.maskString(isbn, 0, (isbn.length() - 4))));
     LibraryUtils.isOnlyNumbers(isbn);

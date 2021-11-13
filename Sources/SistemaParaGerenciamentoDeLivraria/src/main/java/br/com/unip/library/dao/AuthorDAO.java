@@ -36,8 +36,7 @@ public class AuthorDAO extends BaseDAO<Author, Integer> implements
     } catch (Exception exception) {
       rollbackTransaction();
       throw new Exception("Error trying to delete an Author." + exception.getMessage());
-    }
-    finally {
+    } finally {
       log.info("Closing connection to database");
       endTransaction();
     }
