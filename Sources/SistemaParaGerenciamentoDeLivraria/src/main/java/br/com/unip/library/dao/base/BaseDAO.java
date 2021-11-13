@@ -27,7 +27,7 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
       commitTransaction();
     } catch (Exception exception) {
       rollbackTransaction();
-      throw new Exception("Error trying to delete an object.");
+      throw new Exception("Error trying to delete an object." + exception.getMessage());
     } finally {
       log.info("Closing connection to database");
       endTransaction();
@@ -44,7 +44,7 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
       commitTransaction();
     } catch (Exception exception) {
       rollbackTransaction();
-      throw new Exception("Error trying to create an object.");
+      throw new Exception("Error trying to create an object." + exception.getMessage());
     } finally {
       log.info("Closing connection to database");
       endTransaction();
@@ -63,7 +63,7 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
       var list = HibernateUtil.getSession().createQuery(criteriaQuery).getResultList();
       return list;
     } catch (Exception exception) {
-      throw new Exception("Error trying to list objects");
+      throw new Exception("Error trying to list objects." + exception.getMessage());
     } finally {
       log.info("Closing connection to database");
       endTransaction();

@@ -88,9 +88,8 @@ public class PublisherServiceImpl implements PublisherService {
 
   @Override
   public void delete(Integer id) {
-    var publisher = findById(id);
     try {
-      publisherDAO.delete(publisher);
+      publisherDAO.deleteById(id);
       showInfo("Success", "Publisher with ID " + id + " has been deleted!");
     } catch (Exception exception) {
       throw new LibraryException("Error Trying to Delete Publisher. " + exception.getMessage(),

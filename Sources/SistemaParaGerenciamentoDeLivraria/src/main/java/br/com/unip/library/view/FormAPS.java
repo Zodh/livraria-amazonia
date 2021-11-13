@@ -5,9 +5,11 @@
  */
 package br.com.unip.library.view;
 
+import static br.com.unip.library.view.integration.AuthorIntegrator.deleteAuthorById;
 import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorsListToTableModel;
 import static br.com.unip.library.view.integration.AuthorIntegrator.saveAuthor;
 import static br.com.unip.library.view.integration.AuthorIntegrator.updateAuthorFields;
+import static br.com.unip.library.view.integration.BookIntegrator.deleteBookByIsbn;
 import static br.com.unip.library.view.integration.BookIntegrator.fromBookListToTableModel;
 import static br.com.unip.library.view.integration.BookIntegrator.saveBook;
 import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
@@ -16,6 +18,7 @@ import static br.com.unip.library.view.integration.Integrator.fromStringToDouble
 import static br.com.unip.library.view.integration.Integrator.fromStringToInteger;
 import static br.com.unip.library.view.integration.Integrator.getJTextString;
 import static br.com.unip.library.view.integration.Integrator.getOptionalJTextString;
+import static br.com.unip.library.view.integration.PublisherIntegrator.deletePublisherById;
 import static br.com.unip.library.view.integration.PublisherIntegrator.fromPublishersListToTableModel;
 import static br.com.unip.library.view.integration.PublisherIntegrator.savePublisher;
 import static br.com.unip.library.view.integration.PublisherIntegrator.updatePublisherFields;
@@ -1995,15 +1998,15 @@ public class FormAPS extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApplyAuthors2MouseClicked
 
     private void btnDeleteBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteBookMouseClicked
-        // TODO add your handling code here:
+        deleteBook();
     }//GEN-LAST:event_btnDeleteBookMouseClicked
 
     private void btnDeleteAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteAuthorsMouseClicked
-        // TODO add your handling code here:
+        deleteAuthor();
     }//GEN-LAST:event_btnDeleteAuthorsMouseClicked
 
     private void btnDeletePublisherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletePublisherMouseClicked
-        // TODO add your handling code here:
+        deletePublisher();
     }//GEN-LAST:event_btnDeletePublisherMouseClicked
 
     private void btnUpdAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdAuthorMouseClicked
@@ -2309,5 +2312,40 @@ public class FormAPS extends javax.swing.JFrame {
         txtUpdIDPublisher.setText("");
         txtUpdNamePublisher.setText("");
         txtUpdURLPublisher.setText("");
+    }
+
+    private void deleteBook(){
+        var isbn = getJTextString(txtDeleteBooks);
+
+        deleteBookByIsbn(isbn);
+        clearDeleteBookField();
+    }
+
+    private void clearDeleteBookField(){
+        txtDeleteBooks.setText("");
+    }
+
+    private void deleteAuthor(){
+        var strId = getJTextString(txtDeleteAuthor);
+
+        var id = fromStringToInteger(strId);
+        deleteAuthorById(id);
+        clearDeleteAuthorField();
+    }
+
+    private void clearDeleteAuthorField(){
+        txtDeleteAuthor.setText("");
+    }
+
+    private void deletePublisher(){
+        var strId = getJTextString(txtDeletePublisher);
+
+        var id = fromStringToInteger(strId);
+        deletePublisherById(id);
+        clearDeletePublisherField();
+    }
+
+    private void clearDeletePublisherField(){
+        txtDeletePublisher.setText("");
     }
 }

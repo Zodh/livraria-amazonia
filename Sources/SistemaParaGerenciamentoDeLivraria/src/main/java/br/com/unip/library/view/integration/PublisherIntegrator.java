@@ -12,6 +12,12 @@ public class PublisherIntegrator {
 
   private static final PublisherControllerImpl publisherController = new PublisherControllerImpl();
 
+  public static void deletePublisherById(Integer id) {
+    log.info(String.format("Starting the flow to delete a Publisher. ID: %d", id));
+    publisherController.delete(id);
+    log.info(String.format("Finishing the flow to delete a Publisher. ID: %d", id));
+  }
+
   public static void updatePublisherFields(Integer id, String name, String url) {
     log.info(String.format("Starting the flow to update a Publisher. ID: %d", id));
     publisherController.update(id, name, url);

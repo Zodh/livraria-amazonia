@@ -8,18 +8,15 @@ import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.bo.AuthorBO;
 import br.com.unip.library.model.entity.Author;
-import br.com.unip.library.service.bookauthor.BookAuthorServiceImpl;
-import br.com.unip.library.view.TestMethods;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AuthorServiceImpl implements AuthorService {
 
-  private static final Logger log = LoggerFactory.getLogger(TestMethods.class);
+  private static final Logger log = LoggerFactory.getLogger(AuthorServiceImpl.class);
 
   private final AuthorDAO authorDAO = DAOFactory.getFactory().getAuthorDAO();
-  private final BookAuthorServiceImpl bookAuthorService = new BookAuthorServiceImpl();
 
   @Override
   public void create(Author author) {
@@ -92,10 +89,8 @@ public class AuthorServiceImpl implements AuthorService {
 
   @Override
   public void delete(Integer id) {
-    var author = findById(id);
     try {
-      bookAuthorService.deleteBookAuthorsByAuthorId(id);
-      authorDAO.delete(author);
+      authorDAO.deleteAuthorAndBatchDeleteBookAuthors(id);
       showInfo("Success", "Author with ID " + id + " has been deleted!");
     } catch (Exception exception) {
       throw new LibraryException("Error Trying to Delete Author. " + exception.getMessage(),

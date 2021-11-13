@@ -94,10 +94,8 @@ public class BookServiceImpl implements BookService {
 
   @Override
   public void delete(String isbn) {
-    var book = findByIsbn(isbn);
     try {
-      bookAuthorService.deleteBookAuthorByIsbn(isbn);
-      bookDAO.delete(book);
+      bookDAO.deleteBookAndBatchDeleteBookAuthors(isbn);
       showInfo("Success", "Book with ISBN " + isbn + " has been deleted!");
     } catch (Exception exception) {
       throw new LibraryException("Error Trying to Delete Book. " + exception.getMessage(),

@@ -12,6 +12,12 @@ public class AuthorIntegrator {
 
   private static final AuthorControllerImpl authorController = new AuthorControllerImpl();
 
+  public static void deleteAuthorById(Integer id) {
+    log.info(String.format("Starting the flow to delete an Author. ID: %d", id));
+    authorController.delete(id);
+    log.info(String.format("Finishing the flow to delete an Author. ID: %d", id));
+  }
+
   public static void updateAuthorFields(Integer id, String name, String fname) {
     log.info(String.format("Starting the flow to update an Author. ID: %d", id));
     authorController.update(id, name, fname);
