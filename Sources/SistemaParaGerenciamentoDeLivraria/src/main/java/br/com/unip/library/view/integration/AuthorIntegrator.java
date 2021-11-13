@@ -2,6 +2,7 @@ package br.com.unip.library.view.integration;
 
 import br.com.unip.library.controller.impl.AuthorControllerImpl;
 import br.com.unip.library.model.entity.Author;
+import br.com.unip.library.util.LibraryUtils;
 import javax.swing.table.DefaultTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,12 @@ public class AuthorIntegrator {
   private static final Logger log = LoggerFactory.getLogger(AuthorIntegrator.class);
 
   private static final AuthorControllerImpl authorController = new AuthorControllerImpl();
+
+  public static void deleteAuthorById(Integer id){
+    log.info(String.format("Starting the flow to delete an Author. ID: %d", id));
+    authorController.delete(id);
+    log.info(String.format("Finishing the flow to delete an Author. ID: %d", id));
+  }
 
   public static void updateAuthorFields(Integer id, String name, String fname) {
     log.info(String.format("Starting the flow to update an Author. ID: %d", id));
