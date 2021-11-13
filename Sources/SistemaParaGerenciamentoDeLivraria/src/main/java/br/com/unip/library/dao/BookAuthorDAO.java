@@ -21,13 +21,11 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
       criteriaQuery.select(root).where(root.get("isbn").in(isbn));
       var query = HibernateUtil.getSession().createQuery(criteriaQuery);
       var result = query.getResultList();
-      result.forEach(this::delete);
-      commitTransaction();
+      for (var bookAuthor : result) {
+        delete(bookAuthor);
+      }
     } catch (Exception exception) {
-      rollbackTransaction();
       throw new Exception("Error trying to delete related Authors data.");
-    } finally {
-      endTransaction();
     }
   }
 
@@ -39,14 +37,11 @@ public class BookAuthorDAO extends BaseDAO<BookAuthor, Type> implements
       criteriaQuery.select(root).where(root.get("authorId").in(id));
       var query = HibernateUtil.getSession().createQuery(criteriaQuery);
       var result = query.getResultList();
-      result.forEach(this::delete);
-      commitTransaction();
+      for (var bookAuthor : result) {
+        delete(bookAuthor);
+      }
     } catch (Exception exception) {
-      rollbackTransaction();
       throw new Exception("Error trying to delete related Books data.");
-    } finally {
-      endTransaction();
     }
-
   }
 }
