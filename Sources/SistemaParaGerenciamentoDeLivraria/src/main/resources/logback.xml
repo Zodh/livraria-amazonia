@@ -26,6 +26,10 @@
     </encoder>
   </appender>
 
+  <logger name="com.mchange.v2.c3p0">
+    <level value="OFF"/>
+  </logger>
+
   <root level="info">
     <appender-ref ref="STDOUT" />
   </root>
