@@ -12,15 +12,21 @@ public class PublisherIntegrator {
 
   private static final PublisherControllerImpl publisherController = new PublisherControllerImpl();
 
+  public static void updatePublisherFields(Integer id, String name, String url) {
+    log.info(String.format("Starting the flow to update a Publisher. ID: %d", id));
+    publisherController.update(id, name, url);
+    log.info(String.format("Finishing the flow to update a Publisher. ID: %d", id));
+  }
+
   public static void savePublisher(String name, String url) {
-    log.info("Starting the flow to register a Publisher.");
+    log.info(String.format("Starting the flow to register a Publisher. URL: %s", url));
     var publisher = Publisher
         .builder()
         .name(name)
         .url(url)
         .build();
     publisherController.create(publisher);
-    log.info("Finishing the flow to register a Publisher.");
+    log.info(String.format("Finishing the flow to register a Publisher. URL: %s", url));
   }
 
   public static DefaultTableModel fromPublishersListToTableModel() {
@@ -30,7 +36,7 @@ public class PublisherIntegrator {
     var tableModel = new DefaultTableModel(column, 0);
 
     publisherList.forEach(publisher -> {
-      Object[] row = {publisher.getPublisherId(), publisher.getName(),publisher.getUrl()};
+      Object[] row = {publisher.getPublisherId(), publisher.getName(), publisher.getUrl()};
       tableModel.addRow(row);
     });
     tableModel.fireTableDataChanged();
