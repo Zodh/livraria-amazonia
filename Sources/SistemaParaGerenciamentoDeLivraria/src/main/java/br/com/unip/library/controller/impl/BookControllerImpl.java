@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BookControllerImpl implements BookController {
 
-  BookServiceImpl bookService = new BookServiceImpl();
+  private final BookServiceImpl bookService = new BookServiceImpl();
 
   @Override
   public void create(Book book, List<Integer> authors) {
