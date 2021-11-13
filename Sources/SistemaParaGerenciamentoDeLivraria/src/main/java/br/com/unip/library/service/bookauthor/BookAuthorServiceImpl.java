@@ -24,30 +24,6 @@ public class BookAuthorServiceImpl implements BookAuthorService {
     }
   }
 
-  @Override
-  public Boolean deleteBookAuthorByIsbn(String isbn) {
-    try {
-      bookAuthorDAO.deleteByIsbn(isbn);
-      return true;
-    } catch (Exception exception) {
-      throw new LibraryException(
-          "Error trying to delete a Book Author by Book. " + exception.getMessage(),
-          ExceptionErrorEnum.DELETE_BOOK_AUTHOR_BY_ISBN);
-    }
-  }
-
-  @Override
-  public Boolean deleteBookAuthorsByAuthorId(Integer id) {
-    try {
-      bookAuthorDAO.deleteByAuthorId(id);
-      return true;
-    } catch (Exception exception) {
-      throw new LibraryException(
-          "Error trying to delete a Book Author by AuthorId. " + exception.getMessage(),
-          ExceptionErrorEnum.DELETE_BOOK_AUTHOR_BY_AUTHOR_ID);
-    }
-  }
-
   private BookAuthor buildValidBookAuthor(String isbn, Integer authorId) throws Exception {
     var bookAuthor = BookAuthor.builder().authorId(authorId).isbn(isbn).seqNo(generateSeqNo())
         .build();
