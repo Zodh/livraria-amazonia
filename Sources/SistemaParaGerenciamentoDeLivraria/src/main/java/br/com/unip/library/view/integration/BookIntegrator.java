@@ -15,7 +15,15 @@ public class BookIntegrator {
 
   private static final Logger log = LoggerFactory.getLogger(BookIntegrator.class);
 
-  private static BookControllerImpl bookController = new BookControllerImpl();
+  private static final BookControllerImpl bookController = new BookControllerImpl();
+
+  public static void updateBookFields(String isbn, String title, Integer publisher, Double price) {
+    log.info(String.format("Starting the flow to update a Book. ISBN Last 4: %s",
+        LibraryUtils.maskString(isbn, 0, (isbn.length() - 4))));
+    bookController.update(isbn, title, publisher, price);
+    log.info(String.format("Finishing the flow to update a Book. ISBN Last 4: %s",
+        LibraryUtils.maskString(isbn, 0, (isbn.length() - 4))));
+  }
 
   public static List<Integer> fromAuthorsStringToList(String string) {
     var list = new ArrayList<Integer>();
@@ -33,11 +41,13 @@ public class BookIntegrator {
 
   public static void saveBook(String title, String isbn, Integer publisher, Double price,
       List<Integer> authors) {
-    log.info("Starting the flow to register a Book.");
+    log.info(String.format("Starting the flow to register a Book. ISBN Last 4: %s",
+        LibraryUtils.maskString(isbn, 0, (isbn.length() - 4))));
     LibraryUtils.isOnlyNumbers(isbn);
     var book = Book.builder().title(title).isbn(isbn).publisherId(publisher).price(price).build();
     bookController.create(book, authors);
-    log.info("Finishing the flow to register a Book.");
+    log.info(String.format("Finishing the flow to register a Book. ISBN Last 4: %s",
+        LibraryUtils.maskString(isbn, 0, (isbn.length() - 4))));
   }
 
   public static DefaultTableModel fromBookListToTableModel() {
