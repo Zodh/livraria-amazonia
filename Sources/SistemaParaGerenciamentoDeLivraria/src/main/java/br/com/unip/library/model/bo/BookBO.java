@@ -19,7 +19,7 @@ public class BookBO {
   BookDAO bookDAO = DAOFactory.getFactory().getBookDAO();
   PublisherDAO publisherDAO = DAOFactory.getFactory().getPublisherDAO();
 
-  public BookBO(Book book) throws Exception {
+  public BookBO(Book book) {
     this.title = book.getTitle();
     this.isbn = book.getIsbn();
     this.publisherId = book.getPublisherId();
@@ -44,7 +44,7 @@ public class BookBO {
     if (this.title == null || this.title.isBlank()) {
       message = "Book title is null, empty or just whitespaces!";
     }
-    if (this.title.length() > 60){
+    if (this.title != null && this.title.length() > 60) {
       message = "Book title cannot be greater than 60!";
     }
     if (!message.equals("")) {
@@ -52,7 +52,7 @@ public class BookBO {
     }
   }
 
-  private void checkIfIsbnIsValid() throws Exception {
+  private void checkIfIsbnIsValid() {
     var message = "";
     Book book;
     if (this.isbn == null || this.isbn.isBlank()) {
@@ -63,7 +63,7 @@ public class BookBO {
         message = "A book with this ISBN already exists!";
       }
     }
-    if (isbn.length() != 13){
+    if (this.isbn != null && isbn.length() != 13) {
       message = "Invalid ISBN length!";
     }
     if (!message.equals("")) {
@@ -71,7 +71,7 @@ public class BookBO {
     }
   }
 
-  private void checkIfPublisherIsValid() throws Exception {
+  private void checkIfPublisherIsValid() {
     var message = "";
     var publisher = publisherDAO.findById(this.publisherId);
     if (publisher == null) {

@@ -67,17 +67,19 @@ public class AuthorServiceImpl implements AuthorService {
     var stringBuilder = new StringBuilder();
     var author = findById(id);
     try {
-      if (name != null && !name.isBlank() && !name.equals(author.getName())) {
+      if (name != null && !name.isBlank() && !name.equals(author.getName())
+          && name.length() <= 25) {
         author.setName(name);
         stringBuilder.append("Author name has been updated!\n");
       }
-      if (fname != null && !fname.isBlank() && !fname.equals(author.getFname())) {
+      if (fname != null && !fname.isBlank() && !fname.equals(author.getFname())
+          && fname.length() <= 25) {
         author.setFname(fname);
         stringBuilder.append("Author fname has been updated!\n");
       }
       var updatedFields = stringBuilder.toString();
       if (!updatedFields.isBlank()) {
-        authorDAO.create(author);
+        authorDAO.update(author);
         showInfo("Author Successfully Updated", updatedFields);
       } else {
         showInfo("Author has not been updated", "Invalid information to update the Author.");

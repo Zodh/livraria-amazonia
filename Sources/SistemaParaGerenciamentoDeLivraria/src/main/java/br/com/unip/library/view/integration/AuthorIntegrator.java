@@ -12,15 +12,21 @@ public class AuthorIntegrator {
 
   private static final AuthorControllerImpl authorController = new AuthorControllerImpl();
 
+  public static void updateAuthorFields(Integer id, String name, String fname) {
+    log.info(String.format("Starting the flow to update an Author. ID: %d", id));
+    authorController.update(id, name, fname);
+    log.info(String.format("Finishing the flow to update an Author. ID: %d", id));
+  }
+
   public static void saveAuthor(String name, String fname) {
-    log.info("Starting the flow to register an author.");
+    log.info(String.format("Starting the flow to register an author. Pseudonym: %s", fname));
     var author = Author
         .builder()
         .name(name)
         .fname(fname)
         .build();
     authorController.create(author);
-    log.info("Finishing the flow to register an author.");
+    log.info(String.format("Finishing the flow to register an author. Pseudonym: %s", fname));
   }
 
   public static DefaultTableModel fromAuthorsListToTableModel() {
@@ -30,7 +36,7 @@ public class AuthorIntegrator {
     var tableModel = new DefaultTableModel(column, 0);
 
     authorList.forEach(author -> {
-      Object[] row = {author.getAuthorId(), author.getName(),author.getFname()};
+      Object[] row = {author.getAuthorId(), author.getName(), author.getFname()};
       tableModel.addRow(row);
     });
     tableModel.fireTableDataChanged();

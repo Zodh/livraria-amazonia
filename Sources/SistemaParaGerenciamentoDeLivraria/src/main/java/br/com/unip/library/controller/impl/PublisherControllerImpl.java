@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PublisherControllerImpl implements PublisherController {
 
-  private PublisherServiceImpl publisherService = new PublisherServiceImpl();
+  private final PublisherServiceImpl publisherService = new PublisherServiceImpl();
 
   @Override
   public void create(Publisher publisher) {

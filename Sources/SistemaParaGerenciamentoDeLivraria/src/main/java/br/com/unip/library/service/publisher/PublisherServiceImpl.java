@@ -8,7 +8,6 @@ import br.com.unip.library.exception.ExceptionErrorEnum;
 import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.bo.PublisherBO;
 import br.com.unip.library.model.entity.Publisher;
-import br.com.unip.library.view.integration.PublisherIntegrator;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,7 +74,7 @@ public class PublisherServiceImpl implements PublisherService {
       }
       var updatedFields = stringBuilder.toString();
       if (!updatedFields.isBlank()) {
-        publisherDAO.create(publisher);
+        publisherDAO.update(publisher);
         showInfo("Publisher Successfully Updated", updatedFields);
       } else {
         showInfo("The Publisher has not been updated",

@@ -18,53 +18,77 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
   }
 
   @Override
-  public void delete(T entity) {
-    log.info("Starting database connection");
-    beginTransaction();
-    log.info("Deleting entity in the database");
-    HibernateUtil.getSession().delete(entity);
-    commitTransaction();
-    log.info("Closing connection to database");
-    endTransaction();
+  public void delete(T entity) throws Exception {
+    try {
+      log.info("Starting database connection");
+      beginTransaction();
+      log.info("Deleting entity in the database");
+      HibernateUtil.getSession().delete(entity);
+      commitTransaction();
+    } catch (Exception exception) {
+      rollbackTransaction();
+      throw new Exception("Error trying to delete an object.");
+    } finally {
+      log.info("Closing connection to database");
+      endTransaction();
+    }
   }
 
   @Override
-  public void create(T entity) {
-    log.info("Starting database connection");
-    beginTransaction();
-    log.info(String.format("Registering entity (%s) in the database", entity.getClass()));
-    saveTransaction(entity);
-    commitTransaction();
-    log.info("Closing connection to database");
-    endTransaction();
+  public void create(T entity) throws Exception {
+    try {
+      log.info("Starting database connection");
+      beginTransaction();
+      log.info(String.format("Registering entity (%s) in the database", entity.getClass()));
+      saveTransaction(entity);
+      commitTransaction();
+    } catch (Exception exception) {
+      rollbackTransaction();
+      throw new Exception("Error trying to create an object.");
+    } finally {
+      log.info("Closing connection to database");
+      endTransaction();
+    }
   }
 
   @Override
-  public List<T> listAll() {
-    log.info("Starting database connection");
-    beginTransaction();
-    CriteriaQuery<T> criteriaQuery = HibernateUtil.getSession().getCriteriaBuilder()
-        .createQuery(persistentClass);
-    criteriaQuery.from(persistentClass);
-    log.info(String.format("Listing all entities (%s) in the database", this.getClass()));
-    var list = HibernateUtil.getSession().createQuery(criteriaQuery).getResultList();
-    log.info("Closing connection to database");
-    endTransaction();
-    return list;
+  public List<T> listAll() throws Exception {
+    try {
+      log.info("Starting database connection");
+      beginTransaction();
+      CriteriaQuery<T> criteriaQuery = HibernateUtil.getSession().getCriteriaBuilder()
+          .createQuery(persistentClass);
+      criteriaQuery.from(persistentClass);
+      log.info(String.format("Listing all entities (%s) in the database", this.getClass()));
+      var list = HibernateUtil.getSession().createQuery(criteriaQuery).getResultList();
+      return list;
+    } catch (Exception exception) {
+      throw new Exception("Error trying to list objects");
+    } finally {
+      log.info("Closing connection to database");
+      endTransaction();
+    }
   }
 
   @Override
-  public void update(T entity) {
-    log.info("Starting database connection");
-    beginTransaction();
-    log.info("Updating entity in the database");
-    HibernateUtil.getSession().update(entity);
-    log.info("Closing connection to database");
-    endTransaction();
+  public void update(T entity) throws Exception {
+    try {
+      log.info("Starting database connection");
+      beginTransaction();
+      log.info(String.format("Updating entity (%s) in the database", entity.getClass()));
+      HibernateUtil.getSession().update(entity);
+      commitTransaction();
+    } catch (Exception exception) {
+      rollbackTransaction();
+      throw new Exception("Error trying to update fields.");
+    } finally {
+      log.info("Closing connection to database");
+      endTransaction();
+    }
   }
 
   protected void saveTransaction(T entity) {
-    HibernateUtil.getSession().saveOrUpdate(entity);
+    HibernateUtil.getSession().save(entity);
   }
 
   public void beginTransaction() {

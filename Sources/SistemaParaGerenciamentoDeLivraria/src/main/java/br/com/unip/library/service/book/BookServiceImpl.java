@@ -71,8 +71,7 @@ public class BookServiceImpl implements BookService {
         book.setTitle(title);
         stringBuilder.append("Book title has been updated!\n");
       }
-      if (publisherId != null && publisherDAO.findById(publisherId) != null && !publisherId
-          .equals(book.getPublisherId())) {
+      if (publisherId != null && publisherDAO.findById(publisherId) != null) {
         book.setPublisherId(publisherId);
         stringBuilder.append("Book publisher has been updated!\n");
       }
@@ -82,7 +81,7 @@ public class BookServiceImpl implements BookService {
       }
       var updatedFields = stringBuilder.toString();
       if (!updatedFields.isBlank()) {
-        bookDAO.create(book);
+        bookDAO.update(book);
         showInfo("Book Successfully Updated", updatedFields);
       } else {
         showInfo("The book has not been updated", "Invalid information to update the book.");
@@ -106,7 +105,7 @@ public class BookServiceImpl implements BookService {
     }
   }
 
-  private Boolean isValidNewBook(Book book) throws Exception {
+  private Boolean isValidNewBook(Book book) {
     log.info("Checking if the data informed to register a book is valid.");
     return new BookBO(book).toBook() != null;
   }

@@ -6,9 +6,12 @@ import javax.swing.JTextField;
 
 public class Integrator {
 
-  public static Integer fromStringToInteger(String publisher) {
+  public static Integer fromStringToInteger(String value) {
     try {
-      return Integer.valueOf(publisher);
+      if (value == null || value.isEmpty()) {
+        return null;
+      }
+      return Integer.valueOf(value);
     } catch (Exception exception) {
       throw new LibraryException("Invalid input on Integer field!",
           ExceptionErrorEnum.INVALID_TEXT);
@@ -17,6 +20,9 @@ public class Integrator {
 
   public static Double fromStringToDouble(String price) {
     try {
+      if (price == null || price.isEmpty()) {
+        return null;
+      }
       return Double.valueOf(price);
     } catch (Exception exception) {
       throw new LibraryException("Invalid input on Double field!", ExceptionErrorEnum.INVALID_TEXT);
@@ -29,6 +35,10 @@ public class Integrator {
       throw new LibraryException("Invalid input on " + textField.getName() + " field!",
           ExceptionErrorEnum.INVALID_TEXT);
     }
+    return textField.getText();
+  }
+
+  public static String getOptionalJTextString(JTextField textField) {
     return textField.getText();
   }
 }
