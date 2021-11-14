@@ -16,6 +16,25 @@ public class PublisherDAO extends BaseDAO<Publisher, Integer> implements
     super(Publisher.class);
   }
 
+  public void create(Publisher publisher) throws Exception {
+    openConn();
+    var sql = "insert into publishers (name, url) values (?,?)";
+    try {
+      var statement = connection.prepareStatement(sql);
+      statement.setString(1, publisher.getName());
+      statement.setString(2, publisher.getUrl());
+      log.info("Inserting data into the Publishers table");
+      statement.execute();
+      statement.close();
+    } catch (Exception exception) {
+      throw new Exception(
+          "Error trying to save a new Publisher in the database. " + exception.getMessage());
+    } finally {
+      log.info("Ending connection");
+      closeConn();
+    }
+  }
+
   public void deleteById(Integer id) throws Exception {
     try {
       log.info("Starting database connection");
