@@ -11,9 +11,6 @@ public class HibernateUtil {
       .buildSessionFactory();
 
   public static Session getSession() {
-    if (sessionFactory.isClosed()) {
-      sessionFactory.openSession();
-    }
     if (threadLocal.get() == null) {
       threadLocal.set(sessionFactory.openSession());
     }
@@ -33,7 +30,6 @@ public class HibernateUtil {
   }
 
   public static void closeSession() {
-    getSession().close();
     threadLocal.remove();
   }
 }
