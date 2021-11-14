@@ -30,7 +30,7 @@ public class AuthorServiceImpl implements AuthorService {
                 author.getFname()));
       }
     } catch (Exception exception) {
-      throw new LibraryException("Error trying to save a new Author. " + exception.getMessage(),
+      throw new LibraryException("Ooops... Error trying to save a new Author. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.CREATE_AUTHOR);
     }
   }
@@ -82,7 +82,7 @@ public class AuthorServiceImpl implements AuthorService {
         showInfo("Author has not been updated", "Invalid information to update the Author.");
       }
     } catch (Exception exception) {
-      throw new LibraryException("Error Trying to Update Author. " + exception.getMessage(),
+      throw new LibraryException("Error Trying to Update Author. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.UPDATE_AUTHOR);
     }
   }
@@ -93,7 +93,7 @@ public class AuthorServiceImpl implements AuthorService {
       authorDAO.deleteAuthorAndBatchDeleteBookAuthors(id);
       showInfo("Success", "Author with ID " + id + " has been deleted!");
     } catch (Exception exception) {
-      throw new LibraryException("Error Trying to Delete Author. " + exception.getMessage(),
+      throw new LibraryException("Error Trying to Delete Author. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.DELETE_AUTHOR);
     }
   }

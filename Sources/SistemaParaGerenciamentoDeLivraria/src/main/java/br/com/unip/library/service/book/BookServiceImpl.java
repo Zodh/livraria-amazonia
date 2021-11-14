@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
                 book.getTitle(), book.getPrice()));
       }
     } catch (Exception exception) {
-      throw new LibraryException("Error trying to save a new Book. " + exception.getMessage(),
+      throw new LibraryException("Ooops... Error trying to save a new Book. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.CREATE_BOOK);
     }
   }
@@ -105,7 +105,7 @@ public class BookServiceImpl implements BookService {
         showInfo("The book has not been updated", "Invalid information to update the book.");
       }
     } catch (Exception exception) {
-      throw new LibraryException("Error Trying to Update Book. " + exception.getMessage(),
+      throw new LibraryException("Error Trying to Update Book. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.UPDATE_BOOK);
     }
   }
@@ -116,7 +116,7 @@ public class BookServiceImpl implements BookService {
       bookDAO.deleteBookAndBatchDeleteBookAuthors(isbn);
       showInfo("Success", "Book with ISBN " + isbn + " has been deleted!");
     } catch (Exception exception) {
-      throw new LibraryException("Error Trying to Delete Book. " + exception.getMessage(),
+      throw new LibraryException("Error Trying to Delete Book. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.DELETE_BOOK);
     }
   }
