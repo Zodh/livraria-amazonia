@@ -13,4 +13,10 @@ public interface BookController {
 
   void delete(String isbn);
 
+  Book findByIsbn(String isbn);
+
+  List<Book> findByPublisherId(Integer publisherId);
+
+  List<Book> findByTitleThatContains(String title);
+
 }

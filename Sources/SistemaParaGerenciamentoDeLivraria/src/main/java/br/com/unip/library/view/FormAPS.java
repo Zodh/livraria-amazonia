@@ -10,7 +10,10 @@ import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorsL
 import static br.com.unip.library.view.integration.AuthorIntegrator.saveAuthor;
 import static br.com.unip.library.view.integration.AuthorIntegrator.updateAuthorFields;
 import static br.com.unip.library.view.integration.BookIntegrator.deleteBookByIsbn;
+import static br.com.unip.library.view.integration.BookIntegrator.findByIsbn;
 import static br.com.unip.library.view.integration.BookIntegrator.fromBookListToTableModel;
+import static br.com.unip.library.view.integration.BookIntegrator.fromBookListedByPublisherIdToTableModel;
+import static br.com.unip.library.view.integration.BookIntegrator.fromBookListedByTitleToTableModel;
 import static br.com.unip.library.view.integration.BookIntegrator.saveBook;
 import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
 import static br.com.unip.library.view.integration.BookIntegrator.updateBookFields;
@@ -23,6 +26,8 @@ import static br.com.unip.library.view.integration.PublisherIntegrator.fromPubli
 import static br.com.unip.library.view.integration.PublisherIntegrator.savePublisher;
 import static br.com.unip.library.view.integration.PublisherIntegrator.updatePublisherFields;
 
+import br.com.unip.library.dao.base.HibernateUtil;
+import br.com.unip.library.view.integration.BookIntegrator;
 import java.awt.CardLayout;
 import java.awt.Color;
 
@@ -1990,7 +1995,7 @@ public class FormAPS extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApplyAuthorsMouseClicked
 
     private void btnApplyBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyBooksMouseClicked
-        // TODO add your handling code here:
+        applyBookFilter();
     }//GEN-LAST:event_btnApplyBooksMouseClicked
 
     private void btnApplyAuthors2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyAuthors2MouseClicked
@@ -2053,6 +2058,7 @@ public class FormAPS extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FormAPS().setVisible(true);
+                HibernateUtil.getSession();
             }
         });
     }
@@ -2248,6 +2254,35 @@ public class FormAPS extends javax.swing.JFrame {
     private void listBooks(){
         jTable1.setModel(fromBookListToTableModel());
         jTable1.repaint();
+    }
+
+    private void applyBookFilter(){
+        var value = getJTextString(txtValueBooks);
+        var filter = defineBookFilter();
+        if (filter.equals("byTitle")){
+            jTable1.setModel(fromBookListedByTitleToTableModel(value));
+        }
+        if (filter.equals("byPublisherId")){
+            var publisherId = fromStringToInteger(value);
+            jTable1.setModel(fromBookListedByPublisherIdToTableModel(publisherId));
+        }
+        if (filter.equals("byISBN")){
+            jTable1.setModel(findByIsbn(value));
+        }
+        jTable1.repaint();
+    }
+
+    private String defineBookFilter(){
+        if (cbFiltersBooks.getSelectedItem().equals("Name that contains")){
+            return "byTitle";
+        }
+        if (cbFiltersBooks.getSelectedItem().equals("Publisher ID")){
+            return "byPublisherId";
+        }
+        if (cbFiltersBooks.getSelectedItem().equals("ISBN")){
+            return "byISBN";
+        }
+        return "error";
     }
 
     private void listAuthors(){

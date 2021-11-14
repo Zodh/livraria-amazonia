@@ -5,9 +5,11 @@ public enum ExceptionErrorEnum {
   CREATE_BOOK("Service Create Book"),
   CREATE_BOOK_BO("Create Book Business Object"),
   LIST_BOOKS("Service List All Books"),
-  FIND_BOOK_BY_ISBN("Service Find a Book by ISBN"),
   UPDATE_BOOK("Service Update Book"),
   DELETE_BOOK("Service Delete Book"),
+  FIND_BOOK_BY_ISBN("Service Find a Book by ISBN"),
+  FIND_BOOK_BY_PUBLISHER_ID("Service List Book By Publisher Id"),
+  FIND_BOOK_BY_TITLE("Service List Book By Title"),
 
   CREATE_AUTHOR("Service Create Author"),
   CREATE_AUTHOR_BO("Create Author Business Object"),

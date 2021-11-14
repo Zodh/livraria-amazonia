@@ -63,6 +63,24 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  public List<Book> findByPublisherId(Integer publisherId){
+    try{
+      return bookDAO.findByPublisherId(publisherId);
+    } catch (Exception exception){
+      throw new LibraryException("Error trying to list Books by Publisher Id. " + exception.getMessage(), ExceptionErrorEnum.FIND_BOOK_BY_PUBLISHER_ID);
+    }
+  }
+
+  @Override
+  public List<Book> findByTitleThatContains(String title) {
+    try{
+      return bookDAO.findByTitleThatContains(title);
+    } catch (Exception exception){
+      throw new LibraryException("Error trying to list Books by Title", ExceptionErrorEnum.FIND_BOOK_BY_TITLE);
+    }
+  }
+
+  @Override
   public void update(String isbn, String title, Integer publisherId, Double price) {
     var stringBuilder = new StringBuilder();
     var book = findByIsbn(isbn);
