@@ -16,6 +16,25 @@ public class AuthorDAO extends BaseDAO<Author, Integer> implements
     super(Author.class);
   }
 
+  public void create(Author author) throws Exception {
+    openConn();
+    var sql = "insert into authors (name, fname) values (?,?)";
+    try {
+      var statement = connection.prepareStatement(sql);
+      statement.setString(1, author.getName());
+      statement.setString(2, author.getFname());
+      log.info("Inserting data into the Authors table");
+      statement.execute();
+      statement.close();
+    } catch (Exception exception) {
+      throw new Exception(
+          "Error trying to save a new author in the database. " + exception.getMessage());
+    } finally {
+      log.info("Ending connection");
+      closeConn();
+    }
+  }
+
   public void deleteAuthorAndBatchDeleteBookAuthors(Integer id) throws Exception {
     try {
       log.info("Starting database connection");
