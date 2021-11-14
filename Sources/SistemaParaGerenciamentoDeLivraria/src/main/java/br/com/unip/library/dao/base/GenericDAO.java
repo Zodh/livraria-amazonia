@@ -5,8 +5,6 @@ import java.util.List;
 
 public interface GenericDAO<T, Type extends Serializable> {
 
-  void create(T entity) throws Exception;
-
   void update(T entity) throws Exception;
 
   void delete(T entity) throws Exception;
