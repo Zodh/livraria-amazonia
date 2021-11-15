@@ -28,7 +28,8 @@ public class PublisherServiceImpl implements PublisherService {
                 publisher.getName(), publisher.getUrl()));
       } catch (Exception exception) {
         throw new LibraryException(
-            "Error trying to save a new Publisher. " + exception.getMessage(),
+            "Ooops... Error trying to save a new Publisher. Try again.\nMessage: " + exception
+                .getMessage(),
             ExceptionErrorEnum.CREATE_PUBLISHER);
       }
     }
@@ -41,6 +42,16 @@ public class PublisherServiceImpl implements PublisherService {
     } catch (Exception exception) {
       throw new LibraryException("Error trying to list all Publishers. " + exception.getMessage(),
           ExceptionErrorEnum.LIST_PUBLISHERS);
+    }
+  }
+
+  @Override
+  public List<Publisher> findByNameThatContains(String name) {
+    try {
+      return publisherDAO.findByNameThatContains(name);
+    } catch (Exception exception) {
+      throw new LibraryException("Error trying to list Publishers by Name",
+          ExceptionErrorEnum.FIND_PUBLISHER_BY_NAME);
     }
   }
 
@@ -81,7 +92,8 @@ public class PublisherServiceImpl implements PublisherService {
             "Invalid information to update the Publisher.");
       }
     } catch (Exception exception) {
-      throw new LibraryException("Error Trying to Update Publisher. " + exception.getMessage(),
+      throw new LibraryException(
+          "Error Trying to Update Publisher. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.UPDATE_PUBLISHER);
     }
   }
@@ -92,7 +104,8 @@ public class PublisherServiceImpl implements PublisherService {
       publisherDAO.deleteById(id);
       showInfo("Success", "Publisher with ID " + id + " has been deleted!");
     } catch (Exception exception) {
-      throw new LibraryException("Error Trying to Delete Publisher. " + exception.getMessage(),
+      throw new LibraryException(
+          "Error Trying to Delete Publisher. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.DELETE_PUBLISHER);
     }
   }

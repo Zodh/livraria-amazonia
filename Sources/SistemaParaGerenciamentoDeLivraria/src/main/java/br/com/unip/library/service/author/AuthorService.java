@@ -9,6 +9,10 @@ public interface AuthorService {
 
   List<Author> listAll();
 
+  List<Author> findByNameThatContains(String name);
+
+  List<Author> findByPseudonymThatContains(String pseudonym);
+
   Author findById(Integer id);
 
   void update(Integer id, String name, String fname);

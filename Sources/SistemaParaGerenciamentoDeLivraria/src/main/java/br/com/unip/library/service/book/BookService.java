@@ -14,4 +14,8 @@ public interface BookService {
   void update(String existingBookIsbn, String title, Integer publisherId, Double price);
 
   void delete(String isbn);
+
+  List<Book> findByPublisherId(Integer publisherId);
+
+  List<Book> findByTitleThatContains(String title);
 }

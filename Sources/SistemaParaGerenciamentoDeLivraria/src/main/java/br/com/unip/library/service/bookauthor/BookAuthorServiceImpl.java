@@ -7,14 +7,19 @@ import br.com.unip.library.exception.LibraryException;
 import br.com.unip.library.model.bo.BookAuthorBO;
 import br.com.unip.library.model.entity.BookAuthor;
 import java.util.Random;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BookAuthorServiceImpl implements BookAuthorService {
+
+  private static final Logger log = LoggerFactory.getLogger(BookAuthorServiceImpl.class);
 
   private final BookAuthorDAO bookAuthorDAO = DAOFactory.getFactory().getBookAuthorDAO();
 
   @Override
   public Boolean createBookAuthorByIsbn(String isbn, Integer authorId) {
     try {
+      log.info("Building a valid book author");
       var bookAuthor = buildValidBookAuthor(isbn, authorId);
       bookAuthorDAO.create(bookAuthor);
       return true;

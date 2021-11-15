@@ -28,4 +28,19 @@ public class BookControllerImpl implements BookController {
   public void delete(String isbn) {
     bookService.delete(isbn);
   }
+
+  @Override
+  public Book findByIsbn(String isbn) {
+    return bookService.findByIsbn(isbn);
+  }
+
+  @Override
+  public List<Book> findByPublisherId(Integer publisherId) {
+    return bookService.findByPublisherId(publisherId);
+  }
+
+  @Override
+  public List<Book> findByTitleThatContains(String title) {
+    return bookService.findByTitleThatContains(title);
+  }
 }

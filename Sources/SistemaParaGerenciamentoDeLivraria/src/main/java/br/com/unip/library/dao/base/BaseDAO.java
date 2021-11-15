@@ -1,6 +1,9 @@
 package br.com.unip.library.dao.base;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.criteria.CriteriaQuery;
 import org.slf4j.Logger;
@@ -17,6 +20,28 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
     this.persistentClass = persistentClass;
   }
 
+  protected Connection connection;
+
+  protected void openConn() throws Exception {
+    log.info("Opening connection");
+    try {
+      Class.forName("org.postgresql.Driver");
+      this.connection = DriverManager
+          .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
+    } catch (Exception e) {
+      throw new Exception("Error trying to open connection");
+    }
+  }
+
+  protected void closeConn() throws Exception {
+    log.info("Closing connection");
+    try{
+      this.connection.close();
+    } catch (Exception exception) {
+      throw new Exception("Error trying to close connection");
+    }
+  }
+
   @Override
   public void delete(T entity) throws Exception {
     try {
@@ -24,27 +49,9 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
       beginTransaction();
       log.info("Deleting entity in the database");
       HibernateUtil.getSession().delete(entity);
-      commitTransaction();
     } catch (Exception exception) {
       rollbackTransaction();
       throw new Exception("Error trying to delete an object." + exception.getMessage());
-    } finally {
-      log.info("Closing connection to database");
-      endTransaction();
-    }
-  }
-
-  @Override
-  public void create(T entity) throws Exception {
-    try {
-      log.info("Starting database connection");
-      beginTransaction();
-      log.info(String.format("Registering entity (%s) in the database", entity.getClass()));
-      saveTransaction(entity);
-      commitTransaction();
-    } catch (Exception exception) {
-      rollbackTransaction();
-      throw new Exception("Error trying to create an object." + exception.getMessage());
     } finally {
       log.info("Closing connection to database");
       endTransaction();
@@ -60,8 +67,7 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
           .createQuery(persistentClass);
       criteriaQuery.from(persistentClass);
       log.info(String.format("Listing all entities (%s) in the database", this.getClass()));
-      var list = HibernateUtil.getSession().createQuery(criteriaQuery).getResultList();
-      return list;
+      return HibernateUtil.getSession().createQuery(criteriaQuery).getResultList();
     } catch (Exception exception) {
       throw new Exception("Error trying to list objects." + exception.getMessage());
     } finally {
@@ -80,15 +86,11 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
       commitTransaction();
     } catch (Exception exception) {
       rollbackTransaction();
-      throw new Exception("Error trying to update fields.");
+      throw new Exception("Error trying to update fields. " + exception.getMessage());
     } finally {
       log.info("Closing connection to database");
       endTransaction();
     }
-  }
-
-  protected void saveTransaction(T entity) {
-    HibernateUtil.getSession().save(entity);
   }
 
   public void beginTransaction() {

@@ -13,9 +13,50 @@ import org.slf4j.LoggerFactory;
 
 public class BookIntegrator {
 
+  private static final String[] column = {"ISBN", "Title", "Publisher", "Price"};
+
   private static final Logger log = LoggerFactory.getLogger(BookIntegrator.class);
 
   private static final BookControllerImpl bookController = new BookControllerImpl();
+
+  public static final DefaultTableModel findByIsbn(String isbn) {
+    log.info(String.format("Starting the flow to list Book by ISBN"));
+    var book = bookController.findByIsbn(isbn);
+    var tableModel = new DefaultTableModel(column, 0);
+    Object[] row = {book.getIsbn(), book.getTitle(), book.getPublisherId(), book.getPrice()};
+    tableModel.addRow(row);
+    tableModel.fireTableDataChanged();
+    log.info(String.format("Finishing the flow to list Book by ISBN"));
+    return tableModel;
+  }
+
+  public static DefaultTableModel fromBookListedByTitleToTableModel(String title) {
+    log.info(String.format("Starting the flow to list Books by title that contains (%s)", title));
+    var bookList = bookController.findByTitleThatContains(title);
+    var tableModel = new DefaultTableModel(column, 0);
+    bookList.forEach(item -> {
+      Object[] row = {item.getIsbn(), item.getTitle(), item.getPublisherId(), item.getPrice()};
+      tableModel.addRow(row);
+    });
+    tableModel.fireTableDataChanged();
+    log.info(String.format("Finishing the flow to list Books by title that contains (%s)", title));
+    return tableModel;
+  }
+
+  public static DefaultTableModel fromBookListedByPublisherIdToTableModel(Integer id) {
+    log.info(
+        String.format("Starting the flow to list Books by Publisher ID that contains (%s)", id));
+    var bookList = bookController.findByPublisherId(id);
+    var tableModel = new DefaultTableModel(column, 0);
+    bookList.forEach(item -> {
+      Object[] row = {item.getIsbn(), item.getTitle(), item.getPublisherId(), item.getPrice()};
+      tableModel.addRow(row);
+    });
+    tableModel.fireTableDataChanged();
+    log.info(
+        String.format("Finishing the flow to list Books by Publisher ID that contains (%s)", id));
+    return tableModel;
+  }
 
   public static void deleteBookByIsbn(String isbn) {
     log.info(String.format("Starting the flow to delete a Book. ISBN Last 4: %s",
@@ -62,9 +103,7 @@ public class BookIntegrator {
   public static DefaultTableModel fromBookListToTableModel() {
     log.info("Starting the flow to list all Books.");
     var bookList = bookController.listAll();
-    String[] column = {"ISBN", "Title", "Publisher", "Price"};
     var tableModel = new DefaultTableModel(column, 0);
-
     bookList.forEach(item -> {
       Object[] row = {item.getIsbn(), item.getTitle(), item.getPublisherId(), item.getPrice()};
       tableModel.addRow(row);
@@ -73,5 +112,4 @@ public class BookIntegrator {
     log.info("Finishing the flow to list all Books.");
     return tableModel;
   }
-
 }

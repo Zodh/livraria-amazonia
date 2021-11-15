@@ -6,11 +6,17 @@
 package br.com.unip.library.view;
 
 import static br.com.unip.library.view.integration.AuthorIntegrator.deleteAuthorById;
+import static br.com.unip.library.view.integration.AuthorIntegrator.findAuthorById;
+import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorListedByNameToTableModel;
+import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorListedByPseudonymToTableModel;
 import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorsListToTableModel;
 import static br.com.unip.library.view.integration.AuthorIntegrator.saveAuthor;
 import static br.com.unip.library.view.integration.AuthorIntegrator.updateAuthorFields;
 import static br.com.unip.library.view.integration.BookIntegrator.deleteBookByIsbn;
+import static br.com.unip.library.view.integration.BookIntegrator.findByIsbn;
 import static br.com.unip.library.view.integration.BookIntegrator.fromBookListToTableModel;
+import static br.com.unip.library.view.integration.BookIntegrator.fromBookListedByPublisherIdToTableModel;
+import static br.com.unip.library.view.integration.BookIntegrator.fromBookListedByTitleToTableModel;
 import static br.com.unip.library.view.integration.BookIntegrator.saveBook;
 import static br.com.unip.library.view.integration.BookIntegrator.fromAuthorsStringToList;
 import static br.com.unip.library.view.integration.BookIntegrator.updateBookFields;
@@ -19,10 +25,14 @@ import static br.com.unip.library.view.integration.Integrator.fromStringToIntege
 import static br.com.unip.library.view.integration.Integrator.getJTextString;
 import static br.com.unip.library.view.integration.Integrator.getOptionalJTextString;
 import static br.com.unip.library.view.integration.PublisherIntegrator.deletePublisherById;
+import static br.com.unip.library.view.integration.PublisherIntegrator.findPublisherById;
+import static br.com.unip.library.view.integration.PublisherIntegrator.fromPublisherListedByNameToTableModel;
 import static br.com.unip.library.view.integration.PublisherIntegrator.fromPublishersListToTableModel;
 import static br.com.unip.library.view.integration.PublisherIntegrator.savePublisher;
 import static br.com.unip.library.view.integration.PublisherIntegrator.updatePublisherFields;
 
+import br.com.unip.library.dao.base.HibernateUtil;
+import br.com.unip.library.view.integration.BookIntegrator;
 import java.awt.CardLayout;
 import java.awt.Color;
 
@@ -1997,15 +2007,15 @@ public class FormAPS extends javax.swing.JFrame {
     }//GEN-LAST:event_pnl_MenuMouseDragged
 
     private void btnApplyAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyAuthorsMouseClicked
-        // TODO add your handling code here:
+        applyAuthorFilter();
     }//GEN-LAST:event_btnApplyAuthorsMouseClicked
 
     private void btnApplyBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyBooksMouseClicked
-        // TODO add your handling code here:
+        applyBookFilter();
     }//GEN-LAST:event_btnApplyBooksMouseClicked
 
     private void btnApplyAuthors2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyAuthors2MouseClicked
-        // TODO add your handling code here:
+        applyPublisherFilter();
     }//GEN-LAST:event_btnApplyAuthors2MouseClicked
 
     private void btnDeleteBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteBookMouseClicked
@@ -2262,14 +2272,95 @@ public class FormAPS extends javax.swing.JFrame {
         jTable1.repaint();
     }
 
+    private void applyBookFilter(){
+        var value = getJTextString(txtValueBooks);
+        var filter = defineBookFilter();
+        if (filter.equals("byTitle")){
+            jTable1.setModel(fromBookListedByTitleToTableModel(value));
+        }
+        if (filter.equals("byPublisherId")){
+            var publisherId = fromStringToInteger(value);
+            jTable1.setModel(fromBookListedByPublisherIdToTableModel(publisherId));
+        }
+        if (filter.equals("byISBN")){
+            jTable1.setModel(findByIsbn(value));
+        }
+        jTable1.repaint();
+    }
+
+    private String defineBookFilter(){
+        if (cbFiltersBooks.getSelectedItem().equals("Name that contains")){
+            return "byTitle";
+        }
+        if (cbFiltersBooks.getSelectedItem().equals("Publisher ID")){
+            return "byPublisherId";
+        }
+        if (cbFiltersBooks.getSelectedItem().equals("ISBN")){
+            return "byISBN";
+        }
+        return "error";
+    }
+
     private void listAuthors(){
         tblListAuthors.setModel(fromAuthorsListToTableModel());
         tblListAuthors.repaint();
     }
 
+    private void applyAuthorFilter(){
+        var value = getJTextString(txtValueAuthors);
+        var filter = defineAuthorFilter();
+        if (filter.equals("byName")){
+            tblListAuthors.setModel(fromAuthorListedByNameToTableModel(value));
+        }
+        if (filter.equals("byPseudonym")){
+            tblListAuthors.setModel(fromAuthorListedByPseudonymToTableModel(value));
+        }
+        if (filter.equals("byAuthorID")){
+            var id = fromStringToInteger(value);
+            tblListAuthors.setModel((findAuthorById(id)));
+        }
+        tblListAuthors.repaint();
+    }
+
+    private String defineAuthorFilter(){
+        if (cbFiltersAuthors.getSelectedItem().equals("Name that contains")){
+            return "byName";
+        }
+        if (cbFiltersAuthors.getSelectedItem().equals("Pseudonym")){
+            return "byPseudonym";
+        }
+        if (cbFiltersAuthors.getSelectedItem().equals("Author ID")){
+            return "byAuthorID";
+        }
+        return "error";
+    }
+
     private void listPublishers(){
         tblListPublishers.setModel(fromPublishersListToTableModel());
         tblListPublishers.repaint();
+    }
+
+    private void applyPublisherFilter(){
+        var value = getJTextString(txtValuePublisher);
+        var filter = definePublisherFilter();
+        if (filter.equals("byName")){
+            tblListPublishers.setModel(fromPublisherListedByNameToTableModel(value));
+        }
+        if (filter.equals("byID")){
+            var id = fromStringToInteger(value);
+            tblListPublishers.setModel(findPublisherById(id));
+        }
+        tblListPublishers.repaint();
+    }
+
+    private String definePublisherFilter(){
+        if (cbFiltersAuthors1.getSelectedItem().equals("Name that contains")){
+            return "byName";
+        }
+        if (cbFiltersAuthors1.getSelectedItem().equals("ID")){
+            return "byID";
+        }
+        return "error";
     }
 
     private void updateBook(){
