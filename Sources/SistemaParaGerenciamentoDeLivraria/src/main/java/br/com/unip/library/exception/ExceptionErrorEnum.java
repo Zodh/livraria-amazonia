@@ -15,6 +15,8 @@ public enum ExceptionErrorEnum {
   CREATE_AUTHOR_BO("Create Author Business Object"),
   LIST_AUTHORS("Service List All Authors"),
   FIND_AUTHOR_BY_ID("Service Find an Author by ID"),
+  FIND_AUTHOR_BY_NAME("Service Find Authors by name"),
+  FIND_AUTHOR_BY_PSEUDONYM("Service Find Authors by Pseudonym"),
   UPDATE_AUTHOR("Service Update Author"),
   DELETE_AUTHOR("Service Delete Author"),
 
