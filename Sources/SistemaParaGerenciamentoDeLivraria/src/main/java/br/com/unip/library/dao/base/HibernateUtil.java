@@ -11,9 +11,6 @@ public class HibernateUtil {
       .buildSessionFactory();
 
   public static Session getSession() {
-    if (sessionFactory.isClosed()) {
-      sessionFactory.openSession();
-    }
     if (threadLocal.get() == null) {
       threadLocal.set(sessionFactory.openSession());
     }
@@ -22,10 +19,20 @@ public class HibernateUtil {
 
   public static void beginTransaction() {
     getSession().beginTransaction();
+    if (!getSession().getTransaction().isActive()){
+      getSession().beginTransaction();
+    }
+
   }
 
   public static void commitTransaction() {
-    getSession().getTransaction().commit();
+    try{
+      getSession().getTransaction().commit();
+    } catch (Exception exception){
+      getSession().flush();
+      getSession().clear();
+      getSession().getTransaction().commit();
+    }
   }
 
   public static void rollBackTransaction() {
@@ -33,7 +40,6 @@ public class HibernateUtil {
   }
 
   public static void closeSession() {
-    getSession().close();
     threadLocal.remove();
   }
 }

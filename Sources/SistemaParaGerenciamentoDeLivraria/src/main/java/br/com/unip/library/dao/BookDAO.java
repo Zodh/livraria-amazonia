@@ -4,6 +4,7 @@ import br.com.unip.library.dao.base.BaseDAO;
 import br.com.unip.library.dao.base.GenericDAO;
 import br.com.unip.library.dao.base.HibernateUtil;
 import br.com.unip.library.model.entity.Book;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,54 @@ public class BookDAO extends BaseDAO<Book, String> implements GenericDAO<Book, S
 
   public BookDAO() {
     super(Book.class);
+  }
+
+  public void create(Book book) throws Exception {
+    openConn();
+    var sql = "insert into books (title, isbn, publisher_id, price) values (?, ?, ?, ?)";
+    try {
+      var statement = connection.prepareStatement(sql);
+      statement.setString(1, book.getTitle());
+      statement.setString(2, book.getIsbn());
+      statement.setInt(3, book.getPublisherId());
+      statement.setDouble(4, book.getPrice());
+      log.info("Inserting data into the Books table");
+      statement.execute();
+      statement.close();
+    } catch (Exception exception) {
+      throw new Exception(
+          "Error trying to save a new Book in the database. " + exception.getMessage());
+    } finally {
+      log.info("Ending connection");
+      closeConn();
+    }
+  }
+
+  public List<Book> findByPublisherId(Integer id) {
+    beginTransaction();
+    var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
+    var criteriaQuery = criteriaBuilder.createQuery(Book.class);
+    var root = criteriaQuery.from(Book.class);
+    criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("publisherId"), id));
+    var query = HibernateUtil.getSession().createQuery(criteriaQuery);
+    var result = query.getResultList();
+    endTransaction();
+    return result;
+  }
+
+  public List<Book> findByTitleThatContains(String title) {
+    beginTransaction();
+    var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
+    var criteriaQuery = criteriaBuilder.createQuery(Book.class);
+    var root = criteriaQuery.from(Book.class);
+    criteriaQuery.select(root).where(
+        criteriaBuilder.like(
+            root.get("title"), "%" + title + "%"
+        ));
+    var query = HibernateUtil.getSession().createQuery(criteriaQuery);
+    var result = query.getResultList();
+    endTransaction();
+    return result;
   }
 
   public void deleteBookAndBatchDeleteBookAuthors(String isbn) throws Exception {

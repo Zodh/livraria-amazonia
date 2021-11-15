@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,8 @@ public class Publisher {
 
   @Id
   @Column(name = "publisher_id")
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_publisher_id")
+  @SequenceGenerator(name = "seq_publisher_id", sequenceName = "seq_publisher_id", allocationSize = 1)
   private Integer publisherId;
 
   @Column(name = "name")

@@ -5,6 +5,12 @@ import java.util.List;
 
 public interface AuthorController {
 
+  Author findById(Integer id);
+
+  List<Author> findByNameThatContains(String name);
+
+  List<Author> findByPseudonymThatContains(String pseudonym);
+
   void create(Author author);
 
   List<Author> listAll();

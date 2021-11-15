@@ -10,6 +10,21 @@ public class AuthorControllerImpl implements AuthorController {
   private final AuthorServiceImpl authorService = new AuthorServiceImpl();
 
   @Override
+  public Author findById(Integer id) {
+    return authorService.findById(id);
+  }
+
+  @Override
+  public List<Author> findByNameThatContains(String name) {
+    return authorService.findByNameThatContains(name);
+  }
+
+  @Override
+  public List<Author> findByPseudonymThatContains(String pseudonym) {
+    return authorService.findByPseudonymThatContains(pseudonym);
+  }
+
+  @Override
   public void create(Author author) {
     authorService.create(author);
   }
