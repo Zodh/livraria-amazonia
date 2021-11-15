@@ -6,6 +6,9 @@
 package br.com.unip.library.view;
 
 import static br.com.unip.library.view.integration.AuthorIntegrator.deleteAuthorById;
+import static br.com.unip.library.view.integration.AuthorIntegrator.findAuthorById;
+import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorListedByNameToTableModel;
+import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorListedByPseudonymToTableModel;
 import static br.com.unip.library.view.integration.AuthorIntegrator.fromAuthorsListToTableModel;
 import static br.com.unip.library.view.integration.AuthorIntegrator.saveAuthor;
 import static br.com.unip.library.view.integration.AuthorIntegrator.updateAuthorFields;
@@ -1991,7 +1994,7 @@ public class FormAPS extends javax.swing.JFrame {
     }//GEN-LAST:event_pnl_MenuMouseDragged
 
     private void btnApplyAuthorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyAuthorsMouseClicked
-        // TODO add your handling code here:
+        applyAuthorFilter();
     }//GEN-LAST:event_btnApplyAuthorsMouseClicked
 
     private void btnApplyBooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyBooksMouseClicked
@@ -2288,6 +2291,35 @@ public class FormAPS extends javax.swing.JFrame {
     private void listAuthors(){
         tblListAuthors.setModel(fromAuthorsListToTableModel());
         tblListAuthors.repaint();
+    }
+
+    private void applyAuthorFilter(){
+        var value = getJTextString(txtValueAuthors);
+        var filter = defineAuthorFilter();
+        if (filter.equals("byName")){
+            tblListAuthors.setModel(fromAuthorListedByNameToTableModel(value));
+        }
+        if (filter.equals("byPseudonym")){
+            tblListAuthors.setModel(fromAuthorListedByPseudonymToTableModel(value));
+        }
+        if (filter.equals("byAuthorID")){
+            var id = fromStringToInteger(value);
+            tblListAuthors.setModel((findAuthorById(id)));
+        }
+        tblListAuthors.repaint();
+    }
+
+    private String defineAuthorFilter(){
+        if (cbFiltersAuthors.getSelectedItem().equals("Name that contains")){
+            return "byName";
+        }
+        if (cbFiltersAuthors.getSelectedItem().equals("Pseudonym")){
+            return "byPseudonym";
+        }
+        if (cbFiltersAuthors.getSelectedItem().equals("Author ID")){
+            return "byAuthorID";
+        }
+        return "error";
     }
 
     private void listPublishers(){
