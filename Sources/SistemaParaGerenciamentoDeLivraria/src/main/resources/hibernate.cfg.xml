@@ -4,7 +4,7 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.c3p0.timeout">1800</property>
-    <property name="hibernate.c3p0.idle_test_period">1800</property>
+    <property name="hibernate.c3p0.idle_test_period">3600</property>
     <property name="hibernate.c3p0.initialPoolSize">10</property>
     <property name="hibernate.c3p0.maxIdleTime">30</property>
     <property name="hibernate.c3p0.maxPoolSize">600</property>
@@ -16,7 +16,7 @@
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">admin</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
-    <property name="hibernate.connection.autocommit">false</property>
+    <property name="hibernate.connection.autocommit">true</property>
     <property name="hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">false</property>
 
