@@ -4,6 +4,7 @@ import br.com.unip.library.dao.base.BaseDAO;
 import br.com.unip.library.dao.base.GenericDAO;
 import br.com.unip.library.dao.base.HibernateUtil;
 import br.com.unip.library.model.entity.Publisher;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +34,21 @@ public class PublisherDAO extends BaseDAO<Publisher, Integer> implements
       log.info("Ending connection");
       closeConn();
     }
+  }
+
+  public List<Publisher> findByNameThatContains(String name) {
+    beginTransaction();
+    var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
+    var criteriaQuery = criteriaBuilder.createQuery(Publisher.class);
+    var root = criteriaQuery.from(Publisher.class);
+    criteriaQuery.select(root).where(
+        criteriaBuilder.like(
+            root.get("name"), "%" + name + "%"
+        ));
+    var query = HibernateUtil.getSession().createQuery(criteriaQuery);
+    var result = query.getResultList();
+    endTransaction();
+    return result;
   }
 
   public void deleteById(Integer id) throws Exception {
