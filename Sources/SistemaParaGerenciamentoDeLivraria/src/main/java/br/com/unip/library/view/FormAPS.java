@@ -25,6 +25,8 @@ import static br.com.unip.library.view.integration.Integrator.fromStringToIntege
 import static br.com.unip.library.view.integration.Integrator.getJTextString;
 import static br.com.unip.library.view.integration.Integrator.getOptionalJTextString;
 import static br.com.unip.library.view.integration.PublisherIntegrator.deletePublisherById;
+import static br.com.unip.library.view.integration.PublisherIntegrator.findPublisherById;
+import static br.com.unip.library.view.integration.PublisherIntegrator.fromPublisherListedByNameToTableModel;
 import static br.com.unip.library.view.integration.PublisherIntegrator.fromPublishersListToTableModel;
 import static br.com.unip.library.view.integration.PublisherIntegrator.savePublisher;
 import static br.com.unip.library.view.integration.PublisherIntegrator.updatePublisherFields;
@@ -2002,7 +2004,7 @@ public class FormAPS extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApplyBooksMouseClicked
 
     private void btnApplyAuthors2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyAuthors2MouseClicked
-        // TODO add your handling code here:
+        applyPublisherFilter();
     }//GEN-LAST:event_btnApplyAuthors2MouseClicked
 
     private void btnDeleteBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteBookMouseClicked
@@ -2061,7 +2063,6 @@ public class FormAPS extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FormAPS().setVisible(true);
-                HibernateUtil.getSession();
             }
         });
     }
@@ -2325,6 +2326,29 @@ public class FormAPS extends javax.swing.JFrame {
     private void listPublishers(){
         tblListPublishers.setModel(fromPublishersListToTableModel());
         tblListPublishers.repaint();
+    }
+
+    private void applyPublisherFilter(){
+        var value = getJTextString(txtValuePublisher);
+        var filter = definePublisherFilter();
+        if (filter.equals("byName")){
+            tblListPublishers.setModel(fromPublisherListedByNameToTableModel(value));
+        }
+        if (filter.equals("byID")){
+            var id = fromStringToInteger(value);
+            tblListPublishers.setModel(findPublisherById(id));
+        }
+        tblListPublishers.repaint();
+    }
+
+    private String definePublisherFilter(){
+        if (cbFiltersAuthors1.getSelectedItem().equals("Name that contains")){
+            return "byName";
+        }
+        if (cbFiltersAuthors1.getSelectedItem().equals("ID")){
+            return "byID";
+        }
+        return "error";
     }
 
     private void updateBook(){
