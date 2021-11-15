@@ -14,12 +14,10 @@ public class AuthorIntegrator {
 
   private static final AuthorControllerImpl authorController = new AuthorControllerImpl();
 
-  public static DefaultTableModel fromAuthorListedByNameToTableModel(String name){
+  public static DefaultTableModel fromAuthorListedByNameToTableModel(String name) {
     log.info(String.format("Starting the flow to list Authors by name that contains (%s)", name));
     var bookList = authorController.findByNameThatContains(name);
-    String[] column = {"ID", "Name", "Pseudonym"};
     var tableModel = new DefaultTableModel(column, 0);
-
     bookList.forEach(author -> {
       Object[] row = {author.getAuthorId(), author.getName(), author.getFname()};
       tableModel.addRow(row);
@@ -29,21 +27,22 @@ public class AuthorIntegrator {
     return tableModel;
   }
 
-  public static DefaultTableModel fromAuthorListedByPseudonymToTableModel(String pseudonym){
-    log.info(String.format("Starting the flow to list Authors by pseudonym that contains (%s)", pseudonym));
+  public static DefaultTableModel fromAuthorListedByPseudonymToTableModel(String pseudonym) {
+    log.info(String
+        .format("Starting the flow to list Authors by pseudonym that contains (%s)", pseudonym));
     var bookList = authorController.findByPseudonymThatContains(pseudonym);
     var tableModel = new DefaultTableModel(column, 0);
-
     bookList.forEach(author -> {
       Object[] row = {author.getAuthorId(), author.getName(), author.getFname()};
       tableModel.addRow(row);
     });
     tableModel.fireTableDataChanged();
-    log.info(String.format("Finishing the flow to list Authors by pseudonym that contains (%s)", pseudonym));
+    log.info(String
+        .format("Finishing the flow to list Authors by pseudonym that contains (%s)", pseudonym));
     return tableModel;
   }
 
-  public static final DefaultTableModel findAuthorById(Integer id){
+  public static DefaultTableModel findAuthorById(Integer id) {
     log.info(String.format("Starting the flow to list Author by ID"));
     var author = authorController.findById(id);
     var tableModel = new DefaultTableModel(column, 0);
@@ -80,9 +79,7 @@ public class AuthorIntegrator {
   public static DefaultTableModel fromAuthorsListToTableModel() {
     log.info("Starting the flow to list all Authors.");
     var authorList = authorController.listAll();
-    String[] column = {"ID", "Name", "Pseudonym"};
     var tableModel = new DefaultTableModel(column, 0);
-
     authorList.forEach(author -> {
       Object[] row = {author.getAuthorId(), author.getName(), author.getFname()};
       tableModel.addRow(row);
@@ -91,5 +88,4 @@ public class AuthorIntegrator {
     log.info("Finishing the flow to list all Authors.");
     return tableModel;
   }
-
 }

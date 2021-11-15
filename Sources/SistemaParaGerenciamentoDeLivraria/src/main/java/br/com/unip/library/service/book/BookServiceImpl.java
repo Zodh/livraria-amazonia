@@ -33,7 +33,9 @@ public class BookServiceImpl implements BookService {
                 book.getTitle(), book.getPrice()));
       }
     } catch (Exception exception) {
-      throw new LibraryException("Ooops... Error trying to save a new Book. Try again.\nMessage: " + exception.getMessage(),
+      throw new LibraryException(
+          "Ooops... Error trying to save a new Book. Try again.\nMessage: " + exception
+              .getMessage(),
           ExceptionErrorEnum.CREATE_BOOK);
     }
   }
@@ -63,20 +65,23 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  public List<Book> findByPublisherId(Integer publisherId){
-    try{
+  public List<Book> findByPublisherId(Integer publisherId) {
+    try {
       return bookDAO.findByPublisherId(publisherId);
-    } catch (Exception exception){
-      throw new LibraryException("Error trying to list Books by Publisher Id. " + exception.getMessage(), ExceptionErrorEnum.FIND_BOOK_BY_PUBLISHER_ID);
+    } catch (Exception exception) {
+      throw new LibraryException(
+          "Error trying to list Books by Publisher Id. " + exception.getMessage(),
+          ExceptionErrorEnum.FIND_BOOK_BY_PUBLISHER_ID);
     }
   }
 
   @Override
   public List<Book> findByTitleThatContains(String title) {
-    try{
+    try {
       return bookDAO.findByTitleThatContains(title);
-    } catch (Exception exception){
-      throw new LibraryException("Error trying to list Books by Title", ExceptionErrorEnum.FIND_BOOK_BY_TITLE);
+    } catch (Exception exception) {
+      throw new LibraryException("Error trying to list Books by Title",
+          ExceptionErrorEnum.FIND_BOOK_BY_TITLE);
     }
   }
 
@@ -105,7 +110,8 @@ public class BookServiceImpl implements BookService {
         showInfo("The book has not been updated", "Invalid information to update the book.");
       }
     } catch (Exception exception) {
-      throw new LibraryException("Error Trying to Update Book. Try again.\nMessage: " + exception.getMessage(),
+      throw new LibraryException(
+          "Error Trying to Update Book. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.UPDATE_BOOK);
     }
   }
@@ -116,7 +122,8 @@ public class BookServiceImpl implements BookService {
       bookDAO.deleteBookAndBatchDeleteBookAuthors(isbn);
       showInfo("Success", "Book with ISBN " + isbn + " has been deleted!");
     } catch (Exception exception) {
-      throw new LibraryException("Error Trying to Delete Book. Try again.\nMessage: " + exception.getMessage(),
+      throw new LibraryException(
+          "Error Trying to Delete Book. Try again.\nMessage: " + exception.getMessage(),
           ExceptionErrorEnum.DELETE_BOOK);
     }
   }
