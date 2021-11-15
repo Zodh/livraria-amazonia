@@ -49,7 +49,6 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
       beginTransaction();
       log.info("Deleting entity in the database");
       HibernateUtil.getSession().delete(entity);
-      commitTransaction();
     } catch (Exception exception) {
       rollbackTransaction();
       throw new Exception("Error trying to delete an object." + exception.getMessage());
@@ -68,8 +67,7 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
           .createQuery(persistentClass);
       criteriaQuery.from(persistentClass);
       log.info(String.format("Listing all entities (%s) in the database", this.getClass()));
-      var list = HibernateUtil.getSession().createQuery(criteriaQuery).getResultList();
-      return list;
+      return HibernateUtil.getSession().createQuery(criteriaQuery).getResultList();
     } catch (Exception exception) {
       throw new Exception("Error trying to list objects." + exception.getMessage());
     } finally {
@@ -93,10 +91,6 @@ public class BaseDAO<T, Type extends Serializable> implements GenericDAO<T, Type
       log.info("Closing connection to database");
       endTransaction();
     }
-  }
-
-  protected void saveTransaction(T entity) {
-    HibernateUtil.getSession().saveOrUpdate(entity);
   }
 
   public void beginTransaction() {
