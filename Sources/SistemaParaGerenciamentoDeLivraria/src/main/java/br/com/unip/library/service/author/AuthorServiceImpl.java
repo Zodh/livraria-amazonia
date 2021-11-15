@@ -46,8 +46,27 @@ public class AuthorServiceImpl implements AuthorService {
   }
 
   @Override
+  public List<Author> findByNameThatContains(String name) {
+    try{
+      return authorDAO.findByNameThatContains(name);
+    } catch (Exception exception){
+      throw new LibraryException("Error trying to list Authors by Name", ExceptionErrorEnum.FIND_AUTHOR_BY_NAME);
+    }
+  }
+
+  @Override
+  public List<Author> findByPseudonymThatContains(String pseudonym) {
+    try{
+      return authorDAO.findByPseudonymThatContains(pseudonym);
+    } catch (Exception exception){
+      throw new LibraryException("Error trying to list Authors by Pseudonym", ExceptionErrorEnum.FIND_AUTHOR_BY_PSEUDONYM);
+    }
+  }
+
+  @Override
   public Author findById(Integer id) {
     try {
+      log.info("Trying to find an author by id");
       var author = authorDAO.findById(id);
       if (author == null) {
         throw new Exception("An Author with this ID does not exists!");
