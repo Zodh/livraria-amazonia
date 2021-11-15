@@ -78,6 +78,7 @@ public class FormAPS extends javax.swing.JFrame {
         btnPublishers = new javax.swing.JLabel();
         pnl_Cards = new javax.swing.JPanel();
         pnlStartPage = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         pnl_Authors = new javax.swing.JPanel();
         pnlMenuAuthors = new javax.swing.JPanel();
         lblAuthors = new javax.swing.JLabel();
@@ -350,17 +351,25 @@ public class FormAPS extends javax.swing.JFrame {
         pnl_Cards.setBackground(new java.awt.Color(243, 243, 243));
         pnl_Cards.setLayout(new java.awt.CardLayout());
 
-        pnlStartPage.setBackground(new java.awt.Color(246, 246, 246));
+        pnlStartPage.setBackground(new java.awt.Color(196, 196, 196));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HomePage.jpeg"))); // NOI18N
 
         javax.swing.GroupLayout pnlStartPageLayout = new javax.swing.GroupLayout(pnlStartPage);
         pnlStartPage.setLayout(pnlStartPageLayout);
         pnlStartPageLayout.setHorizontalGroup(
             pnlStartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1032, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStartPageLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         pnlStartPageLayout.setVerticalGroup(
             pnlStartPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
+            .addGroup(pnlStartPageLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pnl_Cards.add(pnlStartPage, "pnlStartPage");
@@ -542,9 +551,9 @@ public class FormAPS extends javax.swing.JFrame {
                 .addComponent(lblPseudonymAuthor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFantasyNameAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                 .addComponent(btnSaveAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         pnlCardsAuthors.add(pnlCreateAuthors, "pnlCreateAuthors");
@@ -577,7 +586,7 @@ public class FormAPS extends javax.swing.JFrame {
         txtValueAuthors.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         cbFiltersAuthors.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cbFiltersAuthors.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name that contains", "Pseudonym", "Publisher ID" }));
+        cbFiltersAuthors.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name that contains", "Pseudonym", "Author ID" }));
         cbFiltersAuthors.setBorder(null);
         cbFiltersAuthors.setFocusable(false);
         cbFiltersAuthors.setOpaque(false);
@@ -610,16 +619,18 @@ public class FormAPS extends javax.swing.JFrame {
                     .addComponent(txtValueAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNameAuthor1)
                     .addComponent(lblListAllAuthors))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addGap(99, 99, 99)
                 .addGroup(pnlListAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlListAuthorsLayout.createSequentialGroup()
                         .addComponent(cbFiltersAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnApplyAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblFiltersAuthors))
+                    .addGroup(pnlListAuthorsLayout.createSequentialGroup()
+                        .addComponent(lblFiltersAuthors)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(39, 39, 39))
             .addGroup(pnlListAuthorsLayout.createSequentialGroup()
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlListAuthorsLayout.setVerticalGroup(
@@ -634,8 +645,8 @@ public class FormAPS extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlListAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtValueAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbFiltersAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnApplyAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnApplyAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbFiltersAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -682,10 +693,6 @@ public class FormAPS extends javax.swing.JFrame {
         pnlUpdateAuthors.setLayout(pnlUpdateAuthorsLayout);
         pnlUpdateAuthorsLayout.setHorizontalGroup(
             pnlUpdateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateAuthorsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUpdAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
             .addGroup(pnlUpdateAuthorsLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(pnlUpdateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -697,6 +704,10 @@ public class FormAPS extends javax.swing.JFrame {
                     .addComponent(txtUpdIDAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUpdIDAuthor))
                 .addContainerGap(503, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateAuthorsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnUpdAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         pnlUpdateAuthorsLayout.setVerticalGroup(
             pnlUpdateAuthorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -715,9 +726,9 @@ public class FormAPS extends javax.swing.JFrame {
                 .addComponent(lblUpdPseudonymAuthor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUpdPseudonymAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                 .addComponent(btnUpdAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         pnlCardsAuthors.add(pnlUpdateAuthors, "pnlUpdateAuthors");
@@ -772,9 +783,9 @@ public class FormAPS extends javax.swing.JFrame {
                 .addComponent(lblDeleteIDAuthors)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDeleteAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
                 .addComponent(btnDeleteAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         pnlCardsAuthors.add(pnlDeleteAuthors, "pnlDeleteAuthors");
@@ -980,9 +991,9 @@ public class FormAPS extends javax.swing.JFrame {
                 .addComponent(lblURLPublisher)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNURLPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                 .addComponent(btnSaveAuthor1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         pnlCardsPublishers.add(pnlCreatePublishers, "pnlCreatePublishers");
@@ -1018,7 +1029,7 @@ public class FormAPS extends javax.swing.JFrame {
         lblNameAuthor3.setText("Value to be found:");
 
         cbFiltersAuthors1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cbFiltersAuthors1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name that contains", "URL", "ID" }));
+        cbFiltersAuthors1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name that contains", "ID" }));
         cbFiltersAuthors1.setBorder(null);
         cbFiltersAuthors1.setFocusable(false);
         cbFiltersAuthors1.setOpaque(false);
@@ -1045,10 +1056,6 @@ public class FormAPS extends javax.swing.JFrame {
             .addGroup(pnlListPublishersLayout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListPublishersLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnApplyAuthors2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
             .addGroup(pnlListPublishersLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(pnlListPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1060,8 +1067,11 @@ public class FormAPS extends javax.swing.JFrame {
                         .addGap(99, 99, 99)
                         .addGroup(pnlListPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFiltersAuthors1)
-                            .addComponent(cbFiltersAuthors1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pnlListPublishersLayout.createSequentialGroup()
+                                .addComponent(cbFiltersAuthors1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnApplyAuthors2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(39, 39, 39))
         );
         pnlListPublishersLayout.setVerticalGroup(
             pnlListPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1073,13 +1083,13 @@ public class FormAPS extends javax.swing.JFrame {
                     .addComponent(lblNameAuthor3)
                     .addComponent(lblFiltersAuthors1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlListPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnApplyAuthors2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlListPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlListPublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtValuePublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cbFiltersAuthors1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbFiltersAuthors1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnApplyAuthors2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValuePublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1124,10 +1134,6 @@ public class FormAPS extends javax.swing.JFrame {
         pnlUpdatePublishers.setLayout(pnlUpdatePublishersLayout);
         pnlUpdatePublishersLayout.setHorizontalGroup(
             pnlUpdatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdatePublishersLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUpdPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
             .addGroup(pnlUpdatePublishersLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(pnlUpdatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1139,6 +1145,10 @@ public class FormAPS extends javax.swing.JFrame {
                     .addComponent(txtUpdIDPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUpdPublisher))
                 .addContainerGap(503, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdatePublishersLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnUpdPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         pnlUpdatePublishersLayout.setVerticalGroup(
             pnlUpdatePublishersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1157,9 +1167,9 @@ public class FormAPS extends javax.swing.JFrame {
                 .addComponent(lblUpdURLPublisher)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUpdURLPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                 .addComponent(btnUpdPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         pnlCardsPublishers.add(pnlUpdatePublishers, "pnlUpdatePublishers");
@@ -1214,9 +1224,9 @@ public class FormAPS extends javax.swing.JFrame {
                 .addComponent(lblDeleteIDPublisher)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDeletePublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
                 .addComponent(btnDeletePublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         pnlCardsPublishers.add(pnlDeletePublishers, "pnlDeletePublishers");
@@ -1417,22 +1427,22 @@ public class FormAPS extends javax.swing.JFrame {
             .addGroup(pnlCreateBooksLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(pnlCreateBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNewBooks)
-                    .addComponent(lblTitle)
                     .addComponent(textTitleBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblISBNBooks)
-                    .addComponent(txtISBNBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAuthorsBooks)
                     .addComponent(txtAuthorsBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPublishersBooks)
                     .addComponent(txtPublishersBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPriceBooks)
-                    .addComponent(txttPriceBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(507, 507, 507))
+                    .addComponent(txttPriceBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtISBNBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNewBooks)
+                    .addComponent(lblTitle))
+                .addContainerGap(503, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCreateBooksLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(26, 26, 26))
         );
         pnlCreateBooksLayout.setVerticalGroup(
             pnlCreateBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1528,21 +1538,23 @@ public class FormAPS extends javax.swing.JFrame {
                 .addGroup(pnlListBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlListBooksLayout.createSequentialGroup()
                         .addComponent(lblListAllBooks)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListBooksLayout.createSequentialGroup()
                         .addGroup(pnlListBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtValueBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNameBooks))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addGap(99, 99, 99)
                         .addGroup(pnlListBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFiltersBooks)
                             .addGroup(pnlListBooksLayout.createSequentialGroup()
                                 .addComponent(cbFiltersBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(95, 95, 95)
-                                .addComponent(btnApplyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(46, 46, 46))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnApplyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39))
+                            .addGroup(pnlListBooksLayout.createSequentialGroup()
+                                .addComponent(lblFiltersBooks)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(pnlListBooksLayout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlListBooksLayout.setVerticalGroup(
@@ -1550,16 +1562,16 @@ public class FormAPS extends javax.swing.JFrame {
             .addGroup(pnlListBooksLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblListAllBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(pnlListBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNameBooks)
                     .addComponent(lblFiltersBooks))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlListBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnApplyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addGroup(pnlListBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtValueBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbFiltersBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValueBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
+                    .addComponent(btnApplyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1622,11 +1634,11 @@ public class FormAPS extends javax.swing.JFrame {
                     .addComponent(txtUpdPublisherBook, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUpdTitleBook, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUpdISBNBook, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 507, Short.MAX_VALUE))
+                .addGap(0, 503, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateBooksLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnUpdBook, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(26, 26, 26))
         );
         pnlUpdateBooksLayout.setVerticalGroup(
             pnlUpdateBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1649,9 +1661,9 @@ public class FormAPS extends javax.swing.JFrame {
                 .addComponent(lblUpdPriceBook)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUpdPriceBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                 .addComponent(btnUpdBook, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         pnlCardsBooks.add(pnlUpdateBooks, "pnlUpdateBooks");
@@ -1691,11 +1703,11 @@ public class FormAPS extends javax.swing.JFrame {
                     .addComponent(lblDeleteISBNBook)
                     .addComponent(txtDeleteBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDeleteBook))
-                .addContainerGap(583, Short.MAX_VALUE))
+                .addContainerGap(579, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDeleteBooksLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(26, 26, 26))
         );
         pnlDeleteBooksLayout.setVerticalGroup(
             pnlDeleteBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1706,9 +1718,9 @@ public class FormAPS extends javax.swing.JFrame {
                 .addComponent(lblDeleteISBNBook)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDeleteBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
                 .addComponent(btnDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         pnlCardsBooks.add(pnlDeleteBooks, "pnlDeleteBooks");
@@ -1720,8 +1732,7 @@ public class FormAPS extends javax.swing.JFrame {
             .addGroup(pnl_BooksLayout.createSequentialGroup()
                 .addComponent(pnlMenuBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlCardsBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlCardsBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_BooksLayout.setVerticalGroup(
             pnl_BooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2087,6 +2098,7 @@ public class FormAPS extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbFiltersAuthors1;
     private javax.swing.JComboBox<String> cbFiltersBooks;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

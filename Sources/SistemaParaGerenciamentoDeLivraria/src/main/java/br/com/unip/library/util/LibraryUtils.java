@@ -19,6 +19,10 @@ public class LibraryUtils {
   public static String maskString(String text, Integer start, Integer end) {
     log.info("Initializing mask method");
     try {
+      if (text.length() == 1){
+        return "*";
+      }
+
       if (text == null || text.equals("")) {
         return "";
       }
