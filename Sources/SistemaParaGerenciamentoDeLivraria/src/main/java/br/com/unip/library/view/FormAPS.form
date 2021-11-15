@@ -231,7 +231,7 @@
             <Container class="javax.swing.JPanel" name="pnlStartPage">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f6" green="f6" red="f6" type="rgb"/>
+                  <Color blue="c4" green="c4" red="c4" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -243,15 +243,32 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1032" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="571" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/HomePage.jpeg"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnl_Authors">
               <Properties>
@@ -483,9 +500,9 @@
                                   <Component id="lblPseudonymAuthor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtFantasyNameAuthor" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="300" max="32767" attributes="0"/>
+                                  <EmptySpace pref="299" max="32767" attributes="0"/>
                                   <Component id="btnSaveAuthor" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -581,19 +598,22 @@
                                       <Component id="lblNameAuthor1" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblListAllAuthors" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="101" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="cbFiltersAuthors" min="-2" pref="240" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Component id="btnApplyAuthors" min="-2" pref="102" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="lblFiltersAuthors" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblFiltersAuthors" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane2" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="843" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -611,8 +631,8 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtValueAuthors" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbFiltersAuthors" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="btnApplyAuthors" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="cbFiltersAuthors" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" pref="390" max="-2" attributes="0"/>
@@ -689,7 +709,7 @@
                               <StringArray count="3">
                                 <StringItem index="0" value="Name that contains"/>
                                 <StringItem index="1" value="Pseudonym"/>
-                                <StringItem index="2" value="Publisher ID"/>
+                                <StringItem index="2" value="Author ID"/>
                               </StringArray>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -756,11 +776,6 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnUpdAuthor" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -773,6 +788,11 @@
                                       <Component id="lblUpdIDAuthor" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="503" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnUpdAuthor" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -793,9 +813,9 @@
                                   <Component id="lblUpdPseudonymAuthor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtUpdPseudonymAuthor" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="227" max="32767" attributes="0"/>
+                                  <EmptySpace pref="226" max="32767" attributes="0"/>
                                   <Component id="btnUpdAuthor" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -924,9 +944,9 @@
                                   <Component id="lblDeleteIDAuthors" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtDeleteAuthor" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="372" max="32767" attributes="0"/>
+                                  <EmptySpace pref="371" max="32767" attributes="0"/>
                                   <Component id="btnDeleteAuthors" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1240,9 +1260,9 @@
                                   <Component id="lblURLPublisher" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtNURLPublisher" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="300" max="32767" attributes="0"/>
+                                  <EmptySpace pref="299" max="32767" attributes="0"/>
                                   <Component id="btnSaveAuthor1" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1335,11 +1355,6 @@
                                   <Component id="jScrollPane3" pref="843" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnApplyAuthors2" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1352,11 +1367,15 @@
                                           <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="lblFiltersAuthors1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cbFiltersAuthors1" min="-2" pref="240" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="cbFiltersAuthors1" min="-2" pref="240" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="btnApplyAuthors2" min="-2" pref="102" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1371,15 +1390,15 @@
                                       <Component id="lblFiltersAuthors1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnApplyAuthors2" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtValuePublisher" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="cbFiltersAuthors1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Component id="btnApplyAuthors2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="txtValuePublisher" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane3" pref="385" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane3" min="-2" pref="385" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1458,10 +1477,9 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="3">
+                              <StringArray count="2">
                                 <StringItem index="0" value="Name that contains"/>
-                                <StringItem index="1" value="URL"/>
-                                <StringItem index="2" value="ID"/>
+                                <StringItem index="1" value="ID"/>
                               </StringArray>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1520,11 +1538,6 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnUpdPublisher" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1537,6 +1550,11 @@
                                       <Component id="lblUpdPublisher" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="503" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnUpdPublisher" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1557,9 +1575,9 @@
                                   <Component id="lblUpdURLPublisher" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtUpdURLPublisher" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="227" max="32767" attributes="0"/>
+                                  <EmptySpace pref="226" max="32767" attributes="0"/>
                                   <Component id="btnUpdPublisher" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1688,9 +1706,9 @@
                                   <Component id="lblDeleteIDPublisher" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtDeletePublisher" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="372" max="32767" attributes="0"/>
+                                  <EmptySpace pref="371" max="32767" attributes="0"/>
                                   <Component id="btnDeletePublisher" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1772,7 +1790,6 @@
                           <Component id="pnlMenuBooks" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pnlCardsBooks" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1991,31 +2008,31 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblNewBooks" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                                       <Component id="textTitleBooks" min="-2" pref="316" max="-2" attributes="0"/>
                                       <Component id="lblISBNBooks" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtISBNBooks" min="-2" pref="316" max="-2" attributes="0"/>
                                       <Component id="lblAuthorsBooks" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtAuthorsBooks" min="-2" pref="316" max="-2" attributes="0"/>
                                       <Component id="lblPublishersBooks" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtPublishersBooks" min="-2" pref="316" max="-2" attributes="0"/>
                                       <Component id="lblPriceBooks" min="-2" max="-2" attributes="0"/>
                                       <Component id="txttPriceBooks" min="-2" pref="316" max="-2" attributes="0"/>
+                                      <Component id="txtISBNBooks" alignment="0" min="-2" pref="316" max="-2" attributes="0"/>
+                                      <Component id="lblNewBooks" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="507" max="-2" attributes="0"/>
+                                  <EmptySpace pref="503" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnSave" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Component id="lblNewBooks" min="-2" pref="39" max="-2" attributes="0"/>
                                   <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
                                   <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
@@ -2033,7 +2050,7 @@
                                   <Component id="lblPublishersBooks" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                   <Component id="txtPublishersBooks" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Component id="lblPriceBooks" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                   <Component id="txttPriceBooks" min="-2" max="-2" attributes="0"/>
@@ -2185,21 +2202,24 @@
                                               <Component id="txtValueBooks" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
                                               <Component id="lblNameBooks" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="100" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblFiltersBooks" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <Component id="cbFiltersBooks" min="-2" pref="240" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
                                                   <Component id="btnApplyBooks" min="-2" pref="102" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lblFiltersBooks" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="843" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2209,18 +2229,18 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Component id="lblListAllBooks" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                                  <EmptySpace pref="38" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblNameBooks" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblFiltersBooks" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnApplyBooks" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="cbFiltersBooks" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Component id="txtValueBooks" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtValueBooks" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbFiltersBooks" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="btnApplyBooks" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jScrollPane1" min="-2" pref="390" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -2406,12 +2426,12 @@
                                       <Component id="txtUpdTitleBook" min="-2" pref="316" max="-2" attributes="0"/>
                                       <Component id="txtUpdISBNBook" min="-2" pref="316" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="507" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="503" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnUpdBook" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2436,9 +2456,9 @@
                                   <Component id="lblUpdPriceBook" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtUpdPriceBook" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="155" max="32767" attributes="0"/>
+                                  <EmptySpace pref="154" max="32767" attributes="0"/>
                                   <Component id="btnUpdBook" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2564,12 +2584,12 @@
                                       <Component id="txtDeleteBooks" min="-2" pref="240" max="-2" attributes="0"/>
                                       <Component id="lblDeleteBook" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="583" max="32767" attributes="0"/>
+                                  <EmptySpace pref="579" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnDeleteBook" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2582,9 +2602,9 @@
                                   <Component id="lblDeleteISBNBook" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtDeleteBooks" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="372" max="32767" attributes="0"/>
+                                  <EmptySpace pref="371" max="32767" attributes="0"/>
                                   <Component id="btnDeleteBook" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
