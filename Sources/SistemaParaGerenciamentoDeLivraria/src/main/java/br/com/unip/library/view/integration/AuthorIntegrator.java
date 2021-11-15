@@ -8,9 +8,51 @@ import org.slf4j.LoggerFactory;
 
 public class AuthorIntegrator {
 
+  private static final String[] column = {"ID", "Name", "Pseudonym"};
+
   private static final Logger log = LoggerFactory.getLogger(AuthorIntegrator.class);
 
   private static final AuthorControllerImpl authorController = new AuthorControllerImpl();
+
+  public static DefaultTableModel fromAuthorListedByNameToTableModel(String name){
+    log.info(String.format("Starting the flow to list Authors by name that contains (%s)", name));
+    var bookList = authorController.findByNameThatContains(name);
+    String[] column = {"ID", "Name", "Pseudonym"};
+    var tableModel = new DefaultTableModel(column, 0);
+
+    bookList.forEach(author -> {
+      Object[] row = {author.getAuthorId(), author.getName(), author.getFname()};
+      tableModel.addRow(row);
+    });
+    tableModel.fireTableDataChanged();
+    log.info(String.format("Finishing the flow to list Authors by name that contains (%s)", name));
+    return tableModel;
+  }
+
+  public static DefaultTableModel fromAuthorListedByPseudonymToTableModel(String pseudonym){
+    log.info(String.format("Starting the flow to list Authors by pseudonym that contains (%s)", pseudonym));
+    var bookList = authorController.findByPseudonymThatContains(pseudonym);
+    var tableModel = new DefaultTableModel(column, 0);
+
+    bookList.forEach(author -> {
+      Object[] row = {author.getAuthorId(), author.getName(), author.getFname()};
+      tableModel.addRow(row);
+    });
+    tableModel.fireTableDataChanged();
+    log.info(String.format("Finishing the flow to list Authors by pseudonym that contains (%s)", pseudonym));
+    return tableModel;
+  }
+
+  public static final DefaultTableModel findAuthorById(Integer id){
+    log.info(String.format("Starting the flow to list Author by ID"));
+    var author = authorController.findById(id);
+    var tableModel = new DefaultTableModel(column, 0);
+    Object[] row = {author.getAuthorId(), author.getName(), author.getFname()};
+    tableModel.addRow(row);
+    tableModel.fireTableDataChanged();
+    log.info(String.format("Finishing the flow to list Author by ID"));
+    return tableModel;
+  }
 
   public static void deleteAuthorById(Integer id) {
     log.info(String.format("Starting the flow to delete an Author. ID: %d", id));
