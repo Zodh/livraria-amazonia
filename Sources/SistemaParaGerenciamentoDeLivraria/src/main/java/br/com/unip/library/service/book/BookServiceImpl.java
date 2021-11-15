@@ -119,6 +119,7 @@ public class BookServiceImpl implements BookService {
   @Override
   public void delete(String isbn) {
     try {
+      findByIsbn(isbn);
       bookDAO.deleteBookAndBatchDeleteBookAuthors(isbn);
       showInfo("Success", "Book with ISBN " + isbn + " has been deleted!");
     } catch (Exception exception) {
