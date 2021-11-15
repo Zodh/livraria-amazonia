@@ -20,6 +20,16 @@ public class PublisherControllerImpl implements PublisherController {
   }
 
   @Override
+  public List<Publisher> findByNameThatContains(String name) {
+    return publisherService.findByNameThatContains(name);
+  }
+
+  @Override
+  public Publisher findById(Integer id) {
+    return publisherService.findById(id);
+  }
+
+  @Override
   public void update(Integer id, String name, String url) {
     publisherService.update(id, name, url);
   }

@@ -9,6 +9,10 @@ public interface PublisherController {
 
   List<Publisher> listAll();
 
+  List<Publisher> findByNameThatContains(String name);
+
+  Publisher findById(Integer id);
+
   void update(Integer id, String name, String url);
 
   void delete(Integer id);
