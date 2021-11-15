@@ -4,6 +4,7 @@ import br.com.unip.library.dao.base.BaseDAO;
 import br.com.unip.library.dao.base.GenericDAO;
 import br.com.unip.library.dao.base.HibernateUtil;
 import br.com.unip.library.model.entity.Author;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +34,36 @@ public class AuthorDAO extends BaseDAO<Author, Integer> implements
       log.info("Ending connection");
       closeConn();
     }
+  }
+
+  public List<Author> findByNameThatContains(String name) {
+    beginTransaction();
+    var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
+    var criteriaQuery = criteriaBuilder.createQuery(Author.class);
+    var root = criteriaQuery.from(Author.class);
+    criteriaQuery.select(root).where(
+        criteriaBuilder.like(
+            root.get("name"), "%" + name + "%"
+        ));
+    var query = HibernateUtil.getSession().createQuery(criteriaQuery);
+    var result = query.getResultList();
+    endTransaction();
+    return result;
+  }
+
+  public List<Author> findByPseudonymThatContains(String fname) {
+    beginTransaction();
+    var criteriaBuilder = HibernateUtil.getSession().getCriteriaBuilder();
+    var criteriaQuery = criteriaBuilder.createQuery(Author.class);
+    var root = criteriaQuery.from(Author.class);
+    criteriaQuery.select(root).where(
+        criteriaBuilder.like(
+            root.get("fname"), "%" + fname + "%"
+        ));
+    var query = HibernateUtil.getSession().createQuery(criteriaQuery);
+    var result = query.getResultList();
+    endTransaction();
+    return result;
   }
 
   public void deleteAuthorAndBatchDeleteBookAuthors(Integer id) throws Exception {
